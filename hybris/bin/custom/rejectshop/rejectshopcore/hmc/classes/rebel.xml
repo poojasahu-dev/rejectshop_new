@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://www.zeroturnaround.com">
+  <classpath>
+    <dir name="C:\trs_hybris\trs_h60\respository\trs_Latest\hybris\bin\custom\rejectshop\rejectshopcore/hmc/classes" />
+  </classpath>
+</application>

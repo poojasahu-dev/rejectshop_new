@@ -1,0 +1,173 @@
+/*
+## Footer
+********************************************************************/
+
+
+.footer{
+	border-top:1px solid #979797;
+	margin:50px 0 50px 0;
+	padding:25px 0 0 0;
+	clear: both;
+}
+
+.footer .links{
+	float:left;
+	
+}
+
+.footer .links .title{
+	
+}
+
+
+.footer .links ul{
+	float:left;
+	width:192px;
+	
+}
+
+
+.footer .links a{
+	font-weight:bold;
+}
+#footerLinkBannerComponent{width:100%;float:left;padding-left:27px;}
+#footerLinkBannerComponent.Horizontal ul li{width:100%;height:auto;float:none;}
+#contactinfoNavigation
+{
+	width: 100%;
+    float: left;
+    border-bottom: 1px solid #fff;
+    margin-top: -85px;
+    padding-right: 183px;
+    padding-bottom: 35px;
+}
+#contactinfoNavigation h3
+{
+	float:right;
+}
+#emailClubNavigation {background:#5D3385;}
+#emailClubNavigation img{   
+	width: 250px;
+    margin-right: 10px;
+    position: relative;
+    top: -8px;
+    height: 60px;}
+    
+   #emailClubNavigation iframe 
+       {position: relative;
+    top: 4px;
+    left: 30px;} 
+
+#emailClubNavigation h3{font-size:13px;line-height:30px;margin:0;padding:0px 15px;font-family:'AvantGardeGothicITCW01D 731075';font-weight:normal;text-align:center;}
+#emailClubNavigation .container{display:none;}
+#ContactInfoNavigation h3
+{
+	font-size:21px;
+	line-height:30px;
+	margin:0;}
+#emailClubNavigation h3 input[type="email"]
+{
+	width:250px;
+    color:#000;
+    padding:0 10px;
+    font-size:14px;border-width:0;margin-left:50px;
+}
+#ContactInfoNavigation
+{
+	background-image : url("../images/customer_service.png");
+	background-repeat:no-repeat;
+	background-size:50px 50px;
+	margin-left:100px;
+	position: relative;
+    padding-left: 50px;
+    background-position: -1px 13px;
+    height: 44px;
+}
+#footerLinkBannerComponent ul
+{	
+	    width: 1170px;
+    margin: 0 auto;
+}
+
+
+@media (min-width:320px) and (max-width:1023px){
+    #footerLinkBannerComponent ul{text-align:left;width:100%;float:left;}
+    #emailClubNavigation img{display:block;margin:0 auto 10px;}
+
+#emailClubNavigation img {
+    width: 70%;
+    /*margin-right: 230px;*/
+    position: relative;
+     top: 0px; 
+     height: auto; 
+     padding:10px 80px;
+    max-width: 100%;
+}
+
+#emailClubNavigation img {
+    width: 70%;
+    /*margin-right: 230px;*/
+    position: relative;
+    /* top: -8px; */
+    /* height: 60px; */
+    max-width: 100%;
+}
+#emailClubNavigation iframe {
+ top:0px;
+ left:0px;
+}
+}
+
+.footer .copyright{
+	clear:both;
+	padding-top: 10px;
+	color:#ffffff;
+}
+
+#socialComponent .simple-banner .thumb img{
+	width:44px;
+    margin-top: 6px;
+}
+#socialComponent ul li{display:inline-block;}
+@media(min-width:750px){
+#helpLine
+{
+	width:100%;
+	border-bottom:1px solid #fff;
+	margin:auto;	
+}
+}
+#helpLine h3
+{
+	float: right;
+    color: #FFF;
+    margin-top: -53px;
+    MARGIN-RIGHT: 34PX;
+    
+}
+#contactusNavigation ul li:nth-child(4){bottom:20px;font-size:16px;position: absolute;}
+#contactusNavigation ul li:nth-child(4) a{color:#e2001a;font-family:'AvantGardeGothicITCW01D 731075';font-size:15px;}
+.SecondaryNavigationComponent{margin:0 15px 15px 0;}
+
+@media(max-width: 1199px) and (min-width: 768px){
+	#helpLine h3 {float: right;color: #FFF;margin-top: -6px;}
+  	#storeFinderForm span input[type="text"]{width: 160px !important;}
+}
+@media(max-width:767px){
+	#contactusNavigation ul li:nth-child(4){position:static;}
+	#footerLinkBannerComponent ul li{margin-left:0px;}
+	#helpLine h3{font-size: 16px;float: left;color: #FFF;margin-top: 0px;padding-left: 29px;}
+	#emailClubNavigation h3 input[type="email"]{margin-left:5px;}
+    #socialComponent ul{margin-left:0px;}  
+}
+
+@media(max-width: 599px){
+    #footerLinkBannerComponent ul li div h3 iframe {height: 250px}
+}
+
+@media (min-width: 623px) and (max-width: 893px) {
+    #footerLinkBannerComponent ul li div h3 iframe {height: 170px}
+}
+@media(min-width: 894px){
+    #footerLinkBannerComponent ul li div h3 iframe {height: 93px}
+}

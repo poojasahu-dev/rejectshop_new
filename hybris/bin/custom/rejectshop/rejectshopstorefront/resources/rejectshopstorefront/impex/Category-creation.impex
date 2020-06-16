@@ -1,0 +1,28 @@
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$approved=approvalstatus(code)[default='approved']
+$supercategories=source(code, $catalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+
+# Language
+$lang=en
+
+# Insert Categories
+INSERT_UPDATE Category;code[unique=true];name[lang=$lang];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;SavvyGiftFinder;Savvy Gift Finder;
+;7707;$5;
+;7708;$10;
+;7709;$20;
+;7710;$30;
+;7711;$40;
+
+
+# Insert Category Structure
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;7707;SavvyGiftFinder;
+;7708;SavvyGiftFinder;
+;7709;SavvyGiftFinder;
+;7710;SavvyGiftFinder;
+;7711;SavvyGiftFinder;
+;SavvyGiftFinder;TRS;

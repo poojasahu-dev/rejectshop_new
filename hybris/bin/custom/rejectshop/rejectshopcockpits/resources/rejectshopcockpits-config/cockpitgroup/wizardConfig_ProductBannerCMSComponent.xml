@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wizard-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="wizard-config.xsd"
+               showPrefilledValues="true" selectMode="true" createMode="true" displaySubtypes="true">
+	<displayed-properties>
+		<group qualifier="Properties" visible="true" initially-opened="true">
+			<label key="config.wizardConfig.properties" />
+			<property qualifier="ProductBannerCMSComponent.productName"/>
+			<property qualifier="ProductBannerCMSComponent.media" editorCode="simpleMediaReferenceSelector">
+				<parameter name="predefinedValuesStrategy" value="imageMediaPredefinedValuesStrategy"/>
+			</property>
+			<property qualifier="AbstractBannerComponent.urlLink"/>
+			<property qualifier="ProductBannerCMSComponent.price"/>
+			<property qualifier="ProductBannerCMSComponent.unit"/>
+			<property qualifier="ProductBannerCMSComponent.amountSaved"/>
+		</group>
+	</displayed-properties>
+</wizard-config>

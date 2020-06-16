@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2016 SAP SE or an SAP affiliate company.
+ All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:noNamespaceSchemaLocation="items.xsd">
+	<collectiontypes>
+		<collectiontype code="PayPalButtonsFundingList"
+						elementtype="PayPalButtonsFunding" autocreate="true" generate="true"
+						type="list" />
+	</collectiontypes>
+	<enumtypes>
+		<enumtype code="PayPalButtonsStyleColor" autocreate="true" generate="true">
+			<description>The button style color.</description>
+			<value code="gold"/>
+			<value code="blue"></value>
+			<value code="silver" />
+			<value code="black"></value>
+		</enumtype>
+		<enumtype code="PayPalButtonsStyleShape" autocreate="true" generate="true">
+			<description>The button style shape.</description>
+			<value code="pill"/>
+			<value code="rect"></value>
+		</enumtype>
+		<enumtype code="PayPalButtonsStyleSize" autocreate="true" generate="true">
+			<description>The button style size..</description>
+			<value code="small"/>
+			<value code="medium"></value>
+			<value code="large"></value>
+			<value code="responsive"></value>
+		</enumtype>
+		<enumtype code="PayPalButtonsStyleLabel" autocreate="true" generate="true">
+			<value code="checkout"/>
+			<value code="credit"></value>
+			<value code="pay"></value>
+			<value code="buynow"></value>
+			<value code="paypal"></value>
+		</enumtype>
+		<enumtype code="PayPalButtonsStyleLayout" autocreate="true" generate="true">
+			<value code="horizontal"/>
+			<value code="vertical"></value>
+		</enumtype>
+		<enumtype code="PayPalButtonsFunding" autocreate="true" generate="true">
+			<value code="paypal"></value>
+			<value code="venmo"></value>
+			<value code="credit"></value>
+			<value code="card"></value>
+			<value code="ideal"></value>
+			<value code="elv"></value>
+			<value code="bancontact"></value>
+			<value code="giropay"></value>
+			<value code="eps"></value>
+			<value code="mybank"></value>
+		</enumtype>
+	</enumtypes>
+
+	<itemtypes>
+
+		<itemtype code="PayPalCreditFinancingBanner" extends="SimpleBannerComponent" autocreate="true" generate="true"></itemtype>
+
+		<itemtype code="PayPalECButtonComponent" extends="SimpleBannerComponent" autocreate="true" generate="true">
+			<attributes>
+				<attribute type="java.lang.String" qualifier="locale">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>"en_US"</defaultvalue>
+				</attribute>
+				<attribute type="PayPalButtonsStyleColor" qualifier="color">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="PayPalButtonsStyleShape" qualifier="shape">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="PayPalButtonsStyleSize" qualifier="size">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>"responsive"</defaultvalue>
+				</attribute>
+				<attribute type="PayPalButtonsStyleLabel" qualifier="label">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="PayPalButtonsStyleLayout" qualifier="layout">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Boolean" qualifier="tagline">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+				</attribute>
+				<attribute type="java.lang.Boolean" qualifier="branding">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+				</attribute>
+				<attribute type="PayPalButtonsFundingList" qualifier="fundingAllowed">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="PayPalButtonsFundingList" qualifier="fundingDisallowed">
+					<persistence type="property"/>
+				</attribute>
+				<attribute type="java.lang.Boolean" qualifier="fundingIcons">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+				</attribute>
+				<attribute type="java.lang.String" qualifier="buttonDiv">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>"paypal-button-container"</defaultvalue>
+				</attribute>
+				<attribute type="java.lang.Boolean" qualifier="commit">
+					<persistence type="property"/>
+					<modifiers optional="false"/>
+					<defaultvalue>Boolean.FALSE</defaultvalue>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="PayPalMiniCartJSComponent" extends="MiniCartComponent" autocreate="true" generate="true">
+			<attributes>
+				<attribute type="PayPalECButtonComponent" qualifier="payPalECButtonComponent">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="PayPalCheckoutJSComponent" extends="JspIncludeComponent" autocreate="true" generate="true">
+			<attributes>
+				<attribute type="PayPalECButtonComponent" qualifier="payPalECButtonComponent">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+
+		<itemtype code="PayPalExpressCheckoutMark" extends="PayPalECButtonComponent" autocreate="true" generate="true">
+			<attributes>
+				<attribute type="CMSLinkComponent" qualifier="link">
+					<persistence type="property"/>
+				</attribute>
+			</attributes>
+		</itemtype>
+	</itemtypes>
+</items>

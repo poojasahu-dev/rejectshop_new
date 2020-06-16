@@ -1,0 +1,9 @@
+#Ant properties
+#Thu Jan 19 15:04:09 CET 2017
+builddate=20170119 1502
+description=paypal60addon
+name=paypal60addon
+releasedate=20160923 1341
+vendor=hybris
+version=6.2.0.3
+version.api=6.2.0

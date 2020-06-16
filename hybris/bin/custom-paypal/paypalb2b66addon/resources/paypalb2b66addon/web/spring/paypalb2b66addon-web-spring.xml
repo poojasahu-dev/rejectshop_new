@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2017 SAP SE or an SAP affiliate company.  All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:security="http://www.springframework.org/schema/security"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<context:annotation-config/>
+
+
+	<!-- Expose /acceleratoraddon/web/webroot/WEB-INF/messages/base.js.properties  resource bundle as javascript variables -->
+	<bean id="defaultPaypalb2b66addonJavaScriptMessageResourceAccessor" parent="abstractJavaScriptMessageResourceAccessor">
+		<property name="addOnName" value="paypalb2b66addon"/>
+	</bean>
+
+	<bean id="defaultPaypalb2b66addonBeforeViewJsPropsHandlerAdaptee" parent="abstractBeforeViewJsPropsHandlerAdaptee" class="de.hybris.platform.addonsupport.interceptors.ExportJsPropertiesBeforeViewHandler">
+		<property name="messageSource" ref="defaultPaypalb2b66addonJavaScriptMessageResourceAccessor"/>
+	</bean>
+
+	<bean id="getPaypalb2b66addonBeforeViewHandler" parent="beforeViewHandlerAdapter">
+		<property name="adaptee">
+			<ref bean="defaultPaypalb2b66addonBeforeViewJsPropsHandlerAdaptee"/>
+		</property>
+	</bean>
+	<bean id="Paypalb2b66addonBeforeViewHandlerListMergeDirective" depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add" ref="getPaypalb2b66addonBeforeViewHandler"/>
+	</bean>
+
+	<bean id="paypalB2bBeforeViewHandler" class="com.paypal.hybris.addon.controllers.pages.PayPalB2bBeforeViewHandler">
+		<property name="sessionService" ref="sessionService"/>
+		<property name="cmsComponentService" ref="cmsComponentService"/>
+		<property name="payPalUserHelper" ref="payPalUserHelper"/>
+		<property name="configurationService" ref="configurationService"/>
+		<property name="cartService" ref="cartService"/>
+	</bean>
+
+	<!-- Add our new before view adaptee to the existing list using a merge -->
+	<bean depends-on="beforeViewHandlersList" parent="listMergeDirective">
+		<property name="add">
+			<bean parent="beforeViewHandlerAdapter">
+				<property name="adaptee" ref="paypalB2bBeforeViewHandler" />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Before Controller Handler -->
+	<bean id="payPalB2bBeforeControllerHandler" class="com.paypal.hybris.addon.controllers.pages.PayPalB2bBeforeControllerHandler">
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+	<bean depends-on="beforeControllerHandlersList" parent="listMergeDirective">
+		<property name="add">
+			<bean parent="beforeControllerHandlerAdapter">
+				<property name="adaptee" ref="payPalB2bBeforeControllerHandler" />
+			</bean>
+		</property>
+	</bean>
+
+	<!--  PayPal Credit Financing Banner -->
+	<bean id="paypalB2bCreditFinancingBannerRendererMapping" parent="addonCmsComponentRendererMapping">
+		<property name="typeCode" value="PayPalB2bCreditFinancingBanner" />
+		<property name="renderer" ref="genericAddOnCMSComponentRenderer" />
+	</bean>
+
+	<!-- This alias does not exist in hybris 5.2 and 5.3 -->
+	<alias name="addOnJspIncludeCMSComponentRenderer" alias="genericAddOnCMSComponentRenderer" />
+
+	<bean id="payPalB2bDefaultAddOnCMSComponentRenderer" class="com.paypal.hybris.addon.renderer.PayPalB2bDefaultAddOnCMSComponentRenderer" parent="addOnJspIncludeCMSComponentRenderer"/>
+
+	<!--  PayPal EC Button Component -->
+	<bean id="payPalB2bECButtonComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+		<property name="typeCode" value="PayPalB2bECButtonComponent" />
+		<property name="renderer" ref="payPalB2bDefaultAddOnCMSComponentRenderer" />
+	</bean>
+
+	<!--  PayPal Checkout JS Component -->
+	<bean id="payPalB2bECComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+		<property name="typeCode" value="PayPalB2bECComponent" />
+		<property name="renderer" ref="genericAddOnCMSComponentRenderer" />
+	</bean>
+
+	<!--  PayPal Express Checkout Mark -->
+	<bean id="payPalB2bECMarkComponentRendererMapping" parent="addonCmsComponentRendererMapping">
+		<property name="typeCode" value="PayPalB2bECMarkComponent" />
+		<property name="renderer" ref="payPalB2bDefaultAddOnCMSComponentRenderer" />
+	</bean>
+
+	<!-- To handle PayPal AddOn controllers -->
+	<context:component-scan base-package="com.paypal.hybris.addon.controllers" scope-resolver="de.hybris.platform.spring.IgnoreTenantScopeMetadataResolver"/>
+
+	<!-- Security rules configuration -->
+	<bean id="payPalB2bExcludeUrlPostProcessor" class="com.paypal.hybris.addon.postprocessors.ExcludeUrlSetPostProcessor">
+		<property name="beanName" value="excludeUrlSet"/>
+		<property name="excludeUrlSet">
+			<set>
+				<value>/paypal/b2b/checkout/**</value>
+			</set>
+		</property>
+	</bean>
+
+	<security:http disable-url-rewriting="true" pattern="/paypal/**" use-expressions="true">
+		<security:anonymous username="anonymous" granted-authority="ROLE_ANONYMOUS" />
+		<security:access-denied-handler error-page="/login"/>
+
+		<security:session-management session-authentication-strategy-ref="fixation" />
+
+		<!-- SSL / AUTHENTICATED pages -->
+
+		<security:intercept-url pattern="/paypal/b2b/checkout/payment/*" requires-channel="https" />
+
+		<security:form-login
+				login-processing-url="/checkout/j_spring_security_check"
+				login-page="/login/checkout"
+				authentication-failure-handler-ref="loginCheckoutAuthenticationFailureHandler"
+				authentication-success-handler-ref="loginCheckoutGuidAuthenticationSuccessHandler" />
+
+		<security:logout logout-url="/logout" success-handler-ref="logoutSuccessHandler" />
+
+		<security:port-mappings>
+			<security:port-mapping http="#{configurationService.configuration.getProperty('tomcat.http.port')}"
+								   https="#{configurationService.configuration.getProperty('tomcat.ssl.port')}" />
+			<security:port-mapping http="80" https="443" />
+			<!--security:port-mapping http="#{configurationService.configuration.getProperty('proxy.http.port')}"
+                https="#{configurationService.configuration.getProperty('proxy.ssl.port')}" /-->
+		</security:port-mappings>
+
+		<security:request-cache ref="httpSessionRequestCache" />
+	</security:http>
+
+
+</beans>

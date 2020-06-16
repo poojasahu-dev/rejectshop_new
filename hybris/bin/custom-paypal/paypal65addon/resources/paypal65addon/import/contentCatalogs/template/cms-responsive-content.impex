@@ -1,0 +1,10 @@
+######
+## PARAMETERS REQUIRED FOR THIS SCRIPT
+##
+##   * contentCatalog   - content catalog id
+##   * addonExtensionName - extension name of the ui addon
+#######
+
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$jarResourceCms=jar:com.paypal.hybris.addon.constants.Paypal65addonConstants&/paypal65addon/import/cockpit/cmscockpit
+$siteResource=jar:com.paypal.hybris.addon.constants.Paypal65addonConstants&/paypal65addon/import/contentCatalogs/$contentCatalog

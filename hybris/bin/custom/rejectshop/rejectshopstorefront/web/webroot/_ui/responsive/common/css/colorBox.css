@@ -1,0 +1,21 @@
+/*
+## colorBox
+********************************************************************/
+
+#cboxOverlay{
+    opacity: 0.7 !important;
+}
+
+
+#colorbox{
+
+}
+
+#cboxLoadedContent{
+	margin:0;
+	width:100%;
+}
+
+#cboxClose{
+	top:0;
+}

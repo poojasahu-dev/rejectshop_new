@@ -1,0 +1,404 @@
+$contentCatalog=rejectshopContentCatalog
+$contentCatalogName=rejectshop Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/cockpits/cmscockpit
+$medias=medias(code, $contentCV);
+$lang=en
+$mediaContainer=media(qualifier, $contentCV)[lang=$lang];
+
+
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+# Language
+$lang=en
+
+##  Remove the language currency component from the search and place a tag in the footer
+# CMS SearchBox Components
+INSERT_UPDATE SearchBoxComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;SearchBox;Search Box;SearchBox
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(&componentRef)
+;;SearchBoxSlot;SearchBox
+
+INSERT_UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];wrapAfter;showLanguageCurrency
+;;FooterComponent;2;true
+
+#################    HOME PAGE START     #################
+# Rotating Banners
+INSERT_UPDATE Media;$contentCV[unique=true];mediaFormat(qualifier);code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];altText
+#Rotating Banners
+#Rotating Banners
+;;desktop;rotatingImageDesktop1	;image/jpg	;DesktopBanner1.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/DesktopBanner1.jpg
+;;mobile;rotatingImageMobile1	;image/jpg	;MobileBanner1.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/MobileBanner1.jpg
+;;tablet;rotatingImageTablet1	;image/jpg	;tabletBanner1.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/tabletBanner1.jpg
+;;desktop;rotatingImageDesktop2	;image/jpg	;DesktopBanner2.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/DesktopBanner2.jpg
+;;mobile;rotatingImageMobile2	;image/jpg	;MobileBanner2.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/MobileBanner2.jpg
+;;tablet;rotatingImageTablet2	;image/jpg	;TabletBanner2.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/TabletBanner2.jpg
+;;desktop;rotatingImageDesktop3	;image/jpg	;DesktopBanner3.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/DesktopBanner3.jpg
+;;desktop;rotatingImageDesktop4	;image/jpg	;DesktopBanner4.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/DesktopBanner4.jpg	
+;;desktop;rotatingImageDesktop5	;image/jpg	;DesktopBanner5.jpg		;$siteResource/images/banners/homepage/responsive/homebanners/DesktopBanner5.jpg	
+;;280Wx300H;bannerImage1			;image/jpg	;NeonDocument.jpg		;$siteResource/images/banners/homepage/banners/NeonDocument.jpg
+;;280Wx300H;bannerImage2			;image/jpg	;KidsAnimal.jpg	;$siteResource/images/banners/homepage/banners/KidsAnimal.jpg
+;;desktop;bannerImage3			;image/jpg	;Stationery.jpg	;$siteResource/images/banners/homepage/banners/Brand-Tile-1-280x300.jpg
+;;desktop;bannerImage4			;image/jpg	;AustraliaSticker.jpg	;$siteResource/images/banners/homepage/banners/AustraliaSticker.jpg
+;;desktop;bannerImage5			;image/jpg	;SpiralBound.jpg;$siteResource/images/banners/homepage/banners/SavvyShopper-Tile-280x300.jpg
+;;desktop;bannerImage6			;image/jpg	;NutriBlast.jpg	;$siteResource/images/banners/homepage/banners/Social-Tile-FB-280x300.jpg
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
+;rejectshop-homepagebanner1-en;rotatingImageDesktop1,rotatingImageMobile1,rotatingImageTablet1
+;rejectshop-homepagebanner2-en;rotatingImageDesktop2,rotatingImageMobile2,rotatingImageTablet2
+;rejectshop-homepagebanner3-en;rotatingImageDesktop3
+;rejectshop-homepagebanner4-en;rotatingImageDesktop4
+;rejectshop-homepagebanner5-en;rotatingImageDesktop5
+
+# REJECTHorizontalBanner
+INSERT_UPDATE REJECTHorizontalBanner;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink;$picture[lang=$lang]
+;;banner1					;Banner 1	;banner1			;#	;bannerImage1
+;;banner2					;Banner 2	;banner2			;#	;bannerImage2
+;;banner3					;Banner 2	;banner3			;#	;bannerImage3
+;;banner4					;Banner 2	;banner4			;#	;bannerImage4
+;;banner5					;Banner 2	;banner5			;#	;bannerImage5
+;;banner6					;Banner 2	;banner6			;#	;bannerImage6
+
+
+INSERT_UPDATE REJSimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;$mediaContainer;&componentRef;startTime[dateformat=dd.MM.yyyy HH:mm:ss];endTime[dateformat=dd.MM.yyyy HH:mm:ss];order[default=0]
+;;rotatingBannerDesktop1;RotatingBannerDesktop1;http://www.rejectshop.com.au/storelocator?q=rowville;rejectshop-homepagebanner1-en;rotatingBannerDesktop1;21.06.2015 00:00:00;21.07.2017 00:00:00;1
+;;rotatingBannerDesktop2;RotatingBannerDesktop2;http://www.savvycompetition.com/utm_source=bbwebsite&utm_medium=CarouselBanner&utm_campaign=TRS-Cake-Boss#/app/2539/page/6425;rejectshop-homepagebanner2-en;rotatingBannerDesktop2;21.06.2015 00:00:00;21.07.2017 00:00:00;2
+;;rotatingBannerDesktop3;RotatingBannerDesktop3;http://catalogue.rejectshop.com.au/catalogue/stock-up-with-savvy-winter-savings/14658585178511.html?utm_source=website&utm_medium=carousel&utm_content=jul16&utm_campaign=lasoocat#pageNo=0;rejectshop-homepagebanner3-en;rotatingBannerDesktop3;21.06.2015 00:00:00;21.07.2017 00:00:00;3
+;;rotatingBannerDesktop4;RotatingBannerDesktop4;http://savvy.rejectshop.com.au/?utm_source=website&utm_medium=carousel&utm_campaign=savvyblog;rejectshop-homepagebanner4-en;rotatingBannerDesktop4;21.06.2015 00:00:00;21.07.2017 00:00:00;4
+;;rotatingBannerDesktop5;RotatingBannerDesktop5;http://savvy.rejectshop.com.au/forms/entryFull.php?utm_source=website&utm_medium=carousel&utm_campaign=entryfull;rejectshop-homepagebanner5-en;rotatingBannerDesktop5;21.06.2015 00:00:00;21.07.2017 00:00:00;4
+
+INSERT_UPDATE REJRotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;responsiveBanners(&componentRef);&componentRef;
+;;rejHomePageRotatingBannerComponent;Home Page Rotating Banner Component;rotatingBannerDesktop3,rotatingBannerDesktop2,rotatingBannerDesktop1,rotatingBannerDesktop4,rotatingBannerDesktop5;rejHomePageRotatingBannerComponent;
+
+
+# Site Logo
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;
+;;ProductImage1;Australia-Flags-280x300.jpg;$siteResource/images/banners/homepage/banners/Australia-Flags-280x300.jpg;;Australia Flags
+;;ProductImage2;Australia-GreenYellow-Lights-280x300.jpg;$siteResource/images/banners/homepage/banners/Australia-GreenYellow-Lights-280x300.jpg;;Solar String Lights
+;;ProductImage3;Australia-Thongs-Ball-280x300.jpg;$siteResource/images/banners/homepage/banners/Australia-Thongs-Ball-280x300.jpg;;Australia Tattoos or Face Paint
+;;ProductImage4;AustraliaStickers.jpg;$siteResource/images/banners/homepage/banners/AustraliaStickers.jpg;;Australia Beach Ball or Thongs
+;;ProductbannerImage;Australia-Partyware-600x300.jpg;$siteResource/images/banners/homepage/banners/Australia-Partyware-600x300.jpg;;Australia Day Partyware
+;;gift-card-img.png;online-gift-card-img.png;$siteResource/images/banners/homepage/banners/gift-card-img.png;;Gift Card
+;;banner1;Basics-Job-Squad-Wipes-2.jpg;$siteResource/images/banners/homepage/banners/Basics-Job-Squad-Wipes-2.jpg;;Squad Wipes
+;;banner2;Basics-MM-Maltesers-2.jpg;$siteResource/images/banners/homepage/banners/Basics-MM-Maltesers-2.jpg;;Maltesers
+;;banner3;Basics-Hot-Wheels-2.jpg;$siteResource/images/banners/homepage/banners/Basics-Hot-Wheels-2.jpg;;HotWheels
+;;banner4;Basics-Starburst-Varieties-2.jpg;$siteResource/images/banners/homepage/banners/Basics-Starburst-Varieties-2.jpg;;Starburst
+
+# REJECTHorizontalBanner
+INSERT_UPDATE ProductBannerCMSComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$picture[lang=$lang];price;amountSaved;urlLink
+;;ProductBanner1;Product Banner 1;ProductBanner1;ProductImage1;$5;
+;;ProductBanner2;Product Banner 2;ProductBanner2;ProductImage2;$12;
+;;ProductBanner3;Product Banner 3;ProductBanner3;ProductImage3;$1;
+;;ProductBanner;Product Banner;ProductBanner;ProductbannerImage;$2;
+;;ProductBanner4;Product Banner 4;ProductBanner4;ProductImage4;$2;
+;;homeBanner1;Product Banner 1;homeBanner1;banner1;$ 5.00;
+;;homeBanner2;Product Banner 2;homeBanner2;banner2;$ 2.00;
+;;homeBanner3;Product Banner 1;homeBanner3;banner3;$ 5.00;
+;;homeBanner4;Product Banner 2;homeBanner4;banner4;$ 2.00;
+
+INSERT_UPDATE CMSComponentContainer;$contentCV[unique=true];uid[unique=true];name;&componentRef;cmsComponents(uid,$contentCV);title;style
+;;ProducthorizontalBanner1			;ProductHorizontal Banners	;ProducthorizontalBanner1	;ProductBanner1,ProductBanner2,ProductBanner3,ProductBanner4;Featured Products;featuredProduct
+#;;ProducthorizontalBanner2			;ProductHorizontal Banners ;ProducthorizontalBanner2	;homeBanner1,homeBanner2,homeBanner3,homeBanner4
+;;Horizontalbanner1					;RightHandHorizontal Banners	;Horizontalbanner1			;banner1,banner2;;hidden-xs
+;;Horizontalbanner2					;Horizontal Banners	;Horizontalbanner2			;banner3,banner4,banner5,banner6;;hidden-xs
+# FeaturedProducts Components
+INSERT_UPDATE FeaturedProductsComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;featuredProducts(&componentRef)
+;;FeaturedProducts;Reject Shop Featured Products;FeaturedProducts;
+
+
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);scroll(code);popup;&componentRef
+#;;rejectshopHomepageProductCarouselComponent;rejectshop Homepage Product Carousel;30045637,30000037001,22225696,21834783,22147592,21933578,22209474,22148407,21589164;allVisible;false;rejectshopHomepageProductCarouselComponent
+
+INSERT_UPDATE StoreLocatorComponent;$contentCV[unique=true];uid[unique=true];&componentRef;isMenu;name;displayTitle
+;;StoreLocatorComponentMain;StoreLocatorComponentMain;false;Store Locator Component Main;true
+;;StoreLocatorComponentMenu;StoreLocatorComponentMenu;true;Store Locator Component Menu
+;;HomeStoreLocatorComponent;StoreLocatorComponentHome;false;Home Store Locator Component;false
+
+INSERT_UPDATE BecomeVIPComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;heading;subHeading;signUpButtonLabel
+;;BecomeVIPComponent;BecomeVIPComponent;Become VIP Component;"Become a VIP";"Be the first to know!<br/>Sign up today to get our catalogue delivered to your inbox every month.";"Join Now"
+
+INSERT_UPDATE OnlineCatalogueViewComponent;$contentCV[unique=true];uid[unique=true];&componentRef
+;;OnlineCatalogueViewComponent;OnlineCatalogueViewComponent
+
+# Component to display the check gift card balance module
+INSERT_UPDATE CheckGiftCardBalanceComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;url;$media
+;;checkGiftCardBalanceComponent;checkGiftCardBalanceComponent;Check Gift Card Balance Component;giftcards/giftCardsTermsAndConditions;gift-card-img.png
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;Section1Slot-Homepage;Section1 Slot for Homepage;true;rejHomePageRotatingBannerComponent,Horizontalbanner1,Horizontalbanner2,ProducthorizontalBanner1
+;;Section2ASlot-Homepage;Section2A Slot for Homepage;true;
+;;Section2BSlot-Homepage;Section2B Slot for Homepage;true;
+;;Section3Slot-Homepage;Section3 Slot for Homepage;true;
+;;Section5Slot-Homepage;Section5 Slot for Homepage;true;
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section1-Homepage;Section1;;Section1Slot-Homepage
+;;Section2A-Homepage;Section2A;;Section2ASlot-Homepage
+;;Section2B-Homepage;Section2B;;Section2BSlot-Homepage
+#;;Section2C-Homepage;Section2C;;Section2CSlot-Homepage
+;;Section3-Homepage;Section3;;Section3Slot-Homepage
+#;;Section4-Homepage;Section4;;Section4Slot-Homepage
+#;;Section5-Homepage;Section5;;Section5Slot-Homepage
+
+
+#################    HOME PAGE END       #################
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid, $contentCV)
+;;TopContent-cartPage;Top Slot for Cart Page;true;CartComponent
+
+# Site Logo
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+;;/images/theme/logo-img-responsive.png;logo-img-responsive.png;$siteResource/images/theme/logo-img-responsive.png;image/png;The Reject Shop;
+
+###  Responsive Error page #######
+
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];realfilename;altText;mime[default='image/jpeg'];$contentCV[unique=true];folder(qualifier)[default=images]
+;mobile;Elec_480x170_ErrorPage_480W.jpg;$siteResource/images/banners/site/Elec_480x170_ErrorPage_480W.jpg;Elec_480x170_ErrorPage_480W.jpg;"Page not found";
+;tablet;Elec_770x221_ErrorPage_770W.jpg;$siteResource/images/banners/site/Elec_770x221_ErrorPage_770W.jpg;Elec_770x221_ErrorPage_770W.jpg;"Page not found";
+;desktop;Elec_960x275_ErrorPage_960W.jpg;$siteResource/images/banners/site/Elec_960x275_ErrorPage_960W.jpg;Elec_960x275_ErrorPage_960W.jpg;"Page not found";
+;widescreen;Elec_1400x401_ErrorPage_1400W.jpg;$siteResource/images/banners/site/Elec_1400x401_ErrorPage_1400W.jpg;Elec_1400x401_ErrorPage_1400W.jpg;"Page not found";
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$contentCV[unique=true]
+;rejectshop-errorpage-pagenotfound;Elec_480x170_ErrorPage_480W.jpg,Elec_770x221_ErrorPage_770W.jpg,Elec_960x275_ErrorPage_960W.jpg,Elec_1400x401_ErrorPage_1400W.jpg
+
+INSERT_UPDATE SimpleResponsiveBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$mediaContainer
+;;rejectshopErrorpageBannerComponent;rejectshop Error Page Banner Component;rejectshopErrorpageBannerComponent;rejectshop-errorpage-pagenotfound
+
+# Create ContentSlots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MiddleContent-Errorpage;Middle Content Slot for Error Page;true;rejectshopErrorpageBannerComponent;;;
+
+# Create Content Slots for Page
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='notFound'];contentSlot(uid,$contentCV)[unique=true]
+;;MiddleContent-Errorpage;MiddleContent;;MiddleContent-Errorpage
+
+# Remove view store action from store finder component
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];actions(uid,$contentCV);
+;;StoreFinderComponent;;
+
+
+
+###GiftCards
+# Site Logo
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText
+;;gift-Cards.jpg;gift-Cards.jpg;$siteResource/images/banners/giftcards/gift-Cards.jpg;;Gift Cards
+;;Gift-Voucher.jpg;Gift-Voucher.jpg;$siteResource/images/banners/giftcards/Gift-Voucher.jpg;;Gift Vouchers
+;;online-catalog.png;online-catalog.png;$siteResource/images/banners/giftcards/online-catalog.png;;Online Catalog
+
+# CMS Gift Cards and Vouchers Component
+INSERT_UPDATE GiftCardsCMSComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;GiftCardsCMSComponent;Gift Cards Component;GiftCardsCMSComponent
+
+INSERT_UPDATE GiftVouchersCMSComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;GiftVouchersCMSComponent;Gift Vouchers Component;GiftVouchersCMSComponent
+
+# Component to display the online catalogue module
+INSERT_UPDATE OnlineCatalogueViewComponent;$contentCV[unique=true];uid[unique=true];&componentRef;name;url;$media
+;;OnlineCatalogueViewComponent;OnlineCatalogueViewComponent;Online Catalogue View Component;http://catalogue.rejectshop.com.au/home.html;online-catalog.png
+
+# CMS Title Paragraph  Components
+INSERT_UPDATE CMSTitleParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;termsandconditionsComponent;Terms and conditions;termsandconditionsComponent
+
+# TermsAndConditions CMS Component
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;giftCardsTermsAndConditionsParagraph;Gift Cards Terms And Conditions Paragraph;giftCardsTermsAndConditionsParagraph
+;;giftVouchersTermsAndConditionsParagraph;Gift Vouchers Terms And Conditions Paragraph;giftVouchersTermsAndConditionsParagraph
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;Section1Slot-giftCardsPage;Section1 Slot for giftCardsPage;true;GiftCardsCMSComponent, GiftVouchersCMSComponent
+;;Section3Slot-giftCardsPage;Section3 Slot for giftCardsPage;true;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='giftCardsPage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section1-giftCardsPage;Section1;;Section1Slot-giftCardsPage
+;;Section3-giftCardsPage;Section3;;Section3Slot-giftCardsPage
+
+# Content Slots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+#Slot for terms and condition
+;;Section1Slot-termsAndConditions;Section1 Slot for Terms And Condition page;true;termsandconditionsComponent
+;;MainSectionSlot-GiftCardsTermsAndConditionsPopup;Main Section Slot for Gift Cards Terms And Conditions Page;true;giftCardsTermsAndConditionsParagraph
+;;MainSectionSlot-GiftVouchersTermsAndConditionsPopup;Main Section Slot for Gift Vouchers Terms And Conditions Page;true;giftVouchersTermsAndConditionsParagraph
+
+
+#slot association to termsAndCondition page
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='termsAndConditions'];contentSlot(uid,$contentCV)[unique=true]
+#;;Section1-termsAndConditionPage;Section1;;Section1Slot-termsAndConditions;true
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='giftCardsTermsAndConditionsPopup'];contentSlot(uid,$contentCV)[unique=true]
+;;MainSection-GiftCardsTermsAndConditionsPopup;MainSection;;MainSectionSlot-GiftCardsTermsAndConditionsPopup;true
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='giftVouchersTermsAndConditionsPopup'];contentSlot(uid,$contentCV)[unique=true]
+;;MainSection-GiftVouchersTermsAndConditionsPopup;MainSection;;MainSectionSlot-GiftVouchersTermsAndConditionsPopup;true
+
+
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;content[lang=$lang]
+;;siteMapContent	;siteMapContent	;"
+<div class=""sitemapview"">
+<div class=""col-sm-12"">
+
+<div class=""col-sm-3 garden"">
+<h2 class='parent'>Home & Garden</h2>
+<ul>
+<li><a href='${request.contextpath}/trs/homeandgarden/home deco/c/3100'>Home Deco</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/photography/c/5300'> Photography</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/aroma/c/6300'>Aroma</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/general housecares/c/3300'>General Housecares</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/kitchen/c/3700'>Kitchen</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/home storage/c/4300'>Home Storage</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/manchester/c/7100'>Manchester</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/luggage/c/2700'>Luggage</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/cleaning/c/1100'>Cleaning</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/Electrical Accessories/c/5100'>Eectrical Accessories</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/furniture/c/2100'>Furniture</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/garden/c/2300'>Garden</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/hardware/c/2500'>Hardware</a></li>
+<li><a href='${request.contextpath}/trs/homeandgarden/seasonal softgoods/c/7900'>Seasonal Softgoods</a></li>
+</ul>
+</div>
+
+<div class=""col-sm-3 grocery"">
+<h2 class='parent'>Grocery</h2>
+<ul>
+
+<li><a href='${request.contextpath}/trs/grocery/confectionery/c/1300'>Confectionery</a></li>
+<li><a href='${request.contextpath}/trs/grocery/drinks/c/1500'>Drinks</a></li>
+<li><a href='${request.contextpath}/trs/grocery/grocery/c/1700'>Grocery</a></li>
+<li><a href='${request.contextpath}/trs/grocery/seasonal food/c/1900'> Seasonal Food</a></li>
+</ul>
+</div>
+
+
+
+
+<div class=""col-sm-3 beauty"">
+<h2 class='parent'>Beauty</h2>
+<ul>
+<li><a href='${request.contextpath}/trs/beauty/toiletries/c/6500'>Toiletries</a></li>
+<li><a href='${request.contextpath}/trs/beauty/cosmetics/c/6900'>Cosmetics</a></li>
+</ul>
+</div>
+
+<div class=""col-sm-3 stationary"">
+<h2 class='parent'>Stationery</h2>
+<ul>
+
+<li><a href='${request.contextpath}/trs/stationary/cards & wraps/c/8100'>Cards & Wrap</a></li>
+<li><a href='${request.contextpath}/trs/stationary/wrap/c/8300'>Wrap</a></li>
+<li><a href='${request.contextpath}/trs/stationary/books/c/8900'>Books</a></li>
+<li><a href='${request.contextpath}/trs/stationary/stationery/c/9100'>Stationery</a></li>
+<li><a href='${request.contextpath}/trs/stationary/craft/c/9300'>Craft</a></li>
+<li><a href='${request.contextpath}/trs/stationary/partyware/c/8500'>Partyware</a></li>
+<li><a href='${request.contextpath}/trs/stationary/christmas/c/8700'>Christmas</a></li>
+<li><a href='${request.contextpath}/trs/stationary/seasonal/c/9500'>Seasonal</a></li>
+</ul>
+</div>
+</div>
+<div clasas=""col-sm-12"">
+<div class=""col-sm-3 pets"">
+<h2 class='parent'>Pets</h2>
+<ul>
+<li><a href='${request.contextpath}/trs/pets/petcare/c/3500'>Petcare</a></li>
+</ul>
+</div>
+
+<div class=""col-sm-3 toys"">
+<h2 class='parent'>Toys</h2>
+<ul>
+<li><a href='${request.contextpath}/trs/toys/recreation/c/5500'>Recreation</a></li>
+<li><a href='${request.contextpath}/trs/toys/toys/c/5700'>Toys</a></li>
+</ul>
+</div>
+
+<div class=""col-sm-3 clothing"">
+<h2 class='parent'>Clothing</h2>
+<ul>
+ 
+<li><a href='${request.contextpath}/trs/clothing/fashion accessories/c/6100'> Fashion Accessories</a></li>
+<li><a href='${request.contextpath}/trs/clothing/clothing/c/7300'>Clothing</a></li>
+<li><a href='${request.contextpath}/trs/clothing/sock, underwear & accs/c/7500'>Socks & Underwear</a></li>
+<li><a href='${request.contextpath}/trs/clothing/rainwear/c/7700'>Rainwear</a></li>
+</ul>
+</div>
+
+
+
+<div class=""col-sm-3 about"">
+<h2 class='parent'>About Us</h2>
+<ul>
+ 
+<li><a href='/aboutus/companyinformation'>Company Information</a></li>
+<li><a href='/aboutus/boardofdirectors'> Board Of Directors</a></li>
+<li><a href='/aboutus/managementteam'>Management Team</a></li>
+<li><a href='/aboutus/investorinformation/financialreport'>Investor Information</a></li>
+<li><a href='/aboutus/corporategovernance/policiesandcharters'>Corporate Governance</a></li>
+<li><a href='/aboutus/informationforsuppliers'> Information For Suppliers</a></li>
+<li><a href='/aboutus/property'> Property</a></li>
+</ul>
+</div>
+</div>
+
+<div class=""col-sm-12"">
+<div class=""col-sm-3 carrers"">
+<h2 class='parent'>Careers</h2>
+<ul>
+<li><a href='/careers/introduction'>Introduction</a></li>
+<li><a href='/careers/careerpaths'> Career Paths</a></li>
+<li><a href='/careers/currentvacancies'>Current Vacancies</a></li>
+<li><a href='/careers/learninganddevelopment'>Learning And Developments</a></li>
+</ul>
+</div>
+<div class=""col-sm-3 customer"">
+<h2 class='parent'>Customer Service</h2>
+<ul>
+ 
+<li><a href='/customerservice/qualityguarantee'>Quality Guarantee</a></li>
+<li><a href='/customerservice/productrecalls'> Product Recalls</a></li>
+<li><a href='/customerservice/bulkorders'>Bulk Orders</a></li>
+<li><a href='/giftcards'>Gift Cards</a></li>
+<li><a href='/customerservice/parallelimports'>Parallel Imports</a></li>
+<li><a href='/customerservice/returnspolicy'>Returns Policy</a></li>
+<li><a href='/customerservice/faq'> FAQ</a></li>
+</ul>
+</div>
+<div class=""col-sm-3 contact"">
+<h2 class='parent'>Contact Us</h2>
+<ul>
+ 
+<li><a href='/contactus/contactinformation'>Contact Information</a></li>
+<li><a href='/contactus/customerfeedback'>Customer Feedback</a></li>
+
+</ul>
+</div>
+</div>
+<br><br>
+
+
+"
+
+# Content Slots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+#content slot for privacy page
+;;Section1-siteMap;center Section Slot for privacy Page ;true;siteMapContent
+
+#content slot association to privacy pages
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='siteMap'];contentSlot(uid,$contentCV)[unique=true]
+;;Section1-siteMap		;Section1	;				;Section1-siteMap

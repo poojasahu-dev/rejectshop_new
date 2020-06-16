@@ -1,0 +1,31 @@
+.mini-cart .mini-cart-body .mini-cart-list .mini-cart-item .details{margin-top:0;}
+.thumb{margin-top:25px;}
+main *,main,#_atssh,.skip,.bootstrap-datetimepicker-widget,#cboxTitle,#cboxClose,#cboxMiddleLeft,.legend,#cboxOverlay,#cboxMiddleLeft,#cboxMiddleRight,#cboxWrapper > div:first-child,.print_div,.mini-cart-item > a{display:none !important;}
+a:link:after, a:visited:after{display:none;content:"";}
+#cboxLoadedContent{margin-top:0;}
+#colorbox,#cboxWrapper,#cboxContent,#cboxLoadedContent{position:static !important;width:100% !important;height:auto !important;}
+#cboxContent *{position:static !important;height:auto !important;}
+.printlogo{background:#e2001a;display:block;height:50px;width:100%;float:left;margin:0 auto;text-align:center;}
+.printlogo span{float:right;margin-right:10px}
+footer{display:none;}/* 
+.mini-cart-item{display: table;}
+.mini-cart-item .details,
+.mini-cart-item .thumb{
+	display:inline-block;
+	width: auto !important;
+}
+.mini-cart-item .thumb{
+	margin-right: 10% !important;
+}
+.mini-cart-item .details{
+	position:relative;
+	right: 0 !important;
+}
+.mini-cart-item .details .qty{
+	marign-top: 5px !important;
+}
+ */
+.mini-cart-list .date{
+ 	float: none !important;
+ 	margin-left: 90%;
+}

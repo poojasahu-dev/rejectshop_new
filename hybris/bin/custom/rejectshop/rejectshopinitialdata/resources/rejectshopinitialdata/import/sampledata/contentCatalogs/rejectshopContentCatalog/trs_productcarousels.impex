@@ -1,0 +1,27 @@
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$productCV=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+INSERT_UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);categories(code,$productCV);scroll(code);popup;&componentRef
+;;trsHomepageProductCarouselComponent;TRS Homepage Product Carousel;;S-STATIONERY;allVisible;false;trsHomepageProductCarouselComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;Section5Slot-Homepage;Section5 Slot for Homepage;true;trsHomepageProductCarouselComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='homepage'];contentSlot(uid,$contentCV)[unique=true]
+;;Section5-Homepage;Section5;;Section5Slot-Homepage
+
+
+INSERT_UPDATE TRSDynamicCategoryCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);categories(code,$productCV);includeCategories;scroll(code);popup;visible;&componentRef
+;;trsDynamicCatProdCarouselComponent;TRS Dynamic Category Product Carousel;;;S-GROCERY,S-STATIONERY,S-TOYS;allVisible;false;true;trsDynamicCatProdCarouselComponent
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='CategoryListPageTemplate'];validComponentTypes(code);compTypeGroup(code)
+;SectionCarousel;;;wide
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;SectionCarouselSlot;Carousel on Category Page Slot;true;trsDynamicCatProdCarouselComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='CategoryListPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;SectionCarouselSlot-CategoryListPageTemplate;SectionCarousel;;SectionCarouselSlot;true

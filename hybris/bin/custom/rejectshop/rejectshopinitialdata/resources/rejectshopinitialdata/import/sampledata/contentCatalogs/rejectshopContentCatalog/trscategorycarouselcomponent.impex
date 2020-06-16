@@ -1,0 +1,30 @@
+$contentCatalog=rejectshopContentCatalog
+$contentCatalogName=rejectshop Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/cockpits/cmscockpit
+$medias=medias(code, $contentCV);
+$lang=en
+$mediaContainer=media(qualifier, $contentCV)[lang=$lang];
+
+
+#Category products Carousel Component
+INSERT_UPDATE TRSCategoryCarouselComponent ; $contentCV[unique=true] ; uid[unique=true]             ; name              ; title    [lang=$lang]              ; products(code,$productCV) ; scroll(code) ; &componentRef               
+                                           ;                         ; TRSCategoryCarouselComponent ; Category Carousel ; Navigate To Your Favorite Category ;                           ; allVisible   ; TRSCategoryCarouselComponent
+
+
+INSERT_UPDATE ComponentTypeGroups2ComponentType ; source(code)[unique=true] ; target(code)[unique=true]   
+                                                ; wide                      ; TRSCategoryCarouselComponent
+                                                ; narrow                    ; TRSCategoryCarouselComponent
+

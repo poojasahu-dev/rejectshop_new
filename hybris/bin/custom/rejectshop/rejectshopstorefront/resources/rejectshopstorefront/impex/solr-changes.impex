@@ -1,0 +1,20 @@
+#
+# Import the Solr configuration for the rejectshop store
+#
+$productCatalog=rejectshopProductCatalog
+$catalogVersions=catalogVersions(catalog(id),version);
+$serverConfigName=rejectshopSolrServerConfig
+$indexConfigName=rejectshopSolrIndexConfig
+$searchConfigName=rejectshopPageSize
+$facetSearchConfigName=rejectshopIndex
+$facetSearchConfigDescription=rejectshop Solr Index
+$searchIndexNamePrefix=rejectshop
+$solrIndexedType=rejectshopProductType
+$indexBaseSite=rejectshop
+$indexLanguages=en
+$indexCurrencies=AUD
+
+
+# Non-facet properties
+INSERT_UPDATE SolrIndexedProperty;solrIndexedType(identifier)[unique=true];name[unique=true];type(code);sortableType(code);currency[default=false];localized[default=false];multiValue[default=false];useForSpellchecking[default=false];useForAutocomplete[default=false];fieldValueProvider;ftsPhraseQuery[default=false];ftsPhraseQueryBoost;ftsQuery[default=false];ftsQueryBoost;ftsFuzzyQuery[default=false];ftsFuzzyQueryBoost;ftsWildcardQuery[default=false];ftsWildcardQueryType(code)[default=POSTFIX];ftsWildcardQueryBoost;ftsWildcardQueryMinTermLength
+;$solrIndexedType; categoryFilter         ;text   ;            ;    ;    ;true;    ;    ;                                       ;    ;   ;    ;   ;    ;  ;    ;   ;  ;

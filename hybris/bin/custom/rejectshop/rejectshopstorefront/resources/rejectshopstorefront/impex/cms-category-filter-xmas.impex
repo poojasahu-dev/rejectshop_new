@@ -1,0 +1,47 @@
+#
+# Import the CMS content for the rejectshop site
+#
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true]
+;;ContentPageModel__function_preview;text/gif;ContentPageModel__function_preview.gif;$jarResourceCms/preview-images/ContentPageModel__function_preview.gif
+
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+;;CategoryFilterPageTemplate;Category Filter Page Template;category/categoryFilterPage;ContentPage
+
+# Functional Content Pages
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];previewImage(code, $contentCV)[default='ContentPageModel__function_preview']
+;;categoryFilterPage;Category Filter Page;CategoryFilterPageTemplate;categoryFilterPage
+
+# Category Filter Page Template
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='CategoryFilterPageTemplate'];validComponentTypes(code);compTypeGroup(code)
+;SiteLogo;;;logo
+;HeaderLinks;;;headerlinks
+;SearchBox;;;searchbox
+;MiniCart;;;minicart
+;NavigationBar;;;navigation
+;LeftSection;;;wide
+;RightSection;;;narrow
+;BannerSection;;;wide
+;Footer;;;footer
+
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active
+;;BannerSectionSlot-categoryFilterPage;Banner Section Slot for Category Filter Page;true
+
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='CategoryFilterPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;SiteLogo-categoryFilterPage;SiteLogo;;SiteLogoSlot;true
+;;HomepageLink-categoryFilterPage;HomepageNavLink;;HomepageNavLinkSlot;true
+;;NavigationBar-categoryFilterPage;NavigationBar;;NavigationBarSlot;true
+;;MiniCart-categoryFilterPage;MiniCart;;MiniCartSlot;true
+;;Footer-categoryFilterPage;Footer;;FooterSlot;true
+;;HeaderLinks-categoryFilterPage;HeaderLinks;;HeaderLinksSlot;true
+;;SearchBox-categoryFilterPage;SearchBox;;SearchBoxSlot;true
+;;BannerSection-categoryFilterPage;BannerSection;;BannerSectionSlot-categoryFilterPage;true

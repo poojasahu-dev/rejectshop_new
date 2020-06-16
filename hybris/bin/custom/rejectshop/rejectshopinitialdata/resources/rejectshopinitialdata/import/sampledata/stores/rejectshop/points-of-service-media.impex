@@ -1,0 +1,14 @@
+# ImpEx for Importing Media into rejectshop Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$media=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
+$siteResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/stores/rejectshop
+$medias=medias(code, $catalogVersion)
+
+# Create medias
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];$media;mime[default='image/jpeg'];$catalogVersion;folder(qualifier)
+
+INSERT_UPDATE MediaContainer;qualifier[unique=true];$medias;$catalogVersion

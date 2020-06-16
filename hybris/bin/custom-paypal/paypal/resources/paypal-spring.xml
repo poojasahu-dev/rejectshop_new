@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2013 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/util
+           http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Commands converters -->
+    <alias name="defaultCaptureRequestConverter" alias="captureRequestToDoCaptureReqConverter"/>
+    <bean id="defaultCaptureRequestConverter" class="com.paypal.hybris.commands.converters.impl.CaptureRequestConverter">
+    </bean>
+
+    <alias name="defaultDoCaptureResponseConverter" alias="doCaptureResponseConverter"/>
+    <bean id="defaultDoCaptureResponseConverter" class="com.paypal.hybris.commands.converters.impl.DoCaptureResponseConverter">
+        <property name="targetClass" value="de.hybris.platform.payment.commands.result.CaptureResult"/>
+    </bean>
+    
+    <alias name="defaultReplenishmentResponseCaptureConverter" alias="replenishmentResponseCaptureConverter"/>
+    <bean id="defaultReplenishmentResponseCaptureConverter" class="com.paypal.hybris.commands.converters.impl.ReplenishmentResponseCaptureConverter">
+        <property name="targetClass" value="de.hybris.platform.payment.commands.result.CaptureResult"/>
+    </bean>
+
+    <alias name="defaultVoidRequestConverter" alias="voidRequestConverter"/>
+	<bean id="defaultVoidRequestConverter" class="com.paypal.hybris.commands.converters.impl.VoidRequestConverter">
+	</bean>
+	
+	<alias name="defaultDoVoidResponseConverter" alias="doVoidResponseConverter"/>
+	<bean id="defaultDoVoidResponseConverter" class="com.paypal.hybris.commands.converters.impl.DoVoidResponseConverter">
+		<property name="targetClass" value="de.hybris.platform.payment.commands.result.VoidResult"/>
+	</bean>
+	
+	<!-- PayPal payment commands -->
+	<bean name="paypalCommandFactory" class="de.hybris.platform.payment.commands.factory.impl.DefaultCommandFactoryImpl">
+		<property name="paymentProvider" value="PayPal"/>
+		<property name="commands">
+           <map>
+               <entry>
+                   <key>
+                       <value type="java.lang.Class">de.hybris.platform.payment.commands.IsApplicableCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.IsApplicableCommandImpl" />
+               </entry>
+               <entry>
+                   <key>
+                       <value type="java.lang.Class">de.hybris.platform.payment.commands.AuthorizationCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.AuthorizationCommandImpl"/>
+               </entry>
+               <entry>
+                   <key>
+                       <value type="java.lang.Class">de.hybris.platform.payment.commands.CaptureCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.CaptureCommandImpl">
+                       <property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+                       <property name="captureRequestConverter" ref="captureRequestToDoCaptureReqConverter"/>
+                       <property name="doCaptureResponseConverter" ref="doCaptureResponseConverter"/>
+                       <property name="captureStrategy" ref="captureStrategy"/>
+                       <property name="configurationService" ref="configurationService"/>
+                       <property name="payPalReplenishmentService" ref="payPalReplenishmentService"/>
+                   </bean>
+               </entry>
+               <entry>
+                   <key>
+                       <value type="java.lang.Class">de.hybris.platform.payment.commands.PartialCaptureCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.PartialCaptureCommandImpl"/>
+               </entry>
+               <entry>
+                   <key>
+                       <value type="java.lang.Class">de.hybris.platform.payment.commands.VoidCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.VoidCommandImpl">
+                       <property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+                       <property name="voidRequestConverter" ref="voidRequestConverter"/>
+                       <property name="doVoidResponseConverter" ref="doVoidResponseConverter"/>
+                   </bean>
+               </entry>
+               <entry>
+                   <key>
+                       <value type="java.lang.Class">de.hybris.platform.payment.commands.FollowOnRefundCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.FollowOnRefundCommandImpl"/>
+               </entry>
+                               <entry>
+                   <key>
+               <value type="java.lang.Class">de.hybris.platform.payment.commands.StandaloneRefundCommand</value>
+                   </key>
+                   <bean class="com.paypal.hybris.commands.impl.StandaloneRefundCommandImpl"/>
+               </entry>
+           </map>
+       </property>
+	</bean>
+
+    <alias name="defaultPaypalPaymentIntegrationService" alias="paypalPaymentIntegrationService"/>
+    <bean id="defaultPaypalPaymentIntegrationService" class="com.paypal.hybris.integration.service.impl.DefaultPaypalPaymentIntegrationService">
+    	<property name="configurationService" ref="configurationService"/>
+    	<property name="setExprCheckoutReqDataConverter" ref="setExprCheckReqDataConverter" />
+		<property name="setExprCheckoutResConverter" ref="setExprCheckResConverter" />
+		<property name="getExprCheckoutDetReqDataConverter" ref="getExprCheckDetReqDataConverter" />
+		<property name="getExprCheckoutDetResConverter" ref="getExprCheckDetResConverter" />
+		<property name="doExprCheckoutPaymentReqDataConverter" ref="doExprCheckPaymentReqDataConverter" />
+		<property name="doExprCheckoutPaymentResConverter" ref="doExprCheckPaymentResConverter" />
+		<property name="doAuthorizationReqDataConverter" ref="doAuthReqDataConverter" />
+		<property name="doAuthorizationResConverter" ref="doAuthResConverter" />
+		<property name="doCaptureReqDataConverter" ref="doCaptReqDataConverter" />
+		<property name="doCaptureResConverter" ref="doCaptResConverter" />
+		<property name="doRefTransactionReqDataConverter" ref="doRefTransactionReqDataConverter" />
+		<property name="doRefTransactionResConverter" ref="doRefTransactionResConverter" />
+		<property name="getTransactionDetailsReqDataConverter" ref="getTransDetailsReqDataConverter"/>
+        <property name="getTransactionDetailsResConverter" ref="getTransDetailsResConverter"/>
+        <property name="refundTransReqDataConverter" ref="refundTransReqDataConverter"/>
+        <property name="refundTransResConverter" ref="refundTransResConverter"/>
+    </bean>
+    
+    <alias name="defaultPayPalPaymentService" alias="payPalPaymentService"/>
+    <bean id="defaultPayPalPaymentService" class="com.paypal.hybris.payment.service.impl.PayPalPaymentServiceImpl" parent="defaultPaymentService" >
+  	    <property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+    	<property name="configurationService" ref="configurationService"/>
+        <property name="flexibleSearchService" ref="flexibleSearchService"/>
+    	<property name="cartService" ref="cartService"/>
+    	<property name="modelService" ref="modelService"/>
+    	<property name="paymentModeService" ref="paymentModeService"/>
+    	<property name="calculationService" ref="calculationService"/>
+    	<property name="userService" ref="userService"/>
+    	<property name="sessionService" ref="sessionService"/>
+    	<property name="addressReverseConverter" ref="addressReverseConverter" />
+    	<property name="transactionStrategyMap">
+		<map>
+			<entry key-ref="ORDER" value-ref="payPalCreateOrderTransactionStrategy" />
+			<entry key-ref="AUTHORIZATION" value-ref="payPalCreateAuthorizationTransactionStrategy" />
+			<entry key-ref="SALE" value-ref="payPalCreateSaleTransactionStrategy"/>
+		</map>
+	</property>
+    </bean>
+
+	<util:constant id="ORDER"
+		static-field="com.paypal.hybris.constants.PaypalConstants.ORDER_PAYMENT_ACTION_NAME" />
+	<util:constant id="SALE"
+		static-field="com.paypal.hybris.constants.PaypalConstants.SALE_PAYMENT_ACTION_NAME" />
+	<util:constant id="AUTHORIZATION"
+		static-field="com.paypal.hybris.constants.PaypalConstants.AUTHORIZATION_PAYMENT_ACTION_NAME" />
+        
+    
+    <alias name="defaultPayPalCaptureStrategy" alias="captureStrategy"/>
+    <bean id="defaultPayPalCaptureStrategy" class="com.paypal.hybris.commands.strategy.impl.DefaultCaptureStrategy">
+    	<property name="configurationService" ref="configurationService"/>
+    </bean>   
+    
+    <!-- Jobs -->
+    <bean id="paypalCapturingJob" class="com.paypal.hybris.jobs.PayPalCapturingJob" autowire="byName">
+    	<property name="configurationService" ref="configurationService"/>
+        <property name="orderCompleteProcessService" ref="orderCompleteProcessService"/>
+    </bean> 
+
+    <bean id="paypalPendingPaymentJob" class="com.paypal.hybris.jobs.PayPalPendingPaymentJob" parent="abstractJobPerformable">
+    	<property name="transactionDetailsService" ref="payPalTransactionDetailsService"/>
+    </bean>
+    
+    <bean id="paypalBillingAgreementJob" class="com.paypal.hybris.jobs.BillingAgreementJob"
+		autowire="byName">
+		<property name="configurationService" ref="configurationService" />
+		<property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService" />
+		<property name="modelService" ref="modelService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="orderConverter" ref="orderConverter" />
+		<property name="orderCompleteProcessService" ref="orderCompleteProcessService" />
+		<property name="baseSiteService" ref="baseSiteService" />
+	</bean>
+                                  
+	<bean id="abstractRequestPaymentDetailsPopulator" class="com.paypal.hybris.converters.populators.AbstractRequestPaymentDetailsPopulator" abstract="true">
+		<property name="configurationService" ref="configurationService"/>
+        <property name="priceDataFactory" ref="priceDataFactory"/>
+		<property name="sessionService" ref="sessionService"/>
+	</bean>
+
+    <!-- Convectors and populators -->
+    <bean id="setExprCheckReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.SetExpressCheckoutRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.SetExprCheckoutReqMainPopulator">
+                	<property name="configurationService" ref="configurationService"/>
+                </bean>
+                <bean class="com.paypal.hybris.converters.populators.impl.SetExprCheckoutReqPaymentDetailsPopulator" parent="abstractRequestPaymentDetailsPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="setExprCheckResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.SetExpressCheckoutResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.SetExprCheckoutResultDataPopulator">
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="getExprCheckDetReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.GetExpressCheckoutDetailsRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.GetExprCheckoutDetailsReqPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="getExprCheckDetResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.GetExpressCheckoutDetailsResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.GetExprCheckoutDetailsResultDataPopulator">
+                	<property name="commonI18NService" ref="commonI18NService"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doExprCheckPaymentReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.DoExpressCheckoutPaymentRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoExprCheckoutPaymentReqMainPopulator">
+                    <property name="sessionService" ref="sessionService"/>
+                    <property name="configurationService" ref="configurationService"/>
+                </bean>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoExprCheckoutPaymentReqPaymentDetailsPopulator" parent="abstractRequestPaymentDetailsPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doExprCheckPaymentResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.DoExpressCheckoutPaymentResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoExprCheckoutPaymentResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doAuthReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.DoAuthorizationRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoAuthorizationReqPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doAuthResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.DoAuthorizationResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoAuthorizationResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doCaptReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.DoCaptureRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoCaptureReqPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doCaptResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.DoCaptureResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoCaptureResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="transSearchReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.TransactionSearchRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.TransactionSearchReqPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="transSearchResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.TransactionSearchResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.TransactionSearchResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="getTransDetailsReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.GetTransactionDetailsRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.GetTransactionDetailsReqPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="getTransDetailsResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.GetTransactionDetailsResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.GetTransactionDetailsResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="refundTransReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.RefundTransactionRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.RefundTransactionReqPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="refundTransResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.RefundTransactionResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.RefundTransactionResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doRefTransactionReqDataConverter" class="com.paypal.hybris.converters.impl.PayPalRequestDataConverter">
+        <property name="targetClass" value="urn.ebay.api.PayPalAPI.DoReferenceTransactionRequestType"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoRefTransactionReqPopulator" parent="abstractRequestPaymentDetailsPopulator"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="doRefTransactionResConverter" class="com.paypal.hybris.converters.impl.PayPalResponseConverter">
+        <property name="targetClass" value="com.paypal.hybris.data.DoReferenceTransactionResultData"/>
+        <property name="populators">
+            <list>
+                <bean class="com.paypal.hybris.converters.populators.impl.DoRefTransactionResultDataPopulator"/>
+            </list>
+        </property>
+    </bean>
+    
+    <alias name="paypalCancelRequestExecutor" alias="immediateCancelRequestExecutor"/>
+    <bean id="paypalCancelRequestExecutor" class="com.paypal.hybris.ordercancel.PayPalCancelRequestExecutor">
+        <property name="modelService" ref="modelService"/>
+        <property name="orderCancelRecordsHandler" ref="orderCancelRecordsHandler"/>
+        <property name="completeCancelStatusChangeStrategy" ref="setCancellledStrategy"/>
+    </bean>
+    
+    <alias alias="refundService" name="paypalRefundService"/>
+	<bean id="paypalRefundService" class="com.paypal.hybris.refund.PayPalRefundService" parent="defaultRefundService">
+        <property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+	</bean>
+
+    <alias alias="returnService" name="payPalReturnService"/>
+    <bean id="payPalReturnService" parent="defaultReturnService">
+        <!--
+        <property name="returnsEntryProcessor" ref="payPalReturnEntryProcessor"/>
+        <property name="replacementOrderProcessor" ref="payPalReplacementOrderProcessor" />
+        <property name="refundOrderProcessor" ref="payPalRefundOrderProcessor" />
+        -->
+    </bean>
+
+    <!--
+    <bean id="payPalReturnEntryProcessor" class="com.paypal.hybris.refund.processors.impl.PayPalReturnEntryProcessor">
+    </bean>
+
+    <bean id="payPalReplacementOrderProcessor" class="com.paypal.hybris.refund.processors.impl.PayPalReplacementOrderProcessor">
+    </bean>
+
+    <bean id="payPalRefundOrderProcessor" class="com.paypal.hybris.refund.processors.impl.PayPalRefundOrderProcessor">
+    </bean>
+    -->
+
+	<bean id="payPalOrderReauthorizationService" class="com.paypal.hybris.reauthorization.impl.PayPalOrderReauthorizationServiceImpl">
+		<property name="modelService" ref="modelService"/>
+		<property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+		<property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+
+	<bean id="payPalOrderAuthorizationService" class="com.paypal.hybris.reauthorization.impl.PayPalOrderAuthorizationServiceImpl">
+		<property name="modelService" ref="modelService"/>
+		<property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+	</bean>
+
+    <bean id="payPalTransactionDetailsService" class="com.paypal.hybris.transaction.impl.DefaultTransactionDetailsService">
+        <property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService"/>
+    </bean>
+
+	<!-- Custom Order Cancel Denial Strategy for PayPal  -->
+    <bean id="payPalOrderCancelCaptureDenialStrategy" class="com.paypal.hybris.ordercancel.PayPalOrderCancelCaptureDenialStrategy">
+        <property name="reason">
+            <bean class="de.hybris.platform.ordercancel.DefaultOrderCancelDenialReason">
+                <property name="code" value="4"/>
+                <property name="description" value="Order cannot be cancelled because capture has happened"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="registerPayPalOrderCancelCaptureDenialStrategy" depends-on="orderCancelService" parent="listMergeDirective">
+        <property name="add" ref="payPalOrderCancelCaptureDenialStrategy" />
+        <property name="listPropertyDescriptor" value="cancelDenialStrategies" />
+    </bean>
+
+    <!--Delayed Capture Order Fulfilment Process Definition-->
+    <bean id="orderCompletionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+   		<property name="resource" value="classpath:/fulfilmentprocess/order-completion.xml"/>
+   	</bean>
+
+    <alias name="payPalorderProcessDefinitionResource" alias="orderProcessDefinitionResource" />
+    <bean id="payPalorderProcessDefinitionResource" class="de.hybris.platform.processengine.definition.ProcessDefinitionResource" >
+        <property name="resource" value="classpath:/fulfilmentprocess/order-process.xml"/>
+    </bean>
+
+    <bean id="orderCompleteProcessService" class="com.paypal.hybris.order.process.impl.OrderCompleteProcessServiceImpl" >
+        <property name="businessProcessService" ref="businessProcessService"/>
+        <property name="modelService" ref="modelService"/>
+        <property name="configurationService" ref="configurationService"/>
+    </bean>
+    
+    <bean id="payPalAbstractCreateTransactionStrategy" class="com.paypal.hybris.transaction.strategy.impl.PayPalAbstractCreateTransactionStrategy" abstract="true">
+	    <property name="modelService" ref="modelService"/>
+	    <property name="commonI18NService" ref="commonI18NService"/>
+	    <property name="cartService" ref="cartService" />
+    </bean>
+
+	<bean id="payPalCreateOrderTransactionStrategy"
+		class="com.paypal.hybris.transaction.strategy.impl.PayPalCreateOrderTransactionStrategy" parent="payPalAbstractCreateTransactionStrategy">
+		<property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="uiExperienceService" ref="uiExperienceService" />
+		<property name="configurationService" ref="configurationService" />
+	</bean>
+	
+	<bean id="payPalCreateAuthorizationTransactionStrategy" class="com.paypal.hybris.transaction.strategy.impl.PayPalCreateAuthorizationTransactionStrategy" parent="payPalAbstractCreateTransactionStrategy"/>
+	<bean id="payPalCreateSaleTransactionStrategy" class="com.paypal.hybris.transaction.strategy.impl.PayPalCreateSaleTransactionStrategy" parent="payPalAbstractCreateTransactionStrategy"/>
+	
+	<alias name="defaultPayPalReplenishmentServiceImpl" alias="payPalReplenishmentService" />
+	<bean id="defaultPayPalReplenishmentServiceImpl" class="com.paypal.hybris.replenishment.service.impl.PayPalReplenishmentServiceImpl">
+		<property name="paypalPaymentIntegrationService" ref="paypalPaymentIntegrationService" />
+		<property name="modelService" ref="modelService" />
+		<property name="cartConverter" ref="cartConverter" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="configurationService" ref="configurationService"/>
+		<property name="replenishmentResponseCaptureConverter" ref="replenishmentResponseCaptureConverter"/>
+	</bean>
+	
+	<alias name="defaultPayPalPartialRefundService" alias="payPalPartialRefundService" />
+	<bean id="defaultPayPalPartialRefundService" class="com.paypal.hybris.refund.impl.PayPalPartialRefundServiceImpl">
+		<property name="payPalPaymentService" ref="payPalPaymentService" />
+		<property name="orderService" ref="orderService"/>
+		<property name="modelService" ref="modelService"/>
+	</bean>
+
+	<alias name="defaultPayPalMultiCaptureService" alias="payPalMultiCaptureService" />
+	<bean id="defaultPayPalMultiCaptureService" class="com.paypal.multicapture.service.impl.PayPalMultiCaptureServiceImpl">
+		<property name="modelService" ref="modelService" />
+		<property name="payPalPaymentService" ref="payPalPaymentService" />
+		<property name="configurationService" ref="configurationService" />
+		<property name="orderCompleteProcessService" ref="orderCompleteProcessService" />
+		<property name="commonI18NService" ref="commonI18NService"/>
+		<property name="captureStrategy" ref="captureStrategy"/>
+		<property name="businessProcessService" ref="businessProcessService"/>
+	</bean>
+
+	<alias alias="takePaymentAction" name="payPalTakePaymentAction" />
+	<bean id="payPalTakePaymentAction"	class="com.paypal.hybris.order.actions.PayPalTakePaymentAction"	parent="abstractAction">
+		<property name="paymentService" ref="paymentService" />
+	</bean>
+
+    <alias alias="checkAuthorizeOrderPaymentAction" name="payPalCheckAuthorizeOrderPaymentAction" />
+    <bean id="payPalCheckAuthorizeOrderPaymentAction" class="com.paypal.hybris.order.actions.PayPalCheckAuthorizeOrderPaymentAction" parent="abstractAction"/>
+
+    <bean id="paypalCancelOrderAction" class="com.paypal.hybris.order.actions.PayPalCancelOrderAction" parent="abstractAction">
+    </bean>
+
+</beans>

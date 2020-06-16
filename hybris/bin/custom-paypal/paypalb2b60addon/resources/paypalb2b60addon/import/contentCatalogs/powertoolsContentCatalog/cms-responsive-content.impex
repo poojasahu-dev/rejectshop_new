@@ -1,0 +1,46 @@
+$contentCatalog=powertoolsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$jarResourceCms=jar:com.paypal.hybris.addon.constants.Paypalb2b60addonConstants&/paypalb2b60addon/import/cockpit/cmscockpit
+$siteResource=jar:com.paypal.hybris.addon.constants.Paypalb2b60addonConstants&/paypalb2b60addon/import/contentCatalogs/$contentCatalog
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+;;/images/mark/pp-acceptance-medium.png;pp-acceptance-medium.png;$siteResource/images/mark/pp-acceptance-medium.png;image/png;PayPal Mark
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;actions(uid,$contentCV);&componentRef
+;;AccountOrderDetailsShippingComponent;Account Order Details Shipping Info Component;/WEB-INF/views/addons/paypalb2b60addon/responsive/pages/account/accountOrderDetailShippingInfo.jsp;;AccountOrderDetailsShippingComponent
+;;OrderConfirmationShippingComponent;Order Confirmation Shipping Info Component;/WEB-INF/views/addons/paypalb2b60addon/responsive/pages/account/accountOrderDetailShippingInfo.jsp;;OrderConfirmationShippingComponent
+
+#PayPalCreditFinancingBanner
+INSERT_UPDATE PayPalCreditFinancingBanner;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;PayPalCreditFinancingBanner;PayPal Credit Financing Banner;PayPalCreditFinancingBanner
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;TopContent-cartPage;Top Slot for Cart Page;true;NextDayDeliveryBanner120,PayPalCreditFinancingBanner,CartComponent
+
+INSERT_UPDATE PayPalECButtonComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;color(code);shape(code);size(code);label(code);locale;tagline(code);buttonDiv;layout(code);fundingAllowed(code);
+;;PayPalECButtonComponent;PayPal EC Button Component;PayPalECButtonComponent;gold;pill;large;checkout;en_US;false;paypal-cart-button-container;horizontal;credit;
+;;PayPalECMiniButtonComponent;PayPal EC Mini Button Component;PayPalECMiniButtonComponent;gold;pill;responsive;checkout;en_US;false;paypal-mini-cart-button-container;vertical;
+
+INSERT_UPDATE PayPalECComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef;payPalECButtonComponent(&componentRef);
+;;PayPalECComponent;PayPal Checkout Display Component;/WEB-INF/views/addons/paypalb2b60addon/responsive/pages/cart/checkoutDisplay.jsp;PayPalECComponent;PayPalECButtonComponent;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(uid,$contentCV)
+;;BottomContentSlot-cartPage;Bottom Content Slot for Cart Page;true;PayPalECComponent, CartSuggestions
+
+INSERT_UPDATE PayPalECMiniCartComponent;$contentCV[unique=true];uid[unique=true];name;title[lang=en];&componentRef;totalDisplay(code);shownProductCount;lightboxBannerComponent(uid,$contentCV);payPalECButtonComponent(uid,$contentCV);
+;;PayPalECMiniCartComponent;PayPal Mini Cart;"YOUR SHOPPING CART";PayPalMiniCart;SUBTOTAL;3;LightboxHomeDeliveryBannerComponent;PayPalECMiniButtonComponent;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;MiniCartSlot;AdvanceSearchLink, PayPalECMiniCartComponent
+
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;target(code)[default='newWindow'];external;linkName
+;;WhatIsPayPalLink;What Is PayPal Link;https://www.paypal.com/cgi-bin/webscr?cmd=xpt/Marketing/popup/OLCWhatIsPayPal-outside;WhatIsPayPalLink;;true;What is PayPal?
+
+INSERT_UPDATE PayPalECMarkComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;media(code,$contentCV);link(&linkRef);color(code);shape(code);size(code);label(code);locale;
+;;PayPalECMarkComponent;PayPal Express Checkout Mark;PayPalECMarkComponent;/images/mark/pp-acceptance-medium.png;WhatIsPayPalLink;gold;rect;large;checkout;en_US;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;PayPalSectionSlot;PayPalECMarkComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true];contentSlot(uid,$contentCV)[unique=true]
+;;PayPalECMarkComponent-multiStepCheckoutSummaryPage;PayPalSectionSlot;multiStepCheckoutSummaryPage;PayPalSectionSlot

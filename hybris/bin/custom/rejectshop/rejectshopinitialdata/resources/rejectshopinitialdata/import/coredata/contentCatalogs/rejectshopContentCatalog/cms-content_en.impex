@@ -1,0 +1,71 @@
+#
+# Import CMS content for the rejectshop site
+#
+
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=en
+
+# Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+ ;;account;"My Account"
+ ;;add-edit-address;"Add/Edit Address"
+ ;;address-book;"Address Book"
+ ;;cartPage;"Your Shopping Cart"
+ ;;checkout-login;"Proceed to Checkout"
+  ;;homepage;"Homepage"
+ ;;login;"Login"
+ ;;multiStepCheckoutSummaryPage;"Checkout"
+ ;;notFound;"Not Found"
+ ;;order;"Order Details"
+ ;;orderConfirmationPage;"Order Confirmation"
+ ;;orders;"Order History"
+ ;;payment-details;"Payment Details"
+ ;;profile;"Profile"
+ ;;searchEmpty;"No Results"
+ ;;storefinderPage;"StoreFinder"
+ ;;update-email;"Update Email"
+ ;;update-profile;"Update Profile"
+ ;;updatePassword;"Update Forgotten Password"
+ ;;giftCardsPage;"Gift Cards"
+ ;;giftCardsTermsAndConditionsPopup;"Gift Cards Terms and Conditions"
+ ;;giftVouchersTermsAndConditionsPopup;"Gift Vouchers Terms and Conditions"
+ #about us pages 
+;;aboutUs-CompanyInformationPage;"Company Information"
+;;aboutUs-BoardofDirectorsPage;"Board of Directors"
+;;aboutUs-ManagementTeamPage;"Management Team"
+;;aboutUs-InvestorInformationPage;"Investor Information"
+;;aboutUs-CorporateGovernancePage;"Corporate Governance"
+;;aboutUs-InformationforSuppliersPage;"Information for Suppliers"
+;;aboutUs-PropertyPage;"Property"
+;;aboutUs-FinancialReportPage;"Financial Report"
+;;aboutUs-PressReleasePage;"Press Release"
+;;aboutUs-PresentationPage;"Presentation"
+;;aboutUs-OtherAnnouncementsPage;"Other Announcements"
+;;aboutUs-ShareRegistryPage;"ShareRegistry"
+;;aboutUs-PoliciesNChartersPage;"PoliciesAndCharters"
+#career pages
+;;careers-IntroductionPage;"Introduction"
+;;careers-CurrentVacanciesPage;"Current Vacancies"
+;;careers-LearningNDevelopmentPage;"Learning and Developments"
+;;careers-InductionPage;"Induction"
+;;careers-CareerPathsPage;"Career Paths"
+
+# customer service pages
+;;customerService-QualityGuaranteePage;"Quality Guarantee"
+;;customerService-ReturnsPolicyPage;"Returns Policy"
+;;customerService-FAQsPage;"FAQs"
+;;customerService-ProductrecallsPage;"Product Recalls"
+;;customerService-BulkordersPage;"Bulk Orders"
+;;customerService-ParallelimportsPage;"Parallel Imports"
+
+
+;;privacypolicy;"Privacy Policy"
+;;termsandconditions;"Terms and Conditions "
+
+#Contact Us pages
+;;contactUs-ContactInformationPage;"Contact Information"
+;;contactUs-CustomerFeedbackPage;"Customer Feedback"
+;;contactUs-CustomerFeedbackThankyouPage;"Thank you"

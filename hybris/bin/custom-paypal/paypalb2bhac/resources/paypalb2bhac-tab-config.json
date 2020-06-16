@@ -1,0 +1,13 @@
+[
+  {
+    "basePath": "/paypalb2bhac",
+    "mainTabLabel": "PayPal B2B Settings",
+    "subTabs": [
+      {
+        "path": "/button/config/",
+        "label": "Smart Button Configuration",
+        "skipPrefix": false
+      }
+    ]
+  }
+]

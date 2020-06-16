@@ -1,0 +1,41 @@
+#Mon, 20 Feb 2017 16:30:28 +0200
+# -----------------------------------------------------------------------
+# [y] hybris Platform 
+# 
+# Copyright (c) 2000-2016 hybris AG
+# All rights reserved.
+#  
+# This software is the confidential and proprietary information of hybris 
+# ("Confidential Information"). You shall not disclose such Confidential
+# Information and shall use it only in accordance with the terms of the
+# license agreement you entered into with hybris.
+#
+#  
+# -----------------------------------------------------------------------
+
+# you can put key/value pairs here.
+# Use Config.getParameter(..) to retrieve the values during runtime.
+
+paypal60addon.key=value
+
+# Specifies the location of the spring context file added automatically to the global platform application context.
+paypal60addon.application-context=paypal60addon-spring.xml
+
+
+storefront.supportedUiExperienceLevels.electronics=DESKTOP
+storefront.supportedUiExperienceLevels.apparel-uk=DESKTOP
+storefront.supportedUiExperienceLevels.apparel-de=DESKTOP
+storefront.supportedUiExperienceLevels.powertools=DESKTOP
+
+
+paypal60addon.javascript.paths.desktop=/desktop/common/js/paypal60addon.js
+paypal60addon.javascript.paths.responsive=/responsive/common/js/paypal60addon.js
+paypal60addon.css.paths.desktop=/desktop/common/css/paypal60addon.css
+paypal60addon.css.paths.responsive=/responsive/common/css/paypal60addon.css
+
+yacceleratorstorefront.additionalWebSpringConfigs.paypal60addon=classpath:/paypal60addon/web/spring/paypal60addon-web-spring.xml
+
+yacceleratorstorefront.wro4jconfigscan.paypal60addon=true
+
+# Button source, default values
+paypal.button.source=XNWmXapgVtqD2AVS2EC3fXzNe0v9k2zkJLmIisiGoLw=

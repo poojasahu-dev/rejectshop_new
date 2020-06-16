@@ -1,0 +1,1114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2015 hybris AG All rights reserved. 
+	This software is the confidential and proprietary information of hybris ("Confidential 
+	Information"). You shall not disclose such Confidential Information and shall 
+	use it only in accordance with the terms of the license agreement you entered 
+	into with hybris. -->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<collectiontypes>
+		<collectiontype code="GenderList" elementtype="Gender"
+			autocreate="true" generate="true" type="list" />
+		<collectiontype code="SwatchColorSet" elementtype="SwatchColorEnum"
+			autocreate="true" generate="true" type="set" />
+		<collectiontype code="AnnouncementColorList"
+			elementtype="AnnouncementColorEnum" autocreate="true" generate="true"
+			type="list" />
+		<collectiontype code="ReportMediasCMSComponentList"
+			elementtype="ReportMediasCMSComponent" autocreate="true" generate="true"
+			type="list" />
+		<collectiontype code="ReportMediaList" elementtype="ReportMedia"
+			autocreate="true" generate="true" type="list" />
+		<collectiontype code="ProductBannerCMSComponentList"
+			elementtype="ProductBannerCMSComponent" autocreate="true" generate="true"
+			type="list" />
+		<collectiontype code="AccordionItemCMSComponentList"
+			elementtype="AccordionItemCMSComponent" autocreate="true" generate="true"
+			type="list" />
+		<collectiontype code="CategoryFilterList" elementtype="CategoryFilterEnum"		
+			autocreate="true" generate="true" type="list" />
+	</collectiontypes>
+
+
+	<enumtypes>
+		<enumtype generate="true" code="SwatchColorEnum" autocreate="true"
+			dynamic="true">
+			<value code="BLACK" />
+			<value code="BLUE" />
+			<value code="BROWN" />
+			<value code="GREEN" />
+			<value code="GREY" />
+			<value code="ORANGE" />
+			<value code="PINK" />
+			<value code="PURPLE" />
+			<value code="RED" />
+			<value code="SILVER" />
+			<value code="WHITE" />
+			<value code="YELLOW" />
+		</enumtype>
+		<enumtype generate="true" code="AnnouncementColorEnum"
+			autocreate="true" dynamic="true">
+		</enumtype>
+		<enumtype generate="true" code="ProductIndicatorEnum" autocreate="true"
+			dynamic="true">
+			<value code="NEW" />
+			<value code="EVERYDAY" />
+			<value code="CLEARANCE" />
+			<value code="PRICECHOP" />
+			<value code="CATALOGUEDEAL" />
+			<value code="TVDEAL" />
+			<value code="SAVVYDEAL" />
+			<value code="MULTIBUY" />
+			<value code="JOBLOT" />
+		</enumtype>
+		<enumtype generate="true" code="CategoryFilterEnum" autocreate="true"		
+			dynamic="true">		
+		</enumtype>
+	</enumtypes>
+	<relations>
+		<!-- relationShip for category banner -->
+		<!-- <relation code="BannersForCategory" generate="true" localized="false" 
+			autocreate="true"> <deployment table="BannersForCategory" typecode="16216"/> 
+			<sourceElement qualifier="category" type="Category" cardinality="many"> <modifiers 
+			read="true" write="true" search="true" optional="true" /> </sourceElement> 
+			<targetElement qualifier="banners" type="BannerComponent" cardinality="many" 
+			collectiontype="list" ordered="true"> <modifiers read="true" write="true" 
+			search="true" optional="true" /> </targetElement> </relation> -->
+		<!-- relationship of navnodes in component -->
+		<relation code="CMSComponentsForNavNodes" generate="true"
+			localized="false" autocreate="true">
+			<deployment table="CMSComponentsForNavNodes" typecode="10570" />
+			<sourceElement qualifier="components" type="SimpleCMSComponent"
+				cardinality="many" collectiontype="list" ordered="true">
+			</sourceElement>
+			<targetElement qualifier="nNavigationNodes" type="CMSNavigationNode"
+				cardinality="many" collectiontype="list" ordered="true">
+			</targetElement>
+		</relation>
+		<relation code="ComponentsForRejCMSComponent" generate="true"
+			localized="false" autocreate="true">
+			<deployment table="RejCmsCompToCMSCompRel" typecode="16205" />
+			<sourceElement qualifier="RejectCMSComponent" type="RejectCMSComponent"
+				cardinality="many">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</sourceElement>
+			<targetElement qualifier="cmsComponents" type="SimpleCMSComponent"
+				cardinality="many" collectiontype="list" ordered="true">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</targetElement>
+		</relation>
+		<relation code="ComponentsForSecondaryNavigationComponent"
+			generate="true" localized="false" autocreate="true">
+			<deployment table="SecNavToCMSLinkRel" typecode="16215" />
+			<sourceElement qualifier="navigationGroupsComponent"
+				type="SecondaryNavigationComponent" cardinality="many">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</sourceElement>
+			<targetElement qualifier="links" type="CMSLinkComponent"
+				cardinality="many" collectiontype="list" ordered="true">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</targetElement>
+		</relation>
+
+		<!-- RelationShip Created to capture Home Rotating Banner Component -->
+		<relation code="REJRotatingImagesComponentToResponsiveBanners"
+			generate="true" localized="false" autocreate="true">
+			<deployment table="REJRespBanForRotCompRels" typecode="11007" />
+			<sourceElement qualifier="rotatingComponent" type="REJRotatingImagesComponent"
+				cardinality="many">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</sourceElement>
+			<targetElement qualifier="responsiveBanners"
+				type="REJSimpleResponsiveBannerComponent" cardinality="many"
+				collectiontype="list" ordered="true">
+				<modifiers read="true" write="true" search="true"
+					optional="true" />
+			</targetElement>
+		</relation>
+	</relations>
+	<itemtypes>
+
+		<!-- Add your item definitions here -->
+
+		<itemtype code="REJRotatingImagesComponent" extends="RotatingImagesComponent"
+			autocreate="true" generate="true"
+			jaloclass="au.com.rejectshop.core.jalo.REJRotatingImagesComponent">
+			<description>Base REJ rotating images component extension that contains additional attributes.</description>
+		</itemtype>
+
+		<!--Added LMG Simple Responsive Banner Component -->
+		<itemtype code="REJSimpleResponsiveBannerComponent"
+			autocreate="true" generate="true" extends="SimpleResponsiveBannerComponent"
+			jaloclass="au.com.rejectshop.core.jalo.REJimpleResponsiveBannerComponent">
+			<description>It represents REJSimpleResponsiveBannerComponent Component,Extended from SimpleResponsiveBannerComponent.</description>
+			<attributes>
+				<attribute qualifier="startTime" type="java.util.Date">
+					<description>Start Time.</description>
+					<persistence type="property" />
+					<modifiers read="true" optional="true" write="true" />
+				</attribute>
+				<attribute qualifier="endTime" type="java.util.Date">
+					<description>End Time</description>
+					<persistence type="property" />
+					<modifiers read="true" optional="true" write="true" />
+				</attribute>
+				<attribute qualifier="order" type="java.lang.Integer">
+					<description>Order Value</description>
+					<persistence type="property" />
+					<modifiers read="true" optional="true" write="true" />
+				</attribute>
+			</attributes>
+		</itemtype>
+
+
+		<typegroup name="Reject">
+			<itemtype code="Category" extends="Category" autocreate="false"
+				generate="false">
+				<attributes>
+					<attribute type="java.lang.Integer" qualifier="priority">
+						<persistence type="property" />
+						<modifiers optional="true" search="true" read="true"
+							write="true" />
+						<description>Priority for Category</description>
+					</attribute>
+					<attribute type="BannerComponent" qualifier="categoryBanner">
+						<persistence type="property" />
+						<modifiers optional="true" search="true" read="true"
+							write="true" />
+						<description>Banner for Category</description>
+					</attribute>
+
+				</attributes>
+			</itemtype>
+			<itemtype code="Product" extends="Product" autocreate="false"
+				generate="false">
+				<attributes>
+					<attribute qualifier="activeProduct" type="java.lang.Boolean"
+						generate="true" autocreate="true">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+					</attribute>
+					<attribute qualifier="allowProductSale" type="java.lang.Boolean"
+						generate="true" autocreate="true">
+						<modifiers read="true" write="true" search="false" />
+						<persistence type="property" />
+						<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+					</attribute>
+					<attribute qualifier="erpDescription" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="false" />
+						<persistence type="property" />
+						<description>Localized title of the component to be displayed.</description>
+					</attribute>
+
+					<attribute qualifier="innerPackSize" type="java.lang.Integer">
+						<modifiers read="true" write="true" search="false" />
+						<persistence type="property" />
+						<description>Localized title of the component to be displayed.</description>
+					</attribute>
+
+					<attribute qualifier="replenType" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Localized title of the component to be displayed.</description>
+					</attribute>
+
+					<attribute qualifier="procurementRule" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Localized title of the component to be displayed.</description>
+					</attribute>
+					<attribute qualifier="metaDescription" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>MetaKey Description</description>
+					</attribute>
+					<attribute qualifier="articleClass" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Article Class</description>
+					</attribute>
+					<attribute qualifier="customerOffer" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Customer Offer</description>
+					</attribute>
+					<attribute qualifier="brand" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Brand</description>
+					</attribute>
+					<attribute qualifier="articleStrategy" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Article Strategy</description>
+					</attribute>
+					<attribute qualifier="pageTitle" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Product Level PageTitle</description>
+					</attribute>
+					<attribute qualifier="productIndicator" type="ProductIndicatorEnum">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Product productIndicator</description>
+					</attribute>
+					<attribute qualifier="categoryFilter" type="CategoryFilterList">		
+						<modifiers read="true" write="true" search="true" />		
+						<persistence type="property" />		
+						<description>Category Filter</description>		
+					</attribute>
+				</attributes>
+
+			</itemtype>
+			<itemtype code="SecondaryNavigationComponent" autocreate="true"
+				generate="true" extends="SimpleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.SecondaryNavigationComponent">
+				<attributes>
+					<attribute type="CMSLinkComponent" qualifier="link">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="java.lang.String" qualifier="title">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="java.lang.String" qualifier="titleName">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="boolean" qualifier="external">
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="RejectCMSComponent" generate="true"
+				extends="SimpleCMSComponent" autocreate="true"
+				jaloclass="au.com.rejectshop.core.jalo.RejectCMSComponent">
+				<attributes>
+					<attribute type="java.lang.String" qualifier="title">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="AbstractCMSComponent" generate="false"
+				autocreate="false">
+				<attributes>
+					<attribute type="java.lang.String" qualifier="style">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="java.lang.String" qualifier="frontendTemplateName">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="SimpleCMSComponent" qualifier="renderer">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="CMSComponentContainer" generate="true"
+				extends="REJECTCMSComponent" autocreate="true"
+				jaloclass="au.com.rejectshop.core.jalo.CMSComponentContainer">
+				<attributes>
+					<attribute type="java.lang.String" qualifier="layout">
+						<persistence type="property" />
+						<defaultvalue>"Horizontal"</defaultvalue>
+					</attribute>
+					<attribute type="boolean" qualifier="external">
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+						<persistence type="property" />
+						<modifiers optional="false" />
+					</attribute>
+
+				</attributes>
+			</itemtype>
+			<itemtype code="REJECTHorizontalBanner" generate="true"
+				extends="BannerComponent" autocreate="true"
+				jaloclass="au.com.rejectshop.core.jalo.REJECTHorizontalBanner">
+
+			</itemtype>
+			<!-- Customer Feedback Form component -->
+			<itemtype code="CustomerFeedbackCMSComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CustomerFeedbackCMSComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Title of the component to be rendered.</description>
+					</attribute>
+
+				</attributes>
+			</itemtype>
+			<itemtype code="ProductBannerCMSComponent" autocreate="true"
+				generate="true" extends="BannerComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.ProductBannerCMSComponent">
+				<attributes>
+					<attribute qualifier="productName" type="localized:java.lang.String">
+						<persistence type="property" />
+						<modifiers />
+						<description>Localized name of the product to be displayed in the component.</description>
+					</attribute>
+					<attribute qualifier="productDesc" type="localized:java.lang.String">
+						<persistence type="property" />
+						<modifiers />
+						<description>Localized name of the product to be displayed in the component.</description>
+					</attribute>
+					<attribute qualifier="price" type="java.lang.String">
+						<persistence type="property" />
+						<description>Price of the product.</description>
+					</attribute>
+					<attribute qualifier="unit" type="localized:java.lang.String">
+						<persistence type="property" />
+						<description>Unit of the product.</description>
+					</attribute>
+					<attribute qualifier="amountSaved" type="java.lang.String">
+						<persistence type="property" />
+						<description>Amount saved on the product, if any.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="FeaturedProductsComponent" autocreate="true"
+				generate="true" extends="SimpleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.FeaturedProductsComponent">
+				<description>It represents a component that contains list of products.</description>
+				<attributes>
+					<attribute qualifier="title" type="localized:java.lang.String">
+						<persistence type="property" />
+						<modifiers />
+						<description>Localized title of the component to be displayed.</description>
+					</attribute>
+					<attribute type="ProductBannerCMSComponentList"
+						qualifier="featuredProducts">
+						<persistence type="property" />
+						<description>List of products to be rendered in this component.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<!--CMS Media Paragraph component -->
+			<itemtype code="CMSMediaParagraphComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CMSMediaParagraphComponent"
+				extends="CMSParagraphComponent" autocreate="true">
+				<description>Represents a paragraph component with an additional media and title.</description>
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Title for the paragraph component.</description>
+					</attribute>
+					<attribute qualifier="media" generate="true" autocreate="true"
+						type="localized:Media">
+						<persistence type="property" />
+						<description>Stores media for the component.</description>
+					</attribute>
+					<attribute type="CMSLinkComponent" qualifier="link">
+						<persistence type="property" />
+						<modifiers />
+						<description>Link to be rendered in the component.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="CMSAnnouncementComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CMSAnnouncementComponent"
+				extends="CMSMediaParagraphComponent" autocreate="true">
+				<description>Represents a cms media paragraph component with an additional content.</description>
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="category">
+						<persistence type="property" />
+						<modifiers />
+						<description>Category of the component.</description>
+					</attribute>
+					<attribute generate="true" autocreate="true" qualifier="backgroundColor"
+						type="AnnouncementColorEnum">
+						<persistence type="property" />
+						<description>Background color for a category.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!--ModuleCMSComponent -->
+
+			<itemtype code="ModuleCMSComponent" autocreate="true"
+				generate="true" extends="SimpleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.ModuleCMSComponent">
+				<description>CMS component to display a module containing title, image, content and a link.</description>
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Catalog title to be displayed.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="content">
+						<persistence type="property" />
+						<modifiers />
+						<description>Catalog content to be displayed.</description>
+					</attribute>
+					<attribute type="Media" qualifier="media">
+						<persistence type="property" />
+						<modifiers />
+						<description>Media to be displayed.</description>
+					</attribute>
+					<attribute type="java.lang.String" qualifier="url">
+						<persistence type="property" />
+						<modifiers />
+						<description>Catalogue URL.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="buttonLabel">
+						<persistence type="property" />
+						<modifiers />
+						<description>Label for the button.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!--Online Catalogue View Component -->
+			<itemtype code="OnlineCatalogueViewComponent" autocreate="true"
+				generate="true" extends="ModuleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.OnlineCatalogueViewComponent">
+				<description>CMS component to display the online catalogue module.</description>
+			</itemtype>
+			<itemtype code="CheckGiftCardBalanceComponent" autocreate="true"
+				generate="true" extends="ModuleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.CheckGiftCardBalanceComponent">
+				<description>CMS component to display the check Gift card balance module.</description>
+			</itemtype>
+
+			<!--Follow Us Component -->
+			<itemtype code="FollowUsComponent" autocreate="true"
+				generate="true" extends="SimpleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.FollowUsComponent">
+				<attributes>
+					<attribute type="CMSNavigationNode" qualifier="navigationNode">
+						<persistence type="property" />
+						<modifiers />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!--Store Locator Component -->
+			<itemtype code="StoreLocatorComponent" autocreate="true"
+				generate="true" extends="SimpleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.StoreLocatorComponent">
+				<attributes>
+					<attribute type="java.lang.Boolean" qualifier="isMenu">
+						<persistence type="property" />
+						<modifiers />
+					</attribute>
+					<attribute type="java.lang.Boolean" qualifier="displayTitle">
+						<persistence type="property" />
+						<defaultvalue>java.lang.Boolean.TRUE</defaultvalue>
+						<modifiers />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="BecomeVIPComponent" autocreate="true"
+				generate="true" extends="SimpleCMSComponent"
+				jaloclass="au.com.rejectshop.core.jalo.components.BecomeVIPComponent">
+				<attributes>
+					<attribute type="java.lang.String" qualifier="heading">
+						<persistence type="property" />
+						<modifiers />
+					</attribute>
+					<attribute type="java.lang.String" qualifier="subHeading">
+						<persistence type="property" />
+						<modifiers />
+					</attribute>
+					<attribute type="java.lang.String" qualifier="signUpButtonLabel">
+						<persistence type="property" />
+						<modifiers />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!--CMS Title Paragraph component -->
+			<itemtype code="CMSTitleParagraphComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CMSTitleParagraphComponent"
+				extends="CMSParagraphComponent" autocreate="true">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>CMS paragraphs be dispalyed with title.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!--CMS Gift Cards components -->
+
+			<itemtype code="GiftCardsCMSComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.GiftCardsCMSComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<description>Represents a Gift Cards component.</description>
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Title for the component.</description>
+					</attribute>
+					<attribute qualifier="media" generate="true" autocreate="true"
+						type="localized:Media">
+						<persistence type="property" />
+						<description>Stores media for the component.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="content">
+						<persistence type="property" />
+						<modifiers />
+						<description>Text content to be displayed in the component.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="buttonLabel">
+						<persistence type="property" />
+						<modifiers />
+						<description>Label for the button.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="buttonText">
+						<persistence type="property" />
+						<modifiers />
+						<description>Text to be displayed for the button.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="AddThisComponent" generate="true" extends="BannerComponent"
+				autocreate="true" jaloclass="au.com.rejectshop.core.components.AddThisComponent">
+				<attributes>
+					<attribute type="java.lang.String" qualifier="serviceType">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="java.lang.String" qualifier="addThisTitle">
+						<persistence type="property" />
+					</attribute>
+					<attribute type="boolean" qualifier="appendProductName">
+						<persistence type="property" />
+						<defaultvalue>Boolean.FALSE</defaultvalue>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="GiftVouchersCMSComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.GiftVouchersCMSComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<description>Represents a Gift Vouchers component.</description>
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Title for the component.</description>
+					</attribute>
+					<attribute qualifier="media" generate="true" autocreate="true"
+						type="localized:Media">
+						<persistence type="property" />
+						<description>Stores media for the component.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="buttonLabel">
+						<persistence type="property" />
+						<modifiers />
+						<description>Label for the button.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="buttonText">
+						<persistence type="property" />
+						<modifiers />
+						<description>Text to be displayed for the button.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!--Report Components -->
+
+			<itemtype code="ReportMedia" generate="true" autocreate="true"
+				jaloclass="au.com.rejectshop.core.jalo.ReportMedia" extends="Media">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="name">
+						<persistence type="property" />
+						<modifiers />
+						<description>Localized name of the report</description>
+					</attribute>
+
+					<attribute type="java.util.Date" qualifier="uploadDate">
+						<persistence type="property" />
+						<modifiers />
+						<description>Report Upload Date</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="ReportMediasCMSComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.ReportMediasCMSComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<attributes>
+					<attribute type="java.lang.Integer" qualifier="year">
+						<persistence type="property" />
+						<modifiers />
+						<description>Year for which report component is to be rendered.</description>
+					</attribute>
+
+					<attribute type="ReportMediaList" qualifier="reportMedias">
+						<persistence type="property" />
+						<modifiers />
+						<description>List of report media.</description>
+					</attribute>
+
+				</attributes>
+			</itemtype>
+
+			<itemtype code="CMSReportListComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CMSReportListComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Title for the component.</description>
+					</attribute>
+
+					<attribute type="localized:java.lang.String" qualifier="archivesTitle">
+						<persistence type="property" />
+						<modifiers />
+						<description>Archives title for the component.</description>
+					</attribute>
+
+					<attribute type="java.lang.Integer" qualifier="numberOfLatestReports">
+						<persistence type="property" />
+						<modifiers />
+						<description>Number of reports that should be displayed as latest in the component.</description>
+					</attribute>
+
+					<attribute type="ReportMediasCMSComponentList" qualifier="reportComponents">
+						<persistence type="property" />
+						<description>List of reports to be rendered in this component.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<!-- Accordion Item component -->
+			<itemtype code="AccordionItemCMSComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.AccordionItemCMSComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="accordionheader">
+						<persistence type="property" />
+						<modifiers />
+						<description>Header of the component.</description>
+					</attribute>
+					<attribute type="localized:java.lang.String" qualifier="content">
+						<persistence type="property" />
+						<modifiers />
+						<description>Content of the component.</description>
+					</attribute>
+
+				</attributes>
+			</itemtype>
+
+			<!-- Accordion CMS component -->
+			<itemtype code="CMSAccordionListComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CMSAccordionListComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>Title of the component to be rendered.</description>
+					</attribute>
+					<attribute type="AccordionItemCMSComponentList"
+						qualifier="accordionItems">
+						<persistence type="property" />
+						<description>List of Accordion Item components to be rendered in this component.</description>
+					</attribute>
+
+				</attributes>
+			</itemtype>
+			<itemtype code="PointOfService" autocreate="false" generate="false">
+
+				<attributes>
+					<attribute qualifier="closed" type="boolean">
+						<defaultvalue>Boolean.FALSE</defaultvalue>
+						<modifiers write="true" read="true" optional="false"
+							unique="false" />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="isActive" type="boolean">
+						<defaultvalue>Boolean.TRUE</defaultvalue>
+						<modifiers write="true" read="true" optional="false"
+							unique="false" />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="startDate" type="java.util.Date">
+						<description>Start Time.</description>
+						<persistence type="property" />
+						<modifiers read="true" optional="true" write="true" />
+					</attribute>
+					<attribute qualifier="endDate" type="java.util.Date">
+						<description>End Time</description>
+						<persistence type="property" />
+						<modifiers read="true" optional="true" write="true" />
+					</attribute>
+
+					<attribute qualifier="region" type="localized:java.lang.String">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+						<description>Localized title of the component to be displayed.</description>
+					</attribute>
+
+				</attributes>
+
+			</itemtype>
+			<itemtype code="RejectStyleVariantProduct" extends="VariantProduct"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.RejectStyleVariantProduct">
+				<description>Apparel style variant type that contains additional attribute describing variant style.
+				</description>
+				<attributes>
+					<attribute qualifier="style" type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Color/Pattern of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="swatchColors" type="SwatchColorSet">
+						<description>A normalized color mapping to a standardized front-end navigable name.
+						</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+
+			</itemtype>
+			<itemtype code="CMSLeftNavigationMenuComponent" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.CMSLeftNavigationMenuComponent"
+				extends="SimpleCMSComponent" autocreate="true">
+				<attributes>
+					<attribute type="localized:java.lang.String" qualifier="title">
+						<persistence type="property" />
+						<modifiers />
+						<description>CMS Link Info Navigation component be displayed with title.</description>
+					</attribute>
+					<attribute type="CMSNavigationNodeList" qualifier="navigationNodes">
+						<persistence type="property" />
+						<modifiers />
+						<description>List of navigation nodes that are rendered in this navigation menu component.</description>
+					</attribute>
+					<attribute type="CMSLinkComponent" qualifier="componentLink">
+						<persistence type="property" />
+						<modifiers />
+						<description>Main Link of the component. This will be used as the root component breadcrumb.</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="RejectSizeVariantProduct" extends="VariantProduct"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.RejectSizeVariantProduct">
+				<description>Apparel size variant type that contains additional attribute describing variant size.
+				</description>
+				<attributes>
+					<attribute qualifier="size" type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Size of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="SendAFriendEmailProcess" extends="StoreFrontCustomerProcess"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.process.SendAFriendEmailProcess">
+				<description>Represents customer related store front business process.</description>
+				<attributes>
+					<attribute qualifier="email" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="RecipientEmail" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="message" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="name" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productUrl" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productName" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productCode" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productImageUrl" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productPrice" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="yourName" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="Address" extends="Address" autocreate="false"
+				generate="false">
+				<description>Adds extra properties to Hybris Address entity
+                </description>
+				<attributes>
+					<attribute qualifier="state" type="java.lang.String">
+						<description>state in Address</description>
+						<modifiers optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="storeline1" type="java.lang.String">
+						<description>address line 1 for Store location</description>
+						<modifiers optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="storeline2" type="java.lang.String">
+						<description>address line 2 for Store location</description>
+						<modifiers optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="saveInAddressBook" type="java.lang.Boolean">
+						<modifiers optional="true" />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="TRSCategoryCarouselComponent" extends="ProductCarouselComponent"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.TRSCategoryCarouselComponent">
+				<description>custom component that displays the category products in carousel</description>
+				<attributes>
+					<attribute type="java.lang.Integer" qualifier="maxLimit">
+						<persistence type="property" />
+						<modifiers optional="true" />
+						<defaultvalue>java.lang.Integer.valueOf(0)</defaultvalue>
+						<description>for maximum no of products in carousel</description>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="TRSDynamicCategoryCarouselComponent" extends="ProductCarouselComponent"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.TRSDynamicCategoryCarouselComponent">
+				<description>custom component that displays the child category products in carousel</description>
+				<attributes>
+					<attribute qualifier="includeCategories" type="CMSStringList">
+						<modifiers read="true" write="true" optional="true"/>
+						<persistence type="property"/>
+					</attribute>
+                    <attribute type="java.lang.Integer" qualifier="maxLimit">
+                          <persistence type="property" />
+                          <modifiers optional="true" />
+                           <defaultvalue>java.lang.Integer.valueOf(0)</defaultvalue>
+                          <description>for maximum no of products in carousel</description>
+                    </attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="TRSStockInventory" generate="true" autocreate="true"
+				jaloclass="au.com.rejectshop.core.jalo.TRSStockInventory">
+			<description>new type to store the stock data against location and product</description>
+			<deployment table="TRSStockInventory" typecode="16221"/>
+				<attributes>
+					<attribute qualifier="code" type="java.lang.String">
+						<persistence type="property"/>
+						<modifiers read="true" write="true" optional="false"/>
+					</attribute>
+					<attribute qualifier="locationCode" type="java.lang.Integer">
+						<persistence type="property" />
+						<modifiers read="true" write="true" optional="true"/>
+					</attribute>
+					<attribute qualifier="product" type="Product">
+						<persistence type="property" />
+						<modifiers read="true" write="true" optional="true"/>
+					</attribute>
+					<attribute qualifier="sohUnit" type="java.lang.Integer">
+						<persistence type="property" />
+						<modifiers read="true" write="true" optional="true"/>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="TRSTableTreeCategoryCarouselComponent" extends="ProductCarouselComponent"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.components.TRSTableTreeCategoryCarouselComponent">
+				<description>custom component that displays the child category products in carousel</description>
+				<attributes>
+					<attribute qualifier="includeCategories" type="CMSStringList">
+						<modifiers read="true" write="true" optional="true"/>
+						<persistence type="property"/>
+					</attribute>
+                    <attribute type="java.lang.Integer" qualifier="maxLimit">
+                          <persistence type="property" />
+                          <modifiers optional="true" />
+                           <defaultvalue>java.lang.Integer.valueOf(0)</defaultvalue>
+                          <description>for maximum no of products in carousel</description>
+                    </attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+		<!-- TypeGroups are for structure of this file only -->
+
+		<typegroup name="Apparel">
+			<itemtype code="ApparelProduct" extends="Product"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.ApparelProduct">
+				<description>Base apparel product extension that contains additional attributes.</description>
+				<attributes>
+					<attribute qualifier="genders" type="GenderList">
+						<description>List of genders that the ApparelProduct is designed for</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="ApparelStyleVariantProduct" extends="VariantProduct"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.ApparelStyleVariantProduct">
+				<description>Apparel style variant type that contains additional attribute describing variant style.
+				</description>
+				<attributes>
+					<attribute qualifier="style" type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Color/Pattern of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="swatchColors" type="SwatchColorSet">
+						<description>A normalized color mapping to a standardized front-end navigable name.
+						</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+
+			</itemtype>
+			<itemtype code="SendReminderProcess" extends="StoreFrontProcess"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.process.SendReminderProcess">
+				<attributes>
+					<attribute qualifier="name" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productUrl" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productName" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productCode" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productImageUrl" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productPrice" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+
+					<attribute qualifier="email" type="java.lang.String">
+						<modifiers read="true" write="true" search="false"
+							optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="time" type="java.lang.String">
+						<modifiers read="true" write="true" search="false"
+							optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="dayofReminder" type="java.lang.String">
+						<modifiers read="true" write="true" search="false"
+							optional="true" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="emailNotification" type="java.lang.Boolean">
+						<modifiers read="true" write="true" search="false"
+							optional="true" />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="SendEmailReminder" extends="GenericItem"
+				autocreate="true" generate="true">
+
+				<description>This model stores the date and time for a product at which one needs to get reminded.</description>
+				<deployment table="SendEmailReminder" typecode="12345" />
+				<attributes>
+					<attribute qualifier="reminderEmail" type="java.lang.String">
+						<modifiers read="true" write="true" search="true"
+							optional="false" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productCode" type="java.lang.String">
+						<modifiers read="true" write="true" search="true"
+							optional="false" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productImageUrl" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productPrice" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="reminderDate" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="reminderTime" type="java.lang.String">
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="productUrl" type="java.lang.String">
+						<modifiers read="true" write="true" search="false"
+							optional="false" />
+						<persistence type="property" />
+					</attribute>
+					<attribute qualifier="sentStatus" type="java.lang.Boolean">
+						<persistence type="property" />
+						<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+					</attribute>
+				</attributes>
+			</itemtype>
+			<itemtype code="PriceRow" extends="PriceRow" autocreate="false"
+				generate="false">
+				<attributes>
+					<attribute qualifier="priceRuleID" type="java.lang.String"
+						generate="true" autocreate="true">
+						<modifiers read="true" write="true" search="true" />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+
+			<itemtype code="ApparelSizeVariantProduct" extends="ApparelStyleVariantProduct"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.ApparelSizeVariantProduct">
+				<description>Apparel size variant type that contains additional attribute describing variant size.
+				</description>
+				<attributes>
+					<attribute qualifier="size" type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Size of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+
+		<typegroup name="Electronics">
+			<itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
+				autocreate="true" generate="true"
+				jaloclass="au.com.rejectshop.core.jalo.ElectronicsColorVariantProduct">
+				<description>Electronics color variant type that contains additional attribute describing variant color.
+				</description>
+				<attributes>
+					<attribute qualifier="color" type="localized:java.lang.String"
+						metatype="VariantAttributeDescriptor">
+						<description>Color of the product.</description>
+						<modifiers />
+						<persistence type="property" />
+					</attribute>
+				</attributes>
+			</itemtype>
+		</typegroup>
+
+	</itemtypes>
+</items>

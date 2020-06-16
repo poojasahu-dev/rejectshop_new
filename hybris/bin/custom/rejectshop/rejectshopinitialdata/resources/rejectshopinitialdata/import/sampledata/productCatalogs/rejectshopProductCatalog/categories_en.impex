@@ -1,0 +1,14 @@
+#******************************This file is generated - please do not edit it. It will be regenerated after every build.********************************#
+# ImpEx for Importing Categories into Electronics Store 
+
+# Macros / Replacement Parameter definitions
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=Rejectshop Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+# Language
+$lang=en
+
+# Create Categories
+UPDATE Category;code[unique=true];$catalogVersion;name[lang=$lang]
+;TRS;;All Products;
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/platform"/>
+	<classpathentry exported="true" kind="lib" path="resources"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="src"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="testsrc"/>
+	<classpathentry kind="src" output="eclipsebin/classes" path="gensrc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/payment"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/acceleratorfacades"/>
+	<classpathentry exported="true" kind="lib" path="lib/merchantsdk-2.14.117.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/paypal-core-1.7.0.jar"/>
+	<classpathentry kind="output" path="eclipsebin/notused"/>
+</classpath>

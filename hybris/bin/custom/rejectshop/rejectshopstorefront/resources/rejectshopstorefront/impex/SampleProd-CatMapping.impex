@@ -1,0 +1,11 @@
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=supercategories(code, $catalogVersion)
+$baseProduct=baseProduct(code,$catalogVersion)
+$approved=approvalstatus(code)[default='approved']
+
+INSERT_UPDATE Product;code[unique=true];name;$catalogVersion;$approved;categoryFilter(code)[mode=append];$supercategories;
+;30075774;Test Product Item 1;;;BOY;7707;
+;30078849;Test Product Item 2;;;BOY;7707;
+;30075774;Test Product Item 3;;;PET;7707;

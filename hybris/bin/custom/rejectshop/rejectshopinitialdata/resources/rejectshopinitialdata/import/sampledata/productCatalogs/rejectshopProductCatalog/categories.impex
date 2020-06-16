@@ -1,0 +1,104 @@
+$productCatalog=rejectshopProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=source(code, $catalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+$productCatalogName=TRS Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$lang=en
+INSERT_UPDATE Category	;code[unique=true];name[lang=$lang];description[lang=$lang];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;7700;Rainwear;Rainwear
+;5100;Electrical Accessories;Audio Visual
+;8900;Books;Books
+;9300;Craft;Craft
+;9100;Stationery;Stationery
+;8100;Cards & Wrap;Cards
+;8300;Wrap;Wrapping Access.
+;8500;Partyware;Party Ware
+;7300;Clothing;Clothing
+;7500;Sock, Underwear & Accs;Socks & Underwear
+;1100;Cleaning;Cleaning
+;1300;Confectionery;Confectionery
+;1700;Grocery;Food
+;1500;Drinks;Drinks
+;6100;Fashion Accessories;Fashion
+;6900;Cosmetics;Cosmetics
+;6500;Toiletries;Toiletries
+;2100;Furniture;Furniture
+;3700;Kitchen;Kitchen
+;7100;Manchester;Manchester
+;3100;Home Deco;Home Deco
+;5300;Photography;Photography
+;6300;Aroma;Aroma
+;2500;Hardware;Hardware
+;2300;Garden;Garden
+;4300;Home Storage;Home Storage
+;3300;General Housecares;	House Cares
+;2700;Luggage;Luggage
+;3500;Petcare;Pet Care
+;5500;Recreation;Recreation
+;5700;Toys;Toys
+;9500;Seasonal;Seasonal
+;8700;Christmas;Christmas
+;1900;Seasonal Food;Seasonal Food
+;7900;Seasonal Softgoods;Seasonal Softgoods
+;S-CLOTHING;Clothing;Clothing
+;S-STATIONERY;Stationery;Stationery
+;S-HOMEANDGARDEN;Home & Garden;Home & Garden
+;S-GROCERY;Grocery;Grocery
+;S-BEAUTY;Beauty;Beauty
+;S-PETS;Pets;Pets
+;S-TOYS;Toys;Toys
+;S-SAVVYBLOG;SAVVY BLOG;Savvy Blog		
+;S-CATALOGUE;CATALOGUE;Catalogue		
+;TRS;TRS;The Reject Shop
+;S-JUSTLANDED;Just Landed
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;6100;S-CLOTHING
+;7300;S-CLOTHING
+;7500;S-CLOTHING
+;7700;S-CLOTHING
+;8100;S-STATIONERY
+;8300;S-STATIONERY
+;8900;S-STATIONERY
+;9100;S-STATIONERY
+;9300;S-STATIONERY
+;8500;S-STATIONERY
+;8700;S-STATIONERY
+;9500;S-STATIONERY
+;6500;S-BEAUTY
+;6900;S-BEAUTY
+;3500;S-PETS
+;3100;S-HOMEANDGARDEN
+;5300;S-HOMEANDGARDEN
+;6300;S-HOMEANDGARDEN
+;3300;S-HOMEANDGARDEN
+;3700;S-HOMEANDGARDEN
+;4300;S-HOMEANDGARDEN
+;7100;S-HOMEANDGARDEN
+;2700;S-HOMEANDGARDEN
+;1100;S-HOMEANDGARDEN
+;3300;S-HOMEANDGARDEN
+;5100;S-HOMEANDGARDEN
+;2100;S-HOMEANDGARDEN
+;2300;S-HOMEANDGARDEN
+;2500;S-HOMEANDGARDEN
+;4300;S-HOMEANDGARDEN
+;2700;S-HOMEANDGARDEN
+;7900;S-HOMEANDGARDEN
+;5500;S-TOYS
+;5700;S-TOYS
+;1300;S-GROCERY
+;1500;S-GROCERY
+;1700;S-GROCERY
+;1900;S-GROCERY
+;S-CLOTHING;TRS
+;S-STATIONERY;TRS
+;S-BEAUTY;TRS
+;S-PETS;TRS
+;S-HOMEANDGARDEN;TRS
+;S-CATALOGUE;TRS
+;S-SAVVYBLOG;TRS
+;S-TOYS;TRS
+;S-GROCERY;TRS
+;S-JUSTLANDED;TRS

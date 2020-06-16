@@ -1,0 +1,52 @@
+$productCatalog=rejectshopProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$supercategories=source(code, $catalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+$productCatalogName=TRS Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$lang=en
+INSERT_UPDATE Category	;code[unique=true];name[lang=$lang];description[lang=$lang];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;SAVVY_TABLE_DECORATOR;SAVVY_TABLE_DECORATOR;SAVVY_TABLE_DECORATOR
+;;7701;Traditional
+;;7703;Luxe
+;;7702;Frost
+;SAVVY_TREE_DECORATOR;SAVVY_TREE_DECORATOR;SAVVY_TREE_DECORATOR
+;;7704;Tree Traditional
+;;7706;Tree Luxe
+;;7705;Tree Frost
+ 
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;7701;SAVVY_TABLE_DECORATOR
+;7702;SAVVY_TABLE_DECORATOR
+;7703;SAVVY_TABLE_DECORATOR
+;7704;SAVVY_TREE_DECORATOR
+;7705;SAVVY_TREE_DECORATOR
+;7706;SAVVY_TREE_DECORATOR
+
+
+$productCatalog=rejectshopProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$supercategories=source(code, $catalogVersion)[unique=true]
+$categories=target(code, $catalogVersion)[unique=true]
+$productCatalogName=TRS Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$lang=en
+INSERT_UPDATE Category	;code[unique=true];name[lang=$lang];description[lang=$lang];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
+;SAVVY_TABLE_DECORATOR;SAVVY_TABLE_DECORATOR;SAVVY_TABLE_DECORATOR
+;;7701;Traditional
+;;7703;Luxe
+;;7702;Frost
+;SAVVY_TREE_DECORATOR;SAVVY_TREE_DECORATOR;SAVVY_TREE_DECORATOR
+;;7704;Tree Traditional
+;;7706;Tree Luxe
+;;7705;Tree Frost
+ 
+
+INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
+;7701;SAVVY_TABLE_DECORATOR
+;7702;SAVVY_TABLE_DECORATOR
+;7703;SAVVY_TABLE_DECORATOR
+;7704;SAVVY_TREE_DECORATOR
+;7705;SAVVY_TREE_DECORATOR
+;7706;SAVVY_TREE_DECORATOR

@@ -1,0 +1,137 @@
+#rejHomePageRotatingBannerComponent img {
+    width: 100%;
+    height: 100%;
+}
+.jssorb21{position: absolute;display:none;}
+ .jssorb21 div,
+ .jssorb21 div:hover,
+ .jssorb21 .av {
+     position: absolute;
+     /* size of bullet elment */
+     width: 19px;
+     height: 19px;
+     text-align: center;
+     line-height: 19px;
+     color: white;
+     font-size: 12px;
+     background: url(../images/round.png) no-repeat;
+     overflow: hidden;
+     cursor: pointer;
+ }
+ .jssorb21 div {
+     background-position: -27px -5px;
+ }
+ .jssorb21 div:hover,
+ .jssorb21 .av:hover {
+     background-position: -6px -5px;
+ }
+ .jssorb21 .av {
+     background-position: -6px -5px;
+ }
+ .jssorb21 .dn,
+ .jssorb21 .dn:hover {
+     background-position: -95px -5px;
+ }
+ .jssora21l,
+ .jssora21r {
+     display: block;
+     position: absolute;
+     /* size of arrow element */
+     width: 55px;
+     height: 55px;
+     top: 155px !important;
+     cursor: pointer;
+     background: url(../images/arrows.png) center center no-repeat;
+     overflow: hidden;
+ }
+ .jssora21l {
+     background-position: -3px -33px;
+ }
+ .jssora21r {
+     background-position: -63px -33px;
+ }
+ .jssora21l:hover {
+     background-position: -123px -33px;
+ }
+ .jssora21r:hover {
+     background-position: -183px -33px;
+ }
+ .jssora21l.jssora21ldn {
+     background-position: -243px -33px;
+ }
+ .jssora21r.jssora21rdn {
+     background-position: -303px -33px;
+ }
+/* Home page */
+#Horizontalbanner1{float:left;width:calc(100% - 850px);padding-top:10px;}
+#Horizontalbanner1 ul{padding-left:10px;margin-bottom:0;}
+#Horizontalbanner1 ul li:not(:first-child){margin-top:10px;}
+#Horizontalbanner1 ul li a{display:block;}
+#Horizontalbanner1 ul li a img,#Horizontalbanner2 ul li img{max-width:100%;}
+
+#Horizontalbanner2{float:left;width:calc(100% + 10px);margin-top:20px;}
+#Horizontalbanner2 ul{display:table;width:100%;table-layout:fixed;}
+#Horizontalbanner2 ul li{display:table-cell;text-align:center;vertical-align:top;padding-right:10px;}
+
+
+#Horizontalbanner2 a{display:inline-block;}
+
+
+#noticeBanner{
+    font-size:16px;
+    color:#e2001a !important;
+    border-style: solid;
+    font-weight: normal;
+    padding:10px;
+    font-family: "AvantGardeGothicITCW01D 731075" !important;
+    text-align: center;
+}
+@media(max-width:991px){
+    #noticeBanner{
+        font-size:12px;
+        padding:5px;
+    }
+}
+
+
+#gallery p{font-family:'AvantGardeGothicITCW01B 731069';color:#404040;}
+
+
+div[id^='ProducthorizontalBanner'] a{display:inline-block;}
+div[id^='ProducthorizontalBanner'] h3{margin:0 0 10px;color:#e2001a;font-size:21px;font-family:'AvantGardeGothicITCW01D 731075';    text-transform: capitalize;}
+div[id^='ProducthorizontalBanner'] ul li{display:table-cell;text-align:center;vertical-align:top;padding-right:10px;}
+div[id^='ProducthorizontalBanner'] ul{display:table;width:100%;table-layout:fixed;}
+div[id^='ProducthorizontalBanner']{float:left;width:calc(100% + 10px);margin-top:20px;}
+div[id^='ProducthorizontalBanner'] ul li img{max-width:100%;}
+
+
+
+@media (min-width:992px) and (max-width:1199px){
+	#Horizontalbanner1{width:calc(100% - 700px);}
+}
+@media (min-width:768px) and (max-width:991px){
+	header.main-header .main-navigation > .nav > li > a{padding:10px 6px 7px;}
+}
+@media (max-width:991px){
+	#Horizontalbanner1{width:calc(25% );margin-top:10px;}
+	#Horizontalbanner1 ul{padding:0;}
+	#Horizontalbanner1 ul li{width:calc(50% - 5px);display:inline-block;text-align:center;}
+	#Horizontalbanner1:not(.single) ul li a img{width:100%;}
+	#Horizontalbanner1:not(.single) ul li:first-child{margin-right:10px;}
+	#Horizontalbanner1.single ul li{width:100%;}	
+}
+@media (max-width: 767px){
+	.jssora21r{right: 89px !important;}
+	.jssora21r,.jssora21l{display: block !important;}
+	#Horizontalbanner2 ul li{display:table-row;}
+	#Horizontalbanner2{width:100%;}
+	#Horizontalbanner2{margin-top:0;}
+	#Horizontalbanner2.Horizontal ul li{padding-right:0;}
+	#Horizontalbanner2 ul li a{padding-top:10px;}
+
+    div[id^='ProducthorizontalBanner']ul li .small_baner_content{display:inline-block;}
+    div[id^='ProducthorizontalBanner']{width:100%;}
+    div[id^='ProducthorizontalBanner'] ul li{display:table-row;}
+    div[id^='ProducthorizontalBanner'].Horizontal ul li{padding-right:0;}
+    div[id^='ProducthorizontalBanner'] ul li a{padding-top:10px;}
+}

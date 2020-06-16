@@ -1,0 +1,11 @@
+# ImpEx for rejectshop Stores
+# English localisations
+
+$lang=en
+
+$productCatalog=rejectshopProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$storeImage=storeImage(qualifier, $catalogVersion)
+
+$standardHours=rejectshop-japan-standard-hours
+

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testclasses><rejectshopfacades><testclass>au.com.rejectshop.facades.suggestion.impl.DefaultSimpleSuggestionFacadeTest</testclass><testclass>au.com.rejectshop.facades.suggestion.DefaultSimpleSuggestionFacadeIntegrationTest</testclass></rejectshopfacades></testclasses>

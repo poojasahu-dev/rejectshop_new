@@ -1,0 +1,7 @@
+$contentCatalog=electronicsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$jarResourceCmsCockpit=jar:com.paypal.hybris.addon.constants.Paypal65addonConstants&/paypal65addon/import/cockpit/cmscockpit
+$siteResource=jar:com.paypal.hybris.addon.constants.Paypal65addonConstants&/paypal65addon/import/contentCatalogs/$contentCatalog
+
+# Language
+$lang=en

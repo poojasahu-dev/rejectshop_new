@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ~ [y] hybris Platform ~ ~ Copyright (c) 2000-2015 hybris AG ~ All rights 
+	reserved. ~ ~ This software is the confidential and proprietary information 
+	of hybris ~ ("Confidential Information"). You shall not disclose such Confidential 
+	~ Information and shall use it only in accordance with the terms of the ~ 
+	license agreement you entered into with hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
+
+	<bean id="cwsProductFacade" parent="defaultProductFacade">
+		<property name="productConfiguredPopulator" ref="cwsProductConfiguredPopulator" />
+		<property name="productConverter" ref="cwsProductConverter" />
+	</bean>
+
+	<bean id="cwsProductConfiguredPopulator" parent="defaultProductConfiguredPopulator">
+		<property name="populators">
+			<map key-type="de.hybris.platform.commercefacades.product.ProductOption"
+				merge="true">
+				<entry key="GALLERY" value-ref="cwsProductGalleryPopulatorList" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="cwsProductGalleryPopulatorList" parent="abstractPopulatorList">
+		<property name="populators">
+			<list>
+				<ref bean="cwsProductGalleryImagesPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsImageFormatMapping" parent="defaultImageFormatMapping">
+		<property name="mapping">
+			<map>
+				<entry key="superZoom" value="1200Wx1200H" />
+				<entry key="zoom" value="515Wx515H" />
+				<entry key="store" value="365Wx246H" />
+				<entry key="product" value="300Wx300H" />
+				<entry key="thumbnail" value="96Wx96H" />
+				<entry key="cartIcon" value="65Wx65H" />
+				<entry key="styleSwatch" value="30Wx30H" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="cwsProductPrimaryImagePopulator" parent="defaultProductPrimaryImagePopulator">
+		<property name="imageFormatMapping" ref="cwsImageFormatMapping" />
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+				<value>cartIcon</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsProductGalleryImagesPopulator" parent="defaultProductGalleryImagesPopulator">
+		<property name="imageFormatMapping" ref="cwsImageFormatMapping" />
+		<property name="imageFormats">
+			<list>
+				<value>zoom</value>
+				<value>product</value>
+				<value>thumbnail</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsProductPopulator" parent="defaultProductPopulator">
+		<property name="productPrimaryImagePopulator" ref="cwsProductPrimaryImagePopulator" />
+		<property name="productModelUrlResolver" ref="rejectshopintegrationProductModelUrlResolver" />
+	</bean>
+
+	<bean id="cwsProductConverter" parent="defaultProductConverter">
+		<property name="populators">
+			<list>
+				<ref bean="cwsProductPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsCatalogFacade" parent="defaultCatalogFacade">
+		<property name="catalogVersionPopulator" ref="cwsCatalogVersionPopulator" />
+		<property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator" />
+	</bean>
+
+	<bean id="cwsCatalogVersionPopulator" parent="defaultCatalogVersionPopulator">
+		<property name="categoryHierarchyPopulator" ref="cwsCategoryHierarchyPopulator" />
+		<property name="categoriesUrl" value="/categories" />
+	</bean>
+
+	<bean id="cwsCategoryHierarchyPopulator" parent="defaultCategoryHierarchyPopulator">
+		<property name="productConverter" ref="cwsProductConverter" />
+		<property name="categoryUrlResolver"
+			ref="rejectshopintegrationCategoryModelUrlResolver"></property>
+	</bean>
+
+	<bean id="cwsProductExportFacade" parent="defaultProductExportFacade">
+		<property name="productConverter" ref="cwsProductConverter" />
+		<property name="productCategoriesPopulator" ref="cwsProductCategoriesPopulator" />
+	</bean>
+
+	<bean id="cwsProductCategoriesPopulator" parent="defaultProductCategoriesPopulator">
+		<property name="categoryConverter" ref="cwsCategoryConverter" />
+	</bean>
+
+	<bean id="cwsCategoryConverter" parent="defaultCategoryConverter">
+		<lookup-method name="createTarget" bean="categoryData" />
+		<property name="populators">
+			<list>
+				<ref bean="cwsCategoryPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cwsCategoryPopulator" parent="defaultCategoryPopulator">
+		<property name="categoryModelUrlResolver"
+			ref="rejectshopintegrationCategoryModelUrlResolver" />
+	</bean>
+
+	<bean id="rejectshopintegrationProductModelUrlResolver" parent="defaultProductModelUrlResolver">
+		<property name="defaultPattern" value="/{baseSite-uid}/products/{product-code}" />
+	</bean>
+
+	<bean id="rejectshopintegrationCategoryModelUrlResolver" parent="defaultCategoryModelUrlResolver">
+		<property name="pattern"
+			value="/{baseSite-uid}/catalogs/{catalog-id}/{catalogVersion}/categories/{category-code}" />
+	</bean>
+
+	<alias name="defaultCommerceStockFacade" alias="commerceStockFacade" />
+	<bean id="defaultCommerceStockFacade" class="au.com.rejectshop.stock.impl.DefaultCommerceStockFacade">
+		<property name="baseSiteService" ref="baseSiteService" />
+		<property name="commerceStockService" ref="commerceStockService" />
+		<property name="pointOfServiceService" ref="pointOfServiceService" />
+		<property name="productService" ref="productService" />
+		<property name="baseStoreForSiteSelectorStrategy" ref="baseStoreForSiteSelectorStrategy" />
+	</bean>
+
+	<alias name="defaultBaseStoreForSiteSelectorStrategy" alias="baseStoreForSiteSelectorStrategy" />
+	<bean id="defaultBaseStoreForSiteSelectorStrategy"
+		class="au.com.rejectshop.strategies.impl.DefaultBaseStoreForSiteSelectorStrategy" />
+
+	<bean id="commerceWebServicesCartFacade2"
+		class="au.com.rejectshop.cart.impl.CommerceWebServicesCartFacade"
+		parent="defaultCartFacade">
+		<property name="cartConverter" ref="extendedCartConverter" />
+		<property name="commerceCartService" ref="commerceWebServicesCartService" />
+	</bean>
+
+	<!-- Populator for title name -->
+	<alias name="defaultExtendedCustomerPopulator" alias="extendedCustomerPopulator" />
+	<bean id="defaultExtendedCustomerPopulator"
+		class="au.com.rejectshop.customer.populator.ExtendedCustomerPopulator">
+		<property name="addressConverter" ref="addressConverter" />
+	</bean>
+
+	<bean parent="modifyPopulatorList">
+		<property name="list" ref="customerConverter" />
+		<property name="add" ref="extendedCustomerPopulator" />
+	</bean>
+
+	<!-- Update Queues -->
+
+	<bean id="abstractUpdateQueue" class="au.com.rejectshop.queues.impl.AbstractUpdateQueue"
+		abstract="true">
+		<property name="maxCapacity" value="100000" />
+	</bean>
+
+	<!--Express Update Queue functionality -->
+
+	<bean id="productExpressUpdateQueue" class="au.com.rejectshop.queues.impl.ProductExpressUpdateQueue"
+		parent="abstractUpdateQueue" />
+
+	<bean id="productExpressUpdateChannelListener"
+		class="au.com.rejectshop.queues.channel.ProductExpressUpdateChannelListener">
+		<property name="productExpressUpdateElementConverter" ref="productExpressUpdateElementConverter" />
+		<property name="productExpressUpdateQueue" ref="productExpressUpdateQueue" />
+	</bean>
+
+	<int:service-activator input-channel="productExpressUpdateChannel"
+		ref="productExpressUpdateChannelListener" method="onMessage" />
+
+	<bean id="productExpressUpdateElementData"
+		class="au.com.rejectshop.queues.data.ProductExpressUpdateElementData"
+		scope="prototype" />
+
+	<alias name="defaultProductExpressUpdateElementPopulator" alias="productExpressUpdateElementPopulator" />
+	<bean id="defaultProductExpressUpdateElementPopulator"
+		class="au.com.rejectshop.queues.populators.ProductExpressUpdateElementPopulator" />
+
+	<alias name="defaultProductExpressUpdateElementConverter" alias="productExpressUpdateElementConverter" />
+	<bean id="defaultProductExpressUpdateElementConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="productExpressUpdateElementData" />
+		<property name="populators">
+			<list>
+				<ref bean="productExpressUpdateElementPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="productExpressUpdateCleanerJob"
+		class="au.com.rejectshop.queues.cronjob.ProductExpressUpdateCleanerJob"
+		parent="abstractJobPerformable">
+		<property name="productExpressUpdateQueue" ref="productExpressUpdateQueue" />
+	</bean>
+
+	<!-- Order Status Update Queue -->
+
+	<bean id="orderStatusUpdateQueue" class="au.com.rejectshop.queues.impl.OrderStatusUpdateQueue"
+		parent="abstractUpdateQueue" />
+
+	<bean id="orderStatusUpdateChannelListener"
+		class="au.com.rejectshop.queues.channel.OrderStatusUpdateChannelListener">
+		<property name="orderStatusUpdateElementConverter" ref="orderStatusUpdateElementConverter" />
+		<property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue" />
+	</bean>
+
+	<int:service-activator input-channel="orderStatusUpdateChannel"
+		ref="orderStatusUpdateChannelListener" method="onMessage" />
+
+	<bean id="orderStatusUpdateElementData"
+		class="au.com.rejectshop.queues.data.OrderStatusUpdateElementData"
+		scope="prototype" />
+
+	<alias name="defaultOrderStatusUpdateElementPopulator" alias="orderStatusUpdateElementPopulator" />
+	<bean id="defaultOrderStatusUpdateElementPopulator"
+		class="au.com.rejectshop.queues.populators.OrderStatusUpdateElementPopulator" />
+
+	<alias name="defaultProductExpressUpdateElementConverter" alias="orderStatusUpdateElementConverter" />
+	<bean id="defaultOrderStatusUpdateElementConverter" parent="abstractPopulatingConverter">
+		<lookup-method name="createTarget" bean="orderStatusUpdateElementData" />
+		<property name="populators">
+			<list>
+				<ref bean="orderStatusUpdateElementPopulator" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="orderStatusUpdateCleanerJob"
+		class="au.com.rejectshop.queues.cronjob.OrderStatusUpdateCleanerJob"
+		parent="abstractJobPerformable">
+		<property name="orderStatusUpdateQueue" ref="orderStatusUpdateQueue" />
+	</bean>
+
+	<!-- Old cart cleaner -->
+	<bean id="oldCartRemovalJob" class="au.com.rejectshop.cronjob.OldCartRemovalJob"
+		parent="abstractJobPerformable">
+		<property name="commerceCartDao" ref="commerceCartDao" />
+		<property name="timeService" ref="timeService" />
+		<property name="userService" ref="userService" />
+	</bean>
+
+	<alias alias="orderCodeIdentificationStrategy" name="defaultOrderCodeIdentificationStrategy" />
+	<bean id="defaultOrderCodeIdentificationStrategy"
+		class="au.com.rejectshop.strategies.impl.DefaultOrderCodeIdentificationStrategy">
+		<property name="idPattern" value="[0-9a-f]{40}|[0-9a-f-]{36}" />
+	</bean>
+
+	<bean id="imageConversionJob"
+		class="au.com.rejectshop.cronjob.RejectShopProductImageConversionJobPerformable"
+		autowire="byName">
+		<property name="productImageConversionService" ref="productImageConversionService" />
+	</bean>
+
+	<alias name="productImageConversionServiceImpl" alias="productImageConversionService" />
+	<bean id="productImageConversionServiceImpl"
+		class="au.com.rejectshop.cronjob.service.impl.DefaultProductImageConversionService">
+		<property name="conversionGroup" ref="conversionGroupDAO" />
+		<property name="catalogVersion" ref="catalogVersionService" />
+		<property name="mediaContainer" ref="mediaContainerFactory" />
+		<property name="productToMedia" ref="productToMediaService" />
+	</bean>
+
+	<alias name="defaultConversionGroupDAO" alias="conversionGroupDAO" />
+	<bean id="defaultConversionGroupDAO"
+		class="au.com.rejectshop.cronjob.dao.impl.DefaultConversionGroupDao">
+		<property name="searchService" ref="flexibleSearchService" />
+	</bean>
+
+	<alias name="defaultMediaContainerFactory" alias="mediaContainerFactory" />
+	<bean id="defaultMediaContainerFactory"
+		class="au.com.rejectshop.cronjob.service.impl.DefaultMediaContainerFactory">
+		<property name="conversionService" ref="mediaConversionService" />
+		<property name="mediaContainerDao" ref="mediaContainerDao" />
+		<property name="mediaService" ref="mediaService" />
+		<property name="modelService" ref="modelService" />
+		<property name="superZoomFormat" value="${superZoomFormat}" />
+	</bean>
+
+	<alias name="defaultProductToMediaService" alias="productToMediaService" />
+	<bean id="defaultProductToMediaService"
+		class="au.com.rejectshop.cronjob.service.impl.DefaultProductToMediaService">
+		<property name="modelService" ref="modelService" />
+		<property name="productService" ref="productService" />
+		<property name="rejectshopProductImportService" ref="rejectshopProductImportService" />
+		<property name="miniZoomFormat" value="${miniZoomFormat}" />
+		<property name="zoomFormat" value="${zoomFormat}" />
+		<property name="productFormat" value="${productFormat}" />
+		<property name="thumbnailFormat" value="${thumbnailFormat}" />
+		<property name="cartIconFormat" value="${cartIconFormat}" />
+		<property name="styleSwatchFormat" value="${styleSwatchFormat}" />
+	</bean>
+
+	
+	<bean id="productsLoadJobPerformable"
+		class="au.com.rejectshop.cronjob.RejectshopProductsLoadJobPerformable"
+		autowire="byName">
+		<property name="rejectshopProductImportFacade" ref="rejectshopProductImportFacade" />
+	</bean>
+	
+	<bean id="pricerowImportJobPerformable"
+		class="au.com.rejectshop.cronjob.RejectshopPricerowImportJobPerfomable"
+		autowire="byName">
+		<property name="rejectshopProductImportFacade" ref="rejectshopProductImportFacade" />		
+	</bean>
+	
+	
+	
+	<bean id="posImportJobPerfomable"
+		class="au.com.rejectshop.cronjob.RejectshopPOSImportJobPerfomable"
+		autowire="byName">
+	<property name="rejectshopPOSImportService" ref="rejectshopPOSImportService" />
+	</bean>
+
+	<bean id="rejectshopProductImportFacade"
+		class="au.com.rejectshop.facade.impl.RejectshopProductImportFacadeImpl"
+		autowire="byName">
+		<property name="modelService" ref="modelService" />
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="catalogVersionService" ref="catalogVersionService"/>
+		<property name="rejectshopProductImportService" ref="rejectshopProductImportService" />
+		<property name="extendedProductConverter" ref="extendedProductConverter" />
+		<property name="extendedPriceConverter" ref="extendedPriceConverter" />
+		<property name="extendedProductService" ref="extendedProductService" />
+	    <property name="unitService" ref="unitService" />
+	    <property name="categoryService" ref="categoryService" />
+	     <property name="productService" ref="productService" />
+	    <property name="extendedCustomerConverter" ref="extendedCustomerConverter" />
+	    <property name="warehouseService" ref="warehouseService" />
+		
+	</bean>
+	<bean id="extendedProductService"
+		class="au.com.rejectshop.cronjob.service.ExtendedProductServiceImple"
+		autowire="byName">
+	    <property name="modelService" ref="modelService" />
+		<property name="extendedProductDAO" ref="extendedProductDAO" />
+		<property name="baseStoreService" ref="baseStoreService" />
+	</bean>
+		
+	<bean id="extendedProductDAO"
+		class="au.com.rejectshop.cronjob.dao.impl.ExtendedProductDAOImpl"
+		autowire="byName">
+			<property name="flexibleSearchService" ref="flexibleSearchService"></property>
+	</bean>
+		
+	<bean id="rejectshopProductImportService"
+		class="au.com.rejectshop.cronjob.service.impl.RejectshopProductImportServiceImpl">
+		<property name="modelService" ref="modelService" />
+		<property name="rejectshopProductDao" ref="rejectshopProductDao" />
+		<property name="typeService" ref="typeService" />		
+	</bean>
+	
+	<bean id="rejectshopPriceRowImportService"
+		class="au.com.rejectshop.cronjob.service.impl.RejectshopPriceRowImportServiceImpl">
+		<property name="modelService" ref="modelService" />
+		<property name="rejectshopPriceRowDao" ref="rejectshopPriceRowDao" />
+		<property name="catalogVersionService" ref="catalogVersionService" />
+		<property name="catalogId" value="${rejectshop.catalogId}"></property>
+		<property name="catalogVersionName" value="${rejectshop.catalogVesionName}"></property>
+	</bean>
+	
+	<bean id="rejectshopPOSImportService"
+		class="au.com.rejectshop.cronjob.service.impl.DefaultRejectshopPOSImportService">
+		<property name="modelService" ref="modelService" />		
+		<property name="commonI18NService" ref="commonI18NService" />
+		<property name="posConverter" ref="posConverter" />
+		<property name="baseStoreService" ref="baseStoreService" />
+		<property name="pointOfServiceService" ref="pointOfServiceService" />
+	</bean>
+	
+	
+    <alias name="extendedProductConverter" alias="defaultextendedProductConverter" />	
+    <bean id="extendedProductConverter" class="au.com.rejectshop.convertors.ProductConverter"/>
+    
+    <bean id="extendedPriceConverter" class="au.com.rejectshop.convertors.PriceConverter"/>
+    
+    <bean id="extendedCustomerConverter" class="au.com.rejectshop.convertors.PointOfServiceConverter"/>
+    
+    <bean id="posConverter" class="au.com.rejectshop.convertors.PointOfServiceConverter"/>
+
+	<bean id="rejectshopPriceRowDao" class="au.com.rejectshop.cronjob.dao.impl.RejectshopPriceRowDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+
+	<bean id="rejectshopCategoryDao"
+		class="au.com.rejectshop.cronjob.dao.impl.RejectshopCategoryDaoImpl">
+		<constructor-arg value="Category" />
+		<property name="modelService" ref="modelService" />
+		<property name="categoryService" ref="categoryService" />
+		<property name="catalogVersionService" ref="catalogVersionService"></property>
+		<property name="catalogId" value="${rejectshop.catalogId}" />		
+		<property name="catalogVersionName" value="${rejectshop.catalogVesionName}" />
+	</bean>
+
+	<bean id="rejectshopProductDao"
+		class="au.com.rejectshop.cronjob.dao.impl.RejectshopProductDaoImpl">
+		<constructor-arg value="Product" />
+	</bean>
+	
+	<bean id="rejectshopPOSDao"
+		class="au.com.rejectshop.cronjob.dao.impl.RejectshopPOSDaoImpl">
+		<property name="flexibleSearchService" ref="flexibleSearchService"/>
+	</bean>
+	
+	<bean id="productSyncJobPerformable"
+		class="au.com.rejectshop.cronjob.RejectShopProductSyncJobPerformable"
+		parent="abstractJobPerformable">
+		<property name="catalogId" value="${rejectshop.catalogId}"></property>
+		<property name="catalogVersionName" value="${rejectshop.catalogVesionName}"></property>
+		<property name="catalogVersionService" ref="catalogVersionService"></property>
+	</bean>
+
+	<alias name="defaultCreateMediaFactory" alias="CreateMediaFactory" />
+	<bean id="defaultCreateMediaFactory"
+		class="au.com.rejectshop.service.impl.DefaultCreateMediaFactory">
+		<!-- <property name="conversionService" ref="mediaConversionService" /> -->
+		<property name="mediaContainerDao" ref="mediaContainerDao" />
+		<property name="mediaService" ref="mediaService" />
+		<property name="modelService" ref="modelService" />
+		<property name="styleSwatchFormat" value="${styleSwatchFormat}" />
+		<property name="thumbnailFormat" value="${thumbnailFormat}" />
+		<property name="zoomFormat" value="${zoomFormat}" />
+		<property name="miniZoomFormat" value="${miniZoomFormat}" />
+		<property name="cartIconFormat" value="${cartIconFormat}" />
+		<property name="productFormat" value="${productFormat}" />
+		<property name="productService" ref="productService" />
+	</bean>
+	
+	
+
+	<bean id="rejectshopGoogleMapsGeoServiceWrapper"
+		class="au.com.rejectshop.service.storefinder.RejectshopGoogleMapsServiceWrapper"
+		scope="tenant">
+		<property name="googleMapTools" ref="googleMapTools" />
+	</bean>
+	
+	<bean id="updateStoreTimingsJobPerformable"
+		class="au.com.rejectshop.cronjob.RejectShopUpdateStoreTimingsJobPerformable"
+		parent="abstractJobPerformable">
+	</bean>
+	
+	 <alias alias="sendAFriendEmailService" name="defaultSendAFriendEmailService"/>
+	<bean id="defaultSendAFriendEmailService" class="au.com.rejectshop.brontoservice.impl.DefaultSendAFriendEmailService" >
+	</bean> 
+	
+	
+	
+
+</beans>

@@ -1,0 +1,433 @@
+@charset "ISO-8859-1";
+
+.cd-resize-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  /* Force Hardware Acceleration in WebKit */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.is-visible .cd-resize-img {
+   width: 2.73271%;
+  /* bounce in animation of the modified image */
+  animation: cd-bounce-in 0.7s;
+}
+@keyframes cd-bounce-in {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 55%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.cd-image-container {
+  position: relative;
+  /* width: 1130px;
+  height: 600px; */
+}
+.cd-image-container img {
+  display: block;
+}
+
+.cd-image-label {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #ffffff;
+  padding: 1em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+  -moz-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  -o-transform: translateY(20px);
+  transform: translateY(20px);
+  -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0.3s 0.7s;
+  -moz-transition: -moz-transform 0.3s 0.7s, opacity 0.3s 0.7s;
+  transition: transform 0.3s 0.7s, opacity 0.3s 0.7s;
+}
+.cd-image-label.is-hidden {
+  visibility: hidden;
+}
+.is-visible .cd-image-label {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.cd-resize-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  overflow: hidden;
+  /* Force Hardware Acceleration in WebKit */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-right: 5px solid #e2001a;
+}
+.cd-resize-img img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: auto;
+  max-width: none;
+}
+.cd-resize-img .cd-image-label {
+  right: auto;
+  left: 0;
+}
+.is-visible .cd-resize-img {
+  /* width: 50%; */
+  /* bounce in animation of the modified image */
+  -webkit-animation: cd-bounce-in 0.7s;
+  -moz-animation: cd-bounce-in 0.7s;
+  animation: cd-bounce-in 0.7s;
+}
+
+@-webkit-keyframes cd-bounce-in {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 55%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+@-moz-keyframes cd-bounce-in {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 55%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+@keyframes cd-bounce-in {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 55%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+.cd-handle {
+  position: absolute;
+  height: 44px;
+  width: 44px;
+  /* center the element */
+  left: 2.73271%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -22px;
+  border-radius: 50%;
+  background: #e2001a url("../images/cd-arrows.svg") no-repeat center center;
+  cursor: move;
+  box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  -webkit-transform: translate3d(0, 0, 0) scale(0);
+  -moz-transform: translate3d(0, 0, 0) scale(0);
+  -ms-transform: translate3d(0, 0, 0) scale(0);
+  -o-transform: translate3d(0, 0, 0) scale(0);
+  transform: translate3d(0, 0, 0) scale(0);
+}
+.cd-handle.draggable {
+  /* change background color when element is active */
+  background-color: #e2001a;
+}
+.is-visible .cd-handle {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  -moz-transform: translate3d(0, 0, 0) scale(1);
+  -ms-transform: translate3d(0, 0, 0) scale(1);
+  -o-transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
+  -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0s 0.7s;
+  -moz-transition: -moz-transform 0.3s 0.7s, opacity 0s 0.7s;
+  transition: transform 0.3s 0.7s, opacity 0s 0.7s;
+}
+
+img {
+  max-width: 100%;
+}
+
+.active{
+	background-color: #e2001a !important;
+    color: #fff !important;
+}
+
+.themeText{
+	font-family: 'AvantGardeGothicITCW01D 731075';
+    font-size: 21pt;
+    color: #e2001a;
+    text-align: center;
+}
+
+
+.m-y-3{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.m-y-2{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.m-t-2{
+    margin-top:20px;
+}
+
+.paragraph-text{
+    color: #000;
+    font-size: 20px;
+    font-family: "Myriad W01 Regular";
+}
+
+ 
+ .tableWearText{
+    color: #000;
+    float: left;
+    font-size: 21px;
+    font-family: 'AvantGardeGothicITCW01D 731075';
+ }
+ 
+ @media (min-width: 1200px){
+	.decoratingStyle{
+		background-color: #fff;
+	    color: #e2001a;
+	    font-size: 21pt;
+	    height: 60px;
+	    width: 230px;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+
+	.buttons-center-align {
+    	margin-left: 20% !important;
+	}	
+	
+	.slider-container, .cd-resize-img img{
+		width: 1130px;
+	    height: 600px;
+	}
+ }
+
+ 
+ @media only screen and (device-height: 667px) and (device-width: 375px) and (orientation : portrait){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 10% !important;
+	}
+ }
+ 
+  @media  only screen and  (device-height: 360px) and (device-width: 640px) and (orientation : landscape){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	    font-size: 18pt;
+	    height: 60px;
+	    width: 142px;
+	}
+	.buttons-center-align {
+    	margin-left: 47px !important;
+	}
+ }
+ 
+ @media  only screen and  (device-height: 640px) and (device-width: 360px) and (orientation : potrait){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 25px !important;
+	}
+ }
+ 
+ @media only screen and (device-width: 360px) and (device-height: 740px) and (orientation: portrait){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 30px !important;
+	}
+ }
+ 
+ @media only screen and (device-width: 740px) and (device-height: 360px) and (orientation: landscape){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 32% !important;
+	}
+ }
+ 
+  @media only screen and (device-height: 375px) and (device-width: 667px) and (orientation : landscape){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-size: 18pt;
+    	height: 60px;
+    	width: 142px;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 8% !important;
+	}
+ }
+ 
+  
+ @media (max-width: 1200px) and (min-width: 768px)and (orientation : portrait){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    font-size: 18pt;
+	    height: 60px;
+	    width: 142px;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 16% !important;
+	}
+ }
+ 
+  @media (max-width: 1200px) and (min-width: 768px)and (orientation : landscape){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    font-size: 18pt;
+	    height: 60px;
+	    width: 142px;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 25% !important;
+	}
+ }
+ 
+ 
+  @media only screen and (device-height: 640px) and (device-width: 360px) and (orientation : portrait){
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+	.buttons-center-align {
+    	margin-left: 5% !important;
+	}
+ }
+ 
+ @media (max-width: 1200px){
+	.product-listing.product-list .product-item{
+		margin-right:10px !important;
+	}
+	.decoratingStyle {
+	    background-color: #fff;
+	    color: #e2001a;
+	    border: 1pt solid #e2001a;
+	    font-family: 'AvantGardeGothicITCW01D 731075';
+	    margin: 0 20px 18px 0px;
+	}
+ }
+ 
+.owl-item{
+	height: 220px;
+}
+.owl-item img {
+	height: 180px !important;
+}
+
+.owl-item .carousel__item--thumb{
+	margin-bottom: 5px;
+}
+
+.owl-item .price, .product-item .price {
+    margin-left: 38px;
+    margin-right: 38px;
+    font-family: "Myriad W01 Regular";
+    margin-top: 15px !important;
+}
+
+.product-listing.product-list .thumb{
+	margin-bottom:0px !important;
+}
+ 
+
+.owl-carousel {
+-ms-touch-action: none !important;
+touch-action: none !important;
+}
+
+body, html { overflow-x:hidden; }
+ 
+/*  .owl-wrapper .owl-item{
+	width: 196px !important;
+} */
+
+.carousel-component {
+    width: 100% !important;
+}
+  
+ 

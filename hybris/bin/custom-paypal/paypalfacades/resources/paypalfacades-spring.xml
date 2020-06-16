@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [y] hybris Platform Copyright (c) 2000-2013 hybris AG All rights reserved. This software is the confidential and proprietary information 
+	of hybris ("Confidential Information"). You shall not disclose such Confidential Information and shall use it only in accordance with 
+	the terms of the license agreement you entered into with hybris. -->
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- Facades -->
+	<!--<alias alias="paymentFacade" name="payPalPaymentFacade" />-->
+	<bean id="payPalPaymentFacade" class="com.paypal.hybris.facade.impl.PayPalPaymentFacadeImpl" parent="defaultPaymentFacade">
+		<property name="payPalPaymentService" ref="defaultPayPalPaymentService" />
+		<property name="configurationService" ref="configurationService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="modelService" ref="modelService" />
+		<property name="cartService" ref="cartService" />
+		<property name="commonI18NService" ref="commonI18NService"/>
+	</bean>
+
+	<alias alias="priceDataFactory" name="payPalPriceDataFactory" />
+	<bean id="payPalPriceDataFactory" class="com.paypal.hybris.facade.product.impl.PayPalPriceDataFactory" parent="defaultPriceDataFactory">
+	</bean>
+
+	<alias name="payPalPickupOrderEntryGroupPopulator" alias="pickupOrderEntryGroupPopulator" />
+	<bean id="payPalPickupOrderEntryGroupPopulator" class="com.paypal.hybris.facade.order.converters.populator.PayPalPickupOrderEntryGroupPopulator"
+		parent="defaultOrderEntryGroupPopulator">
+		<property name="pointOfServiceConverter" ref="pointOfServiceConverter" />
+	</bean>
+
+	<alias name="payPalDeliveryOrderEntryGroupPopulator" alias="deliveryOrderEntryGroupPopulator" />
+	<bean id="payPalDeliveryOrderEntryGroupPopulator" class="com.paypal.hybris.facade.order.converters.populator.PayPalDeliveryOrderGroupPopulator"
+		parent="defaultOrderEntryGroupPopulator" />
+
+	<alias name="payPalCheckoutFacade" alias="acceleratorCheckoutFacade" />
+	<bean id="payPalCheckoutFacade" class="com.paypal.hybris.facade.impl.PayPalCheckoutFacadeImpl" parent="defaultAcceleratorCheckoutFacade">
+		<property name="paypalPaymentInfoConverter" ref="paypalPaymentInfoConverter" />
+		<property name="configurationService" ref="configurationService" />
+		<property name="sessionService" ref="sessionService" />
+		<property name="uiExperienceService" ref="uiExperienceService" />
+		<property name="checkoutFacade" ref="checkoutFacade" />
+		<property name="payPalPaymentService" ref="payPalPaymentService"/>
+	</bean>
+	
+	<alias name="paypalOrderPopulator" alias="orderPopulator"/>
+	<bean id="paypalOrderPopulator"
+			class="com.paypal.hybris.facade.order.converters.populator.PayPalOrderPopulator"
+			parent="defaultOrderPopulator">
+			<property name="paypalPaymentInfoConverter" ref="paypalPaymentInfoConverter"/>
+	</bean>
+	
+	<alias name="defaultPaypalPaymentInfoConverter" alias="paypalPaymentInfoConverter"/>
+	<bean id="defaultPaypalPaymentInfoConverter" parent="abstractPopulatingConverter">
+		<property name="targetClass" value="de.hybris.platform.commercefacades.order.data.CCPaymentInfoData"/>
+		<property name="populators">
+			<list>
+				<ref bean="paypalPaymentInfoPopulator"/>
+			</list>
+		</property>
+	</bean>
+	
+	<alias name="defaultPaypalPaymentInfoPopulator" alias="paypalPaymentInfoPopulator"/>
+	<bean id="defaultPaypalPaymentInfoPopulator"
+			class="com.paypal.hybris.converters.populators.impl.PaypalPaymentInfoPopulator">
+		<property name="addressConverter" ref="addressConverter"/>
+		<property name="priceDataFactory" ref="priceDataFactory"/>
+	</bean>
+	
+</beans>

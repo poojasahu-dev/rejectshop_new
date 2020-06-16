@@ -1,0 +1,38 @@
+$contentCatalog=rejectshopContentCatalog
+$contentCatalogName=rejectshop Content Catalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$product=product(code, $productCV)
+$category=category(code, $productCV)
+$siteResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/cockpits/cmscockpit
+
+# Language
+$lang=en
+
+
+# Category Filter 
+#INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+#;;TRSBannerXMAS.jpg;TRSBannerXMAS.jpg;$siteResource/images/banners/xmas/TRSBannerXMAS.jpg;image/jpg;The Reject Shop Banner;
+
+
+# Category Filter Component
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;CategoryFilterBannerComponent;Category Filter Banner Component;CategoryFilterBannerComponent;"/"
+
+# Category Filter Component
+#UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+#;;CategoryFilterBannerComponent;TRSBannerXMAS.jpg
+
+
+# ContentSlot 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid,$contentCV)
+;;BannerSectionSlot-categoryFilterPage;CategoryFilterBannerComponent

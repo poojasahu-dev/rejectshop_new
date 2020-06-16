@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  ~ [y] hybris Platform
+  ~
+  ~ Copyright (c) 2000-2015 hybris AG
+  ~ All rights reserved.
+  ~
+  ~ This software is the confidential and proprietary information of hybris
+  ~ ("Confidential Information"). You shall not disclose such Confidential
+  ~ Information and shall use it only in accordance with the terms of the
+  ~ license agreement you entered into with hybris.
+  -->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<enum class="au.com.rejectshop.populator.options.PaymentInfoOption">
+		<value>BASIC</value>
+		<value>BILLING_ADDRESS</value>
+	</enum>
+	
+
+	<!--auth response  -->
+	<bean class="au.com.rejectshop.auth.data.LogoutResponse">
+		<property name="success" type="boolean"/>
+	</bean>
+
+	<!-- storesession data -->
+
+	<bean class="au.com.rejectshop.storesession.data.LanguageDataList">
+		<property name="languages"
+		          type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.LanguageData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.storesession.data.CurrencyDataList">
+		<property name="currencies"
+		          type="java.util.Collection&lt;de.hybris.platform.commercefacades.storesession.data.CurrencyData>"/>
+	</bean>
+
+	<!-- order data -->
+
+	<bean class="au.com.rejectshop.order.data.CartDataList">
+		<property name="carts"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.order.data.OrderEntryDataList">
+		<property name="orderEntries"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.OrderEntryData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.order.data.CardTypeDataList">
+		<property name="cardTypes"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CardTypeData>"/>
+	</bean>
+
+	<bean class="de.hybris.platform.commercefacades.order.data.CartModificationDataList">
+		<property name="cartModificationList"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.order.data.CartModificationData>"/>
+	</bean>
+
+	<!-- product data -->
+
+	<bean class="au.com.rejectshop.product.data.ProductDataList">
+		<property name="products"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ProductData>"/>
+		<property name="catalog" type="String"/>
+		<property name="version" type="String"/>
+		<property name="totalProductCount" type="int"/>
+		<property name="totalPageCount" type="int"/>
+		<property name="currentPage" type="int"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.product.data.PromotionDataList">
+		<property name="promotions"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.product.data.PromotionResultDataList">
+		<property name="promotions"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.PromotionResultData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.product.data.ReviewDataList">
+		<property name="reviews" type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.ReviewData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.product.data.SuggestionDataList">
+		<property name="suggestions"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.product.data.SuggestionData>"/>
+	</bean>
+
+	<!-- user data -->
+
+	<bean class="au.com.rejectshop.user.data.TitleDataList">
+		<property name="titles" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.TitleData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.user.data.CountryDataList">
+		<property name="countries" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.CountryData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.user.data.AddressDataList">
+		<property name="addresses" type="java.util.List&lt;de.hybris.platform.commercefacades.user.data.AddressData>"/>
+	</bean>
+
+	<!-- voucher data -->
+	<bean class="au.com.rejectshop.voucher.data.VoucherDataList">
+		<property name="vouchers"
+		          type="java.util.List&lt;de.hybris.platform.commercefacades.voucher.data.VoucherData>"/>
+	</bean>
+
+	<!-- validation data -->
+	<bean class="au.com.rejectshop.validation.data.AddressValidationData">
+		<property name="errors" type="de.hybris.platform.webservicescommons.dto.error.ErrorListWsDTO"/>
+		<property name="decision" type="String"/>
+		<property name="suggestedAddressesList"
+		          type="au.com.rejectshop.user.data.AddressDataList"/>
+	</bean>
+
+	<!-- Additional title property for CustomerData -->
+	<bean class="de.hybris.platform.commercefacades.user.data.CustomerData"
+	      extends="de.hybris.platform.commercefacades.user.data.PrincipalData">
+		<property name="title" type="String"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.user.data.LoginChangeResponse">
+		<property name="success" type="boolean"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.user.data.PasswordRestoreResponse">
+		<property name="success" type="boolean"/>
+	</bean>
+
+	<!-- update queues -->
+
+	<bean class="au.com.rejectshop.queues.data.ProductExpressUpdateElementData">
+		<property name="code" type="String"/>
+		<property name="catalogId" type="String"/>
+		<property name="catalogVersion" type="String"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.queues.data.ProductExpressUpdateElementDataList">
+		<property name="productExpressUpdateElements"
+		          type="java.util.List&lt;au.com.rejectshop.queues.data.ProductExpressUpdateElementData>"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.queues.data.OrderStatusUpdateElementData">
+		<property name="code" type="String"/>
+		<property name="status" type="String"/>
+		<property name="baseSiteId" type="String"/>
+	</bean>
+
+	<bean class="au.com.rejectshop.queues.data.OrderStatusUpdateElementDataList">
+		<property name="orderStatusUpdateElements"
+		          type="java.util.List&lt;au.com.rejectshop.queues.data.OrderStatusUpdateElementData>"/>
+	</bean>
+	
+	
+	<bean class="au.com.rejectshop.data.StoreBean">
+	  <property name="name" type="String"/>
+	  <property name="description" type="String"/>
+	  <property name="importFileName" type="String"/>
+	  <property name="district" type="String"/>
+	  <property name="operatingCompany" type="String"/>
+	  <property name="siteId" type="String"/>
+	   <property name="region" type="String"/>
+	  <property name="address" type="au.com.rejectshop.data.AddressBean"/>
+	   <property name="startDate" type="java.util.Date"/>
+       <property name="endDate" type="java.util.Date"/>
+	  
+	</bean>
+	
+	<bean class="au.com.rejectshop.data.AddressBean">
+	  <property name="addrLine1" type="String"/>
+	  <property name="addrLine2" type="String"/>
+	  <property name="city" type="String"/>
+	  <property name="country" type="String"/>
+	  <property name="postalCode" type="String"/>
+	  <property name="telephoneNo" type="String"/>
+	  <property name="fax" type="String"/>
+	  <property name="state" type="String"/>
+	</bean>
+
+    <bean class="au.com.rejectshop.data.PriceBean">
+       <property name="price" type="double"/>
+       <property name="unit" type="int"/>
+       <property name="startDate" type="java.util.Date"/>
+       <property name="endDate" type="java.util.Date"/>
+   	<property name="priceRuleID" type="String"/>
+       
+    </bean>
+    
+    <bean class="au.com.rejectshop.data.ProductBean">
+      <property name="code" type="String"/>
+      <property name="name" type="String"/>
+      <property name="categoryName" type="String"/>
+      <property name="categories"
+		          type="java.util.Collection&lt;de.hybris.platform.commercefacades.product.data.CategoryData>"/>
+      <property name="categoryCode" type="String"/>
+      <property name="categoryDescription" type="String"/>
+      <property name="active" type="boolean" />
+      <property name="allowSales" type="boolean" /> 
+      <property name="price" type="java.util.List&lt;au.com.rejectshop.data.PriceBean>"/>  
+      <property name="importFileName" type="String"/>
+      <property name="startDate" type="java.util.Date"/>
+      <property name="endDate" type="java.util.Date"/>
+      <property name="innerPackSize" type="int"/>
+      <property name="replenType" type="String"/>
+      <property name="procurementType" type="String"/>
+      <property name="articleClass" type="String"/>
+      <property name="customerOffer" type="String"/>
+       <property name="brand" type="String"/>
+      <property name="articleStrategy" type="String"/>
+      <property name="productIndicator" type="String"/>
+   </bean>
+    
+    <bean class="au.com.rejectshop.data.ErrorBean">
+      <property name="fileName" type="String"/>
+      <property name="field" type="String"/>
+      <property name="message" type="String"/>
+      <property name="storeId" type="String"/>
+    </bean>
+     <bean class="au.com.rejectshop.data.SkipBean">
+      <property name="storeId" type="String"/>
+       <property name="fileName" type="String"/>
+       <property name="field" type="String"/>
+      <property name="message" type="String"/>
+    </bean>
+    
+    
+</beans>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2016 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+<configuration xmlns="hybris.de/schemas/hmc/generic"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="hybris.de/schemas/hmc/generic hmc.xsd">
+
+
+	<!-- Configuration for extension rejectshopcore -->
+
+	<type name="Consignment" mode="append">
+		<organizer>
+			<editor mode="append">
+				<tab name="properties" position="0" mode="append">
+					<section name="consignment.details">
+						<listlayout mode="append">
+							 <action type="item" classname="au.com.rejectshop.core.hmc.PickupConfirmationHMCAction" name="btn.consignment.confirm.pickup"/>
+						</listlayout>
+					</section>
+				</tab>
+			</editor>
+		</organizer>
+	</type>
+	
+    <type name="Product" icon="images/icons/e_product.gif" mode="append">
+      <organizer>
+		 <editor>
+            <tab name="tab.product.properties" position="1">
+               <section name="product.descriptions">
+                  <listlayout>
+                    <attribute name="erpDescription">
+                        <wysiwygeditor/>
+                     </attribute>
+                     </listlayout>
+            		<columnlayout>
+					<row>
+            		  <attribute name="innerPackSize"/>
+            	    </row>
+            	    <row>
+                      <attribute name="activeProduct"/>
+                    </row>
+                    <row>
+                      <attribute name="allowProductSale"/>
+                    </row>
+                    <row>
+                      <attribute name="replenType"/>
+                    </row>
+                    <row>
+                      <attribute name="procurementRule"/>
+                    </row>
+					<row>
+                      <attribute name="unit"/>
+                    </row>
+                    </columnlayout>
+              </section>
+           </tab>
+         </editor>
+      </organizer>
+    </type>
+    
+    
+   	<type name="PointOfService" mode="append" >
+   	<organizer>
+   	<editor>
+   	<tab name="tab.address">
+   	<section name="sec.type" position="0">
+ 	   <columnlayout>
+		<row>
+		<attribute name="isActive" />
+		</row>
+		<row>
+		<attribute name="region" />
+		</row>
+		<row>
+		<attribute name="startDate" />
+		</row>
+		<row>
+		<attribute name="endDate" />
+		</row>
+		
+	    </columnlayout>
+	    </section>
+	    </tab>
+	    </editor>
+	    </organizer>
+	    
+    </type>
+
+	<type name="PriceRow" icon="images/icons/e_pricerow.gif" mode="append">
+		<organizer>
+			<editor>
+
+				<tab name="properties" position="0">
+					<section name="properties">
+						<columnlayout>
+							<row>
+								<attribute name="priceRuleID" />
+							</row>
+						</columnlayout>
+					</section>
+				</tab>
+			</editor>
+		</organizer>
+
+	</type>
+	
+</configuration>

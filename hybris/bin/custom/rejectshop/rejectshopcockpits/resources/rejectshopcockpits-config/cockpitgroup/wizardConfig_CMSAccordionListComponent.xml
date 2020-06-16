@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wizard-config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="wizard-config.xsd"
+               showPrefilledValues="true" selectMode="true" createMode="true" displaySubtypes="true">
+	<displayed-properties>
+		<group qualifier="Properties" visible="true" initially-opened="true">
+			<label key="config.wizardConfig.properties" />
+			<property qualifier="CMSAccordionListComponent.title"/>
+			
+		</group>
+		<group qualifier="Relations" visible="true">
+			<label key="cmscockpit.Wizard.relations" />
+			<property qualifier="CMSAccordionListComponent.accordionItems">
+				<parameter name="predefinedValuesStrategy" value="cmsItemPredefinedValuesStrategy"/>
+				<parameter name="allowCreate" value="true"/>
+			</property>
+		</group>
+	</displayed-properties>
+</wizard-config>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2000-2015 hybris AG
+ All rights reserved.
+
+ This software is the confidential and proprietary information of hybris
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with hybris.
+-->
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="beans.xsd">
+
+	<bean class="de.hybris.platform.commercefacades.product.data.ProductData">
+		<property name="genders" type="java.util.List&lt;au.com.rejectshop.facades.product.data.GenderData>"/>
+		<property name="metaDescription" type="String"></property>
+		<property name="productIndicator" type="String"></property>
+	</bean>
+
+	<bean class="au.com.rejectshop.facades.product.data.GenderData">
+		<property name="code" type="String"/>
+		<property name="name" type="String"/>
+	</bean>
+	
+	<bean class="au.com.rejectshop.facades.product.data.EmailProductData">
+		<property name="productCode" type="String"/>
+		<property name="productName" type="String"/>
+		<property name="productUrl" type="String"/>
+		<property name="productDescription" type="String"/>
+		<property name="productImageUrl" type="String"/>
+		<property name="productPrice" type="String"/>
+		<!--<property name="message" type="String"/>-->
+		<property name="fromEmail" type="String"/>
+		<property name="fromName" type="String"/>
+		<property name="toEmail" type="String"/>
+		<property name="toName" type="String"/>
+		<property name="reminderDate" type="String"/>
+		<property name="reminderTime" type="String"/>
+    </bean>
+	<bean class="de.hybris.platform.commercefacades.product.data.CategoryData">
+		<property name="picture" type="de.hybris.platform.core.model.media.MediaModel"/>
+		<property name="priority" type="java.lang.Integer"/>
+		<property name="categoryBanner" type="de.hybris.platform.cms2lib.model.components.BannerComponentModel"/>
+	</bean>
+	
+	<bean class="de.hybris.platform.commercefacades.storelocator.data.PointOfServiceData">
+		<property name="closed" type="boolean"></property>
+	</bean>
+	
+		<bean class="de.hybris.platform.commercefacades.user.data.AddressData">
+		<property name="state" type="String"/>
+		<property name="fax" type="String"/>
+		</bean>
+	<enum
+		class="de.hybris.platform.acceleratorservices.controllers.page.PageType">
+		<value>HomePage</value>
+		<value>ProductSearch</value>
+		<value>Category</value>
+		<value>Product</value>
+		<value>Cart</value>
+		<value>OrderConfirmation</value>
+		<value>ProductReviewValidate</value>
+		<value>ProductReviewSubmit</value>
+		<value>CustomerFeedbackView</value>
+		<value>CustomerFeedbackSubmit</value>
+		<value>CategorySortByNameDesc</value>
+		<value>CategorySortByNameAsc</value>
+		<value>CategorySortByPriceLowFirst</value>
+		<value>CategorySortByPriceHighFirst</value>
+		<value>CategorySortByTopRated</value>
+		<value>CategorySortByRelevance</value>
+		<value>StoreFinder</value>
+		<value>GiftCardPage</value>
+		<value>StoreDetailPage</value>
+	</enum>
+	<enum class="de.hybris.platform.commercefacades.product.ProductOption">
+        <value>METADESCRIPTION</value>
+		<value>PRODUCTINDICATOR</value>
+    </enum>
+    
+     <bean class="au.com.rejectshop.data.LassooProductBean">
+    	<property name="offerName" type="String"/>
+    	<property name="offerPrice" type="String"/>
+    	<property name="offerImage" type="String"/>
+    	<property name="productBrand" type="String"/>
+    	<property name="productModelNumber" type="String"/>
+    	<property name="ean" type="String"/>
+    	<property name="offerDescription" type="String"/>   	
+    	<property name="url" type="String"/>
+    	<property name="category" type="String"/>
+    </bean>
+    
+        
+     <bean class="au.com.rejectshop.data.LassooProductListBean">
+   	  <property name="lasooProductList" type="java.util.List&lt;au.com.rejectshop.data.LassooProductBean>"/>  
+     </bean>
+     
+      <bean class="au.com.rejectshop.dto.OfferWsDTO">
+    	<property name="offerName" type="String"/>
+    	<property name="offerPrice" type="String"/>
+    	<property name="offerImage" type="String"/>
+    	<property name="productBrand" type="String"/>
+    	<property name="productModelNumber" type="String"/>
+    	<property name="ean" type="String"/>
+    	<property name="offerDescription" type="String"/>   	
+    	<property name="url" type="String"/>
+    	<property name="category" type="String"/>
+    </bean>
+		
+		<bean class="au.com.rejectshop.dto.OffersWsDTO">
+   	  <property name="offer" type="java.util.List&lt;au.com.rejectshop.dto.OfferWsDTO>"/>  
+     </bean>
+</beans>

@@ -1,0 +1,258 @@
+/*
+## storeDetail
+********************************************************************/
+
+
+
+#storeDetail{
+	
+	
+}
+
+.storeMap .getdirection
+{
+	padding: 10px;
+    background: #e2001a;
+    color:#fff;
+    font-family: 'AvantGardeGothicITCW01D 731075';
+    font-size: 16px;
+    text-transform: Uppercase;
+    
+}
+.storeMap .getdirection:hover{text-decoration:none}
+.markerDialog .getdirection
+{
+    color:#e2001a;
+    padding:0px;
+    background: transparent;
+}
+
+.backtosearch{
+    padding: 10px;
+    background: #e2001a;
+    
+    color:#fff;
+   font-family:'AvantGardeGothicITCW01D 731075';  
+    font-size:16px;
+    text-transform:Uppercase;
+}
+.backtosearch:hover
+{
+	color:#fff;
+	text-decoration:none;
+}
+
+.markerAddress
+ {width: 125px;
+  overflow: hidden;
+  height: auto;
+  }
+
+#storeDetail .detailPane{
+	float:left;
+	border: 0px dotted #A5A5A5;
+	padding:0 20px 20px 10px;
+	position:relative;
+	width:45%;
+	margin:0 10px 0 15px;
+}
+
+.storedetailmap
+{
+	width:45%;
+	padding:0 20px 20px 10px;
+	float:left;
+	padding-bottom: 40px;
+}
+
+
+
+#storeDetail .detailPane .headline{
+	font-size: 25px;
+	height: 39px;
+	line-height: 39px;
+	font-family:"Myriad W01 Bd";
+	color:#404040;
+	text-transform: uppercase;
+	margin:0 0 20px 0;
+}
+
+
+
+
+#storeDetail .storeGetDirection {
+	padding-top: 40px;
+}
+
+
+#storeDetail .storeMap{
+
+	/*height:530px;*/
+	padding-top: 5px;
+}
+
+.store-finder-navigation-list-entry-address a{
+font-family:"Myriad W01 Regular";
+font-size:13px;
+color:#404040;
+ text-transform: capitalize;
+}
+.store-finder-navigation-list-entry-name a
+{
+font-family:"Myriad W01 SmBd";
+font-size:14px;
+color:#e2001a;
+text-transform: Capitalize;
+}
+.store-finder-navigation-list-entry-distance span{
+font-family:"Myriad W01 Bd";
+font-size:13px;
+color:#404040;
+/*  text-transform:Uppercase; */	
+}
+.store-finder-navigation-list-entry input:checked + label span span a
+{
+	color:#fff;
+	width:100%;
+	float:left;
+}
+.store-finder-navigation-list-entry-distance span a
+{
+	color:#000;
+	height: 100%;
+    position: relative;
+    
+}
+.store-finder-navigation-list-entry input:checked + label span.store-finder-navigation-list-entry-distance span a {
+    top:12px;
+}
+.store-finder-navigation-list-entry-distance span a:hover
+{
+	text-decoration:none;
+}
+.store-finder-navigation-list-entry-address a
+{
+	font-weight:normal;
+	color:#000;
+} 
+.store-finder-details-info-address js-store-line1 js-store-line2
+{
+	font-family:"Myriad W01 Regular";
+font-size:13px;
+color:#404040;
+text-transform:Lowercase;	
+}
+
+#storeDetail   #map_canvas{
+	height:610px;
+}
+
+
+.storedetailmap #map_canvas
+{
+	height:480px !important;
+	    top: 10px;
+}
+
+#storeDetail   .storeImage img{
+	width:100%;
+	margin:20px 0 0 0;
+}
+
+
+#storeDetail   .storeDetailsTable td{
+	vertical-align:top;
+}
+
+
+
+#storeDetail .detailSection{
+	margin: 0 0 24px 0;
+    text-transform: capitalize;
+}
+
+#storeDetail .storeMessageSection{
+	margin: 0 0 24px 0;
+}
+
+#storeDetail .detailSectionHeadline{
+	font-family:"Myriad W01 SmBd";
+	color:#404040;
+	font-size:21px;
+	margin:0 0 5px 0;
+}
+#storeDetail .detailSectionHeadlineDistance{
+	font-family:"Myriad W01 SmBd";
+	color:#e2001a;
+	font-size:14px;
+}
+#storeDetail .storeSpecificMessage{
+	font-family:"Myriad W01 Regular";
+	font-size:14px;
+	margin-top:45px;
+	text-align: center;
+}
+#storeDetail .detailSectionHeadlineTelephone{
+	font-family:"Myriad W01 Regular";
+	color:#404040;
+	font-size:14px;
+}
+.distanceDetails{
+	font-family:"Myriad W01 Regular";
+	color:#404040;
+	font-size:13px;
+	text-transform: capitalize;
+}
+.telephone{
+font-family:"Myriad W01 Regular";
+color:#404040;
+font-size:13px;	
+text-transform: capitalize;
+}
+.detailSection ul{
+font-family:"Myriad W01 Regular";
+color:#404040;
+font-size:13px;	
+text-transform: capitalize;
+}
+
+.detailSection p {
+	font-family:"Myriad W01 Regular";
+	font-size:13px;
+	text-transform: none;
+	color:#404040;
+}
+
+#storeDetail .detailSection .store-openings{
+	margin: 10px 0px  0px 0px;
+}
+.markerDialog a
+{
+	color:red;
+}
+.markerDialog a:hover
+{
+	color:red;
+}
+@media(max-width:768px){
+	#storeDetail .detailPane
+	{	width: 100%;
+	padding: 0 0px 0px 0px;
+	    margin: 0 0px 20px 15px;
+	}
+	.storedetailmap , #storeDetail .storeMap  {
+    width: 100%;
+	}
+}
+.store-finder-navigation-list-entry-name a:hover {
+   font-family:"Myriad W01 SmBd";
+    font-size: 14px;
+    color: #e2001a;
+/*     text-transform: lowercase; */
+}
+.store-finder-navigation-list-entry-address a:hover {
+    font-family:"Myriad W01 Regular";
+    font-size: 13px;
+    color: #404040;
+    text-transform: capitalize;
+}

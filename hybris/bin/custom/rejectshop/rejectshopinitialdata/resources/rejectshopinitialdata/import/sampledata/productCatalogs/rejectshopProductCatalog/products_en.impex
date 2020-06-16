@@ -1,0 +1,18 @@
+#******************************This file is generated - please do not edit it. It will be regenerated after every build.********************************#
+# ImpEx template for Importing all Localisations for Products in the Electronics Store
+
+# Macros / Replacement Parameter definitions
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$lang=en
+
+ # Update allProducts with localisations
+UPDATE Product;code[unique=true];$catalogVersion;name[lang=$lang];summary[lang=$lang];description[lang=$lang];
+;20030162;;JAR CLIP TOP SQUARE 3L;JAR CLIP TOP SQUARE 3L;JAR CLIP TOP SQUARE 3L;
+;30037267;;Supreme Shower Bath & Tile Cleaner Spray 750ml;;This bathroom cleaner is a fast action surface spray for your bathroom, shower and tiles. Tough on soap scum, grime and calcium deposits. Great for killing mould with no harsh fumes. Supreme is an Australian owned brand for house cleaning essentials.
+;30018385;;Supreme Mould Kill Spray 750ml;;This household and outdoor spray kills mould and germs with a highly active formula suitable for stubborn stains. Can be used for indoor jobs - tiles, grout and walls; and outdoors - boats, under eaves and on concrete.
+;30006305;;Shower Sparkle Original Spray 750ml;;This shower spray is a house cleaning essential. No rinsing, wiping or scrubbing required. With regular use this shower spray prevents soap scum build-up and protects your bathroom from mould. Cleans all shower surfaces.
+
+
+

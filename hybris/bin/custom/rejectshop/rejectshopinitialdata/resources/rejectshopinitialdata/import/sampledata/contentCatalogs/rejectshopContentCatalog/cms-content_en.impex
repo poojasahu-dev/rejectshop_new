@@ -1,0 +1,977 @@
+##******************************This file is generated - please do not edit it. It will be regenerated after every build.********************************#
+
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture=media(code, $contentCV);
+$siteResource=jar:au.com.rejectshop.initialdata.constants.RejectshopInitialDataConstants&/rejectshopinitialdata/import/sampledata/contentCatalogs/$contentCatalog
+
+# Language
+$lang=en
+
+# Site Logo Component
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;SiteLogoComponent;/images/theme/logo-imgresponsive.png
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+;;justLandLink01;"Just Landed"
+;;catalogueLink0;"Catalogue"
+;;contactLink;"Contact Us"
+;;savvyblogLink0;"Savvy Blog"
+#ABOUT US
+;;CompantinfoLink0;"Company Information"
+;;BoardLink1;"Board Of Directors"
+;;ManageLink2;"Management Team"
+;;InvestorLink3;"Investor Information"
+;;CorporateLink4;"Corporate Governance"
+;;InformationLink5;"Information For Suppliers"
+;;InformationstaticLink5;"Information For Suppliers"
+;;PropertyLink6;"Property"
+;;FinancialReportLink;"Financial Report"
+;;PressReleaseLink;"Press Release"
+;;PresentationLink;"Presentation"
+;;OtherAnnouncementsLink;"Other Announcements "
+;;PoliciesNChartersLink;"Policies and Charters"
+;;ShareRegistryLink;"Share Registry"
+;;DeliveryRequirementsLink;"Delivery Requirements"
+;;InvestorstaticLink3;"Investor Information"
+;;CorporatestaticLink4;"Corporate Governance "
+#Careers
+;;IntroductionLink0;"Introduction"
+;;CareerpathLink1;"Career Paths"
+;;CurrentvacaniesLink2;"Current Vacancies"
+;;LearningLink3;"Learning & Development"
+;;Induction4;"Induction" 
+#Customer Service
+;;QualityLink0;"Quality Guarantee"
+;;ProductrecallLink1;"Product Recalls"
+;;BulkordersLink2;"Bulk Orders"
+;;GiftcardsLink3;"Gift Cards"
+;;ParalleslimportLink4;"Parallel Imports" 
+;;ReturnpolicyLink5;"Returns Policy"
+;;FaqLink6;"FAQ"
+#Contact Us
+;;ContactinfoLink0;"Contact Information"
+;;CustomerFeedbackLink1;"Customer Feedback"
+;;CustomeSupportLink1;"Customer Support 1800 633 886"
+;;CustomeSupportLink2;""
+;;privacyLink;"| Privacy Policy" 
+;;terms&conditonLink;"| Terms & Conditions"
+;;siteMapLink;"| Sitemap"
+
+
+# CMS Link Components
+UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
+;;catalogueLink0;"Catalogue"
+;;savvyblogLink0;"Savvy Blog"
+#;;JustLandedLink;"Just Landed"
+;;S-CLOTHINGCategoryLink;"Clothing" 
+;;FACCategoryLink;"Fashion Accessories"
+;;CLHCategoryLink;"Clothing"
+;;SUACategoryLink;"Socks & Underwear"
+;;RAINWEARCategoryLink;"Rainwear"
+
+;;S-STATIONERYCategoryLink;"Stationery"  
+;;CRDCategoryLink;"Cards & Wrap"
+;;WRPCategoryLink;"Wrap"
+;;BKSCategoryLink;"Books"
+;;STNCategoryLink;"Stationery"
+;;CFTCategoryLink;"Craft"
+;;PTYCategoryLink;"Partyware"
+;;CSTCategoryLink;"Christmas"
+;;SEACategoryLink;"Seasonal"
+
+;;S-HOMEANDGARDENCategoryLink;"Home & Garden"
+;;HDOCategoryLink;"Home Deco"
+;;PHTCategoryLink;"Photography"
+;;AROCategoryLink;"Aroma"
+;;GHSCategoryLink;"General Housecares"
+;;KCHCategoryLink;"Kitchen" 
+;;HSTCategoryLink;"Home Storage"
+;;MNCCategoryLink;"Manchester"
+;;LUGCategoryLink;"Luggage"
+;;CLNCategoryLink;"Cleaning"
+;;AUVCategoryLink;"Electrical Accessories"
+;;FURCategoryLink;"Furniture"
+;;GDNCategoryLink;"Garden"
+;;HDWCategoryLink;"Hardware"
+;;SSGCategoryLink;"Seasonal Softgoods"
+
+;;S-GROCERYCategoryLink;"Grocery"
+;;COFCategoryLink;"Confectionery"
+;;DRKCategoryLink;"Drinks"
+;;FOOCategoryLink;"Grocery"
+;;SFOCategoryLink;"Seasonal Food"
+
+;;S-BEAUTYCategoryLink;"Beauty" 
+;;TLTCategoryLink;"Toiletries"
+;;COSCategoryLink;"Cosmetics"
+
+;;S-PETSCategoryLink;"Pets"
+;;PETCategoryLink;"Petcare" 
+
+;;S-TOYSCategoryLink;"Toys"
+;;RECCategoryLink;"Recreation"
+;;TOYCategoryLink;"Toys"
+
+;;AccountAddressBookLink;"Address Book"
+;;AccountHomeLink;"My Account"
+;;AccountManageAddressLink;"Manage your delivery addresses"
+;;AccountManagePaymentDetailsLink;"Manage your payment details"
+;;AccountOrderHistoryLink;"Order History"
+;;AccountPaymentDetailsLink;"Payment Details"
+;;AccountPersonalDetailsLink;"Update personal details"
+;;AccountProfileLink;"Profile"
+;;AccountUpdatePasswordLink;"Change your password"
+;;AccountViewOrderHistoryLink;"View order history"
+
+
+
+
+
+#Localized values for CheckGiftCardBalanceComponent
+INSERT_UPDATE CheckGiftCardBalanceComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang];buttonLabel[lang=$lang]
+;;checkGiftCardBalanceComponent;GIFT CARDS;Got a Gift Card? Check your balance online, anytime.;CHECK BALANCE
+
+# Lightbox Banner for Mini Cart (banner is not localizable so we must create a separate banner per language)
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];&imageRef;folder(qualifier)[default='images'];altText
+
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;LightboxHomeDeliveryBannerComponent;
+
+# CMS Mini Cart Component
+UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;title[lang=$lang]
+;;MiniCart;Mini Cart;"Shopping List"
+;;ShoppingList;shopping Cart;"Add to shopping list"
+
+# CMS tabs components
+UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+;;deliveryTab;Delivery;"<table border=""0"" cellspacing=""0"" cellpadding=""10"" style="" empty-cells: show; font-size: 12px; padding: 0px; margin: 0px;"">  <tbody>    <tr style=""padding: 0px; margin: 0px;"">      <td colspan=""4"" style=""vertical-align: top; text-align: left; font-weight: normal; padding: 0px; margin: 0px;"">        <div style=""padding-top: 10px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-bottom-width: 1px; border-top-width: 1px; margin: 0px;"">          <p align=""justify"">Lorem ipsum dolor sit amet, dolor sed, ut nam ut. Senectus mauris egestas a massa, enim placeat wisi congue purus fermentum. Ut aptent mauris dapibus congue in sit. Sed dolor varius amet feugiat volutpat dignissim, pede a rhoncus sodales aliquam adipiscing, dapibus massa fusce. Dui egestas ornare urna nibh facilisi, cras posuere.</p><p align=""justify"">Lorem aliquam accumsan eleifend sem libero lorem, aliquam sequi sed urna nec. Eget dolor quisque dolor, amet suspendisse ullamcorper minus elit lectus nunc, est mattis dui id eu et facilisis, conubia sit tristique. Ac fusce gravida condimentum iaculis neque, a platea curabitur accumsan porttitor vel justo. Amet potenti ac, eget amet ducimus sit nulla, ac porttitor rhoncus, justo proin tortor integer turpis nulla vitae. Egestas mollis litora nunc platea dui, eu semper mauris diam, erat quam, porta maecenas fusce libero non aliquet. Amet tellus taciti ligula sed sollicitudin, nonummy cursus enim, hendrerit nec, sed lacus sed at sit quis, semper a arcu mollis sapien nec pretium. Ante mauris eros nec, nonummy mauris, nulla lacinia vel. Volutpat luctus velit eu.</p>        </div>      </td>    </tr>  </tbody></table>"
+
+# CMS Footer Component
+UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];notice[lang=$lang]
+;;FooterComponent;"The Reject Shop © 2017"
+
+# CMS Paragraph Component (Contact information)
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+;;ContactInfo;""
+
+# CMS ProductReferences Components
+UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;CrossSelling;"You may also like..."
+;;Others;"Accessories"
+;;Similar;"You may also like..."
+;;accessories;"Accessories"
+;;UpSelling;"Complete The Look"
+# CMS PurchasedCategorySuggestion Components
+UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+#;;PurchasedCategorySuggestions;"You may also like..."
+
+# CMS CartSuggestion Components
+UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;CartSuggestions;"You may also like..."
+
+
+
+# CMS Navigation Nodes
+UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;AllClothingNavNode;""
+;;ClothingNavNode;""
+;;savvyNavNode;"Savvy"
+;;catalogueNavNode;"Catalogue"
+;;StationeryNavNode;""
+;;AllStationeryNavNode;""
+;;home&gardenNavNode;""
+;;Allhome&gardenNavNode;""
+;;GroceryNavNode;""
+;;AllGroceryNavNode;""
+;;BeautyNavNode;""
+;;AllBeautyNavNode;""
+;;PetsNavNode;""
+;;AllPetsNavNode;""
+;;ToysNavNode;""
+;;AllToysNavNode;""
+;;JustLandedNavNode;""
+;;AllJustLandedNavNode;""
+
+;;RejectShopNavNode;"The Reject Shop Site"
+;;AccountAddressBookNavNode;"Address Book"
+;;AccountLeftNavNode;"My Account"
+;;AccountOrderHistoryNavNode;"Order History"
+;;AccountPaymentDetailsNavNode;"Payment Details"
+;;AccountProfileNavNode;"Profile"
+;;AccountAddressBookNavNode;"Address Book"
+;;AccountLeftNavNode;"My Account"
+;;AccountOrderHistoryNavNode;"Order History"
+;;AccountPaymentDetailsNavNode;"Payment Details"
+;;AccountProfileNavNode;"Profile"
+
+# CMSLink Info Navigation Component
+UPDATE CMSLeftNavigationMenuComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;AboutUsLeftNavigationMenuComponent;About Us
+;;CareersLeftNavigationMenuComponent;Careers
+;;CustomerServiceLeftNavigationMenuComponent;Customer Service
+;;ContactUSLeftNavigationMenuComponent;Contact Us
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+;;EmptyCartParagraphComponent;"<h2>Your shopping cart is empty</h2><p>Suggestions</p><ul><li>Browse our products by selecting a category above</li></ul>"
+;;NoSearchResultsParagraphComponent;"<h2>Sorry, we couldn't find any results for your search</h2><p>Suggestions:</p><ul><li>You may have typed your keywords incorrectly - please check for misspellings.</li><li>You may have been too specific - please broaden your search by using fewer keywords.</li><li>Browse our products by selecting a category above.</li></ul>"
+
+# rejectshop Cart Page 
+
+# Media Content
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'];altText
+
+UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[lang=$lang]
+;;HelpBanner;
+;;NextDayDeliveryBanner120;
+
+UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
+;;EmptyCartParagraphComponent;"<h2>Your shopping cart is empty</h2><p>Suggestions</p><ul><li>Browse our products by selecting a category above</li></ul>"
+;;HelpParagraphComponent;"<strong>Need Help with your checkout process?</strong> <span>Contact Us or Call phone number.</span>"
+
+# CMS Title Paragraph  Components
+UPDATE CMSTitleParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+;;companyinformation;COMPANY INFORMATION;"<p>The Reject Shop operates in the discount variety retail sector in Australia serving a broad range of value-conscious consumers who are attracted to low price points, convenient shopping locations and the opportunity to purchase a bargain.<br><br>We offer a wide variety of general consumer merchandise, with particular focus on:	 everyday needs - such as toiletries, cosmetics, homewares, personal care products, hardware, basic furniture, household cleaning products, kitchenware, confectionery and snack food; and lifestyle and seasonal merchandise - such as seasonal gifts, cards and wrap, toys, leisure items and home decorations.<br><br> Our business goes back over 30 years and here is a quick look at what we have achieved since we began:</p><ul> <li>1981 - The Reject Shop was founded by Ron Hall and John Shuster with the first Melbourne store</li> <li>1985 - Ceased selling factory seconds and commenced discount variety retailing</li><li>1989 - Commenced direct importing of merchandise from overseas</li><li>1990 - Opened first 'Everything Here $2' store</li><li>1990 - Expanded into NSW with first store at Pagewood</li> <li>1992 - Opened first store in SA at Elizabeth</li> <li>1993 - Selected as Dunn and Bradstreet Victorian Business of the Year award</li> <li>1994 - Private Equity invests to fund future growth</li> <li>2004 - The Reject Shop opened its 100th store</li> <li>2004 - The Reject Shop successfully listed on the Australian Stock Exchange at $2 per share</li> <li>2005 - The first QLD store opened in Pacific Fair</li> <li>2006 - The first WA store opened in Booragoon</li> <li>2006 - The last Everything Here $2 store closed</li> <li>2006 - Opened National Distribution Centre at Melbourne Airport</li> <li>2007 - The Reject Shop enters the ASX Top 300</li> <li>2008 - The first TAS store opened in Hobart</li> <li>2009 - Implemented SAP, the new IT enterprise system</li> <li>2009 - Opened 30 stores (23 opened in 22 weeks!)</li> <li>2010 - Opened second Distribution Centre in Ipswich, QLD</li> <li>2010 - The Reject Shop opened its 200th store</li><li>2012 - The Reject Shop opened its 250th store</li><li>2013 - The Reject Shop opened its 300th store</li><li>2013 - Received the Roy Morgan Customer Satisfaction Award 2013</li><li>2014 - Reached 100,000 fans on Facebook</li><li>2014 - Launch of The Reject Shop Foundation</li><li>2014 - Opened third Distribution Centre in Hazelmere, WA</li><li>2014 -  Received the Roy Morgan Customer Satisfaction Award 2014</li><li>2015 - Raised over $250,000 for The Reject Shop Foundation</li><li>2015 - Reached 200,000 fans on Facebook</li><li>2014 -  Received the Roy Morgan Customer Satisfaction Award 2015</li> </ul><p>&nbsp;</p>"	
+;;boardofdirectors;BOARD OF DIRECTORS;""
+;;managementteam;MANAGEMENT TEAM;""
+;;investorinformation;INVESTOR INFORMATION;"<p>Coming Soon!</p>"
+;;corporategovernance;CORPORATE GOVERNANCE;"<p>Coming Soon!</p>"
+;;informationforsuppliers;INFORMATION FOR SUPPLIERS;"<p>As a discount variety retailer we must offer our customers products that are value for money and fit for purpose. To achieve this we demand our suppliers comply with our code of practice:</p><ul><li>All products comply with Australia Standards and Regulations;</li><li>All products be safe to use and fit for purpose; and</li><li>All products comply with product labeling, barcode format and carton marking standards.</li></ul><p>&nbsp;<br>In selecting our suppliers we evaluate not only the product but the ethical standards our suppliers represent. Our suppliers must:</p><ul><li>Preserve the confidentiality of information obtained in the course of their relationship with The Reject Shop;</li><li>Understand the importance of providing complete information to The Reject Shop in order to assist in decision-making;</li><li>Be consistent, predictable, trustworthy and cooperative;</li><li>Alert The Reject Shop to circumstances potentially affecting performance, cost, and availability or scheduling; and</li><li>Fully comply with all applicable laws, rules and regulations in each jurisdiction in which they do business, including foreign countries.</li></ul><p><br>For further information please refer to our <a class='cms_pdf_image' href=''>Ethical Sourcing Policy</a>.<br><br>If you believe you can meet our standards and have an exciting product that would interest us you can contact our buying office on (03) 9371 5555 or email us directly:<br>&nbsp;</p><table class='table-resposive'  cellspacing='1' cellpadding='1' border='0'><tbody><tr><td nowrap='nowrap'><p><a href='mailto:apardoe@rejectshop.com.au'>Andrew Pardoe</a></p><p>apardoe@rejectshop.com.au</p></td><td><p>Manchester, Seasonal Softgoods, Clothing, Rainwear</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:aroe@rejectshop.com.au'>Andrew Roe</a></p><p>aroe@rejectshop.com.au</p></td><td><p>Toiletries, Cosmetics, Electrical Accessories</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:bbodenstaff@rejectshop.com.au'>Ben Bodenstaff</a></p><p>bbodenstaff@rejectshop.com.au</p></td><td><p>Christmas, Seasonal, Pets</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:dsnell@rejectshop.com.au'>Daniel Snell</a></p><p>dsnell@rejectshop.com.au</p></td><td><p>Stationery, Fashion Accessories</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:dalgie@rejectshop.com.au'>Diana Algie</a></p><p>dalgie@rejectshop.com.au</p></td><td><p>Kitchenware, Furniture</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:jwoolley@rejectshop.com.au'>Jeff Woolley</a></p><p>jwoolley@rejectshop.com.au</p></td><td><p>Garden, Hardware</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:jtrezise@rejectshop.com.au'>Josh Trezise</a></p><p>jtrezise@rejectshop.com.au</p></td><td><p>Cards, Wrap, Luggage</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:kgriffiths@rejectshop.com.au'>Karl Griffiths<br></a></p><p>kgriffiths@rejectshop.com.au</p></td><td><p>Party, Recreation</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:mmione@rejectshop.com.au'>Matt Mione</a></p><p>mmione@rejectshop.com.au</p></td><td><p>General Housecares, Storage</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:nlangner@rejectshop.com.au'>Nicole Langner</a></p><p>nlangner@rejectshop.com.au</p></td><td><p>Craft, Toys</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:psaitov@rejectshop.com.au'>Paul Saitov</a></p><p>psaitov@rejectshop.com.au</p></td><td><p>Cleaning, Food, Drinks, Confectionery, Seasonal Food</p></td></tr><tr><td nowrap='nowrap'><p><a href='mailto:tnedelkos@rejectshop.com.au'>Talana Nedelkos</a></p><p>tnedelkos@rejectshop.com.au</p></td><td><p>Aromatherapy, Home Deco, Photography</p></td></tr><tr><td nowrap='nowrap'>&nbsp;</td><td>&nbsp;</td></tr><tr><td nowrap='nowrap'>&nbsp;</td><td>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>"
+;;propertytitle;PROPERTY;""
+;;property;;"<p><br> The Reject Shop has 339 leasehold stores Australia-wide (as at June 2016).<br> &nbsp;</p> <table width='100%' cellspacing='1' cellpadding='1' border='0'>     <tbody>         <tr>             <td width='40%'>New South Wales</td>             <td>107</td>         </tr>         <tr>             <td width='40%'>Victoria</td>             <td>83</td>         </tr>         <tr>             <td width='40%'>Queensland</td>             <td>65</td>         </tr>         <tr>             <td width='40%'>South Australia</td>             <td>29</td>         </tr>         <tr>             <td width='40%'>Western Australia</td>             <td>28</td>         </tr>         <tr>             <td width='40%'>Tasmania</td>             <td>21</td>         </tr>         <tr>             <td width='40%'>ACT</td>             <td>5</td>     </tr></tbody> </table> <p><br>The Reject Shop is located in metropolitan areas, regional centres and country towns in all varieties of shopping centres and standalone sites. We are a strong tenant that will enhance your investment.</p> <p>&nbsp;</p> <h2>What do we need for a new store?</h2> <ul>     <li>Appropriate retail zoning</li>     <li>550 – 850sqm</li>     <li>Located close to a supermarket or discount department store</li>     <li>Loading at rear or side with truck and pallet access</li>     <li>Signage opportunities</li> </ul> <p><br> For further details please download our <a class='cms_pdf_image' href=''>landlord information pack</a>.</p> <h2><br> Contacts</h2> <p><strong>Kelvin Chand</strong><br> General Manager - Property<br> (03) 9371 5555</p>"
+;;financialReport;;""
+;;pressRelease;PRESS RELEASE;""
+;;presentation;PRESENTATION;""
+;;otherAnnouncements;OTHER ANNOUNCEMENTS;""
+;;delivery;DELIVERY REQUIREMENTS;"<h2>Bookings</h2> <p>All deliveries must be booked minimum 2 weeks prior to actual delivery. Deliveries without a booking will not be accepted or unloaded.<br><br>When booking a delivery the following information must be supplied:<br> &nbsp;</p>  <ul>     <li>Vendor’s name</li>     <li>Purchase order number</li>     <li>Number of pallets to be delivered</li>     <li>Total Units to be delivered per line</li> </ul> <p><br>All deliveries must be available from the date stated on the Purchase Order. Any variations to this must be agreed to by the relevant Buyer prior to booking.<br> <br> To arrange a booking, please email or phone:</p><ul><li>Melbourne Airport VIC DC - <a href='mailto:receiving@rejectshop.com.au '>receiving@rejectshop.com.au</a> or (03) 9933 5852</li><li>Ipswich QLD DC – <a href='mailto:dchareceiving@rejectshop.com.au'>dcipreceiving@rejectshop.com.au</a> or (07) 3280 4952</li><li>Hazelmere WA DC – <a href='mailto:dchareceiving@rejectshop.com.au'>dchareceiving@rejectshop.com.au</a> or (08) 9378 5156</li><li>East-West Melbourne Airport VIC DC – <a href='mailto:receiving@rejectshop.com.au'>receiving@rejectshop.com.au</a> or (03) 9933 5852</li></ul> <h2><br>Deliveries</h2> <p>Only the products and quantities stated on the Purchase Order will be accepted. A separate invoice and correctly completed pallet dockets (as per Pallet Transfer Policy below) must accompany all deliveries.<br> <br> Inner and outer cartons must comply with the following:<br> &nbsp;</p> <ul>     <li>Inner/outer pack quantities must be consistent with the Purchase Order;</li>     <li>Inner/outer cartons must be of consistent product and quantity; and</li>     <li>Cartons must be packed in a manner which will sufficiently protect the selling unit.</li> </ul> <p><br> Merchandise must be delivered on pallets consistent with the following:<br> &nbsp;</p> <ul>     <li>Preferred standard Loscam pallets, will accept Chep pallets;</li>     <li>No pallet exchanges – e.g. must have a Chep or Loscam account;</li>     <li>Each pallet must be stacked no higher than 1.4m from ground level;</li>     <li>One line per pallet;</li>     <li>All complete pallets must be of a consistent quantity and dimension;</li>     <li>Only one part pallet per product will be accepted.</li>     <li>No pallets are to be wrapped in black plastic</li> </ul> <p><br> Deliveries will have a 1 hour delivery window (30 mins either side of your booked time). If you cannot meet this you must call prior to delivery to inform the Distribution Centre and reschedule. <br> Hours of receiving are between 6am and 2pm, Monday to Friday (excluding Public Holidays).</p><h2><br>Pallet Transfer Policy</h2><ul><li>Chep and&nbsp; Loscam&nbsp; pallet movement dockets must have the date as the date the pallets arrive at our Distribution Centre</li><li>TRS name and account number are to be completed in full and correct</li><li>All pallet dockets will not be accepted if they have the incorrect information</li><li>TRS have a 30 day delay pallet account. Any transfers greater than 30 days from the ‘movement date’ will not be accepted without written supporting documentation for consideration by TRS and if agreed, will be processed as at the time of enquiry.</li><li>TRS will not process hire pallet transfer requests received 90 days after the initial transaction date.</li><li>Defective pallets will be rejected for any of the following reasons: <br>1.&nbsp;&nbsp;&nbsp; Unclean<br>2.&nbsp;&nbsp;&nbsp; Forgeries<br>3.&nbsp;&nbsp;&nbsp; Missing or damaged boards or bearers</li><li>Pallets with defective or non-compliant stock directed to be returned to supplier, will need to seek direction from the TRS DC representative.</li><li>The Reject Shop will only accept the transfer of good quality CHEP or Loscam wood pallets onto its accounts. The transfer of other CHEP or Loscam equipment will not be accepted. Plain pallets are not returned or exchanged.</li><li>Pallets may only be exchanged by prior agreement between trading partners. Pallets must be in a good and undamaged condition.</li><li>Trading Partners must maintain active Pallet Accounts otherwise other arrangements will need to be made prior to delivery to DC.&nbsp;</li><li>Claims: The Sending Trading Partner is to provide satisfactory evidence of the transfer of pallets. The Reject Shop will assist in investigating claims up to three months old upon receipt of satisfactory documentary evidence provided by the Sending Trading Partner. Any claim agreed to within three months will be honoured effective as at the transaction date (no delays).</li></ul>  <h2><br>Payments</h2> <p>The cost stated on the Purchase Order will be the cost paid for goods received. <br> <br> If you have any queries regarding the price, please contact the appropriate Buyer prior to booking.</p>  <h2><br>Cost Recovery</h2> <p>TRS reserves the right to recover costs associated with the failure by a supplier to meet these and other requirements at time of delivery.</p>  <h2><br>Delivery Addresses</h2> <table width='100%' cellspacing='1' cellpadding='1' border='0'>     <tbody>         <tr>             <td><p><strong>Melbourne Airport DC</strong><strong> (VIC)</strong><br>             The Reject Shop Ltd<br>             118-124 Link Road<br>             Melbourne Airport<br>             VIC 3045<br>             Ph: (03) 9933 5852<br>             Fax: (03) 9933 5850</p></td>             <td><p><strong>Sunshine DC (VIC)</strong><br>             The Reject Shop Ltd<br>             47 Endeavor Way<br>             Sunshine West<br>             VIC 3020<br>             Ph: (03) 9933 5852<br>             Fax: (03) 9933 5850</p></td>         </tr>         <tr>             <td><p><strong>Ipswich DC</strong> <strong>(QLD)</strong><br>             The Reject Shop Ltd<br>             1 Ashburn Road<br>             Bundamba<br>             QLD 4304<br>             Ph: (07) 3280 4952<br>             Fax: (07) 3280 4987</p></td>             <td><p><strong>Hazelmere DC (WA)</strong><br>             The Reject Shop Ltd<br>23 Ulm Place<br>             Perth Airport<br>             WA 6105<br>             Ph: (08) 9378 5156<br>             Fax: (08) 9378 5158</p></td>         </tr>     </tbody> </table>  <h2><br>Delivery Standards</h2> <p>If you have any queries with respect to delivery standards, please contact:<br>&nbsp;</p><table width='600' cellspacing='1' cellpadding='1' border='0'><tbody><tr><td><p><strong>Melbourne Airport DC <br>and Sunshine DC</strong><br>             Inbound Manager<br>             (03) 9933 5842</p></td><td><p><strong>Ipswich DC</strong><br>             Inbound Manager<br>             (07) 3280 4939</p></td><td><strong>Hazelmere DC</strong><br>Receiving Team Leader<br>(08) 9378 5181<br>&nbsp;</td></tr></tbody></table><p>&nbsp;</p>"
+;;learninganddevelopmenttitle;LEARNING & DEVELOPMENT;""
+;;learninganddevelopment;;"<p>The Reject Shop views learning and development as an investment in our people and is committed to providing learning and development opportunities for all team members across the business.<br>The Reject Shop offers comprehensive internal and external training programs including nationally recognised qualifications. Programs include the following.</p><p>&nbsp;</p><h3>Leadership Development Programs</h3><p>The Reject Shop offers leadership development programs for all levels of leadership across the business. Programs provide team members with the opportunity to develop their leadership capabilities as outlined in our leadership framework. These programs range from short courses to in depth programs conducted over 18 months.</p><p>&nbsp;</p><h3>Learning and Development</h3><p>The Reject Shop offers a range of training programs to support your development journey with us. These include a comprehensive induction program and 'Develop@TRS', our in-house store leadership programs, Certificate III Transport and Distribution Warehousing at our Distribution Centres and programs tailored for our Store Support Centre teams.</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>"
+;;induction;INDUCTION;"<p>Coming Soon!</p>"
+;;currentvacancies;CURRENT VACANCIES;"<iframe  width=""540"" height=""1480""  frameborder=""0"" src=""https://jobs.seek.com.au/jobs/#dateRange=999&workType=0&industry=&occupation=&graduateSearch=false&salaryFrom=0&salaryTo=999999&salaryType=annual&companyID=&advertiserID=2011537&advertiserGroup=&keywords=&page=1&displaySuburb=&seoSuburb=&where=&whereId=&whereIsDirty=false&isAreaUnspecified=false&location=&area=&nation=&sortMode=ListedDate&searchFrom=&searchType="" seamless=""seamless"" scrolling=""no"" id=""iframe_content""></iframe>"
+;;careerpathstitle;CAREER PATHS;""
+;;careerpaths;;"<p>At The Reject Shop we offer various career opportunities from kicking  off your retail career as a team member at your local store to  multi-site store operations management. Alternatively there are a range  of opportunities at our <a href='#StoreSupport'>Store Support Centre</a> in departments including  Buying, IT or Finance or roles at our <a href='#DC'>Distribution Centre</a>.</p><p>&nbsp;</p><h2>Store Teams</h2><h3>Team Members</h3><p>Our team members are a valued and essential part of our team, performing an important job of serving our customers. The Team Member role is diverse and varied. In addition to customer service, it encompasses:<br>&nbsp;</p><ul><li>Merchandising</li><li>Register Operations</li><li>Loss Prevention</li><li>Store Presentation and Cleanliness</li></ul><p><br>We  are always looking for enthusiastic people to join our team whether you  have experience already in retail or perhaps you live in the community  and have had a positive shopping experience at the Reject Shop.<br><br>Aspiring  Team Members have opportunities for progression in all areas of the  business. With over 70% of our appointments being internal promotions  they are an essential part of career progression into Management or  Store Support.<br><br>To apply for a team member role, please visit your local Store Manager now.</p><p>&nbsp;</p><h3>Store Management</h3><p>The Store management team is the driving force behind the success of each individual store.<br><br>They  are strong people and operational managers who achieve the defined  sales targets by building a cohesive team. They are coaches and mentors  to their teams because they understand the success of the business is  reliant on the strength of our store teams. They are confident, decision  makers who thrive in a fast paced and dynamic environment.<br><br>Skills required for this position include:<br>&nbsp;</p><ul><li>Proven ability to meet sales targets</li><li>High level merchandising</li><li>Supervisory level stock management</li><li>Strong people management</li></ul><p>&nbsp;</p><h3>Area Managers</h3><p>Our  Area Managers are the link between stores and support services and  coach our management teams whilst ensuring that controls are in place.<br><br>Area  Managers lead a group of stores within a geographic area and ensure the  operations of that region run effectively. They are people motivators,  sales focused and have a keen eye for the presentation of a store  including OHS. They are experienced managers who are able to take the  company vision and coach the store managers to embed this in the stores.<br><br>Skills required for this position include:<br>&nbsp;</p><ul><li>Extensive experience in retail management preferably in a variety store;</li><li>Proven ability as a Mentor/Coach</li><li>Strategic Planning in a retail setting</li></ul><p><br>More  and more Area Manager opportunities are becoming available as we  continue to grow strong and increase our presence in the market place.<br><br><a href='/careers/currentvacancies'><strong>Click here</strong></a><strong> to view all Vacancies</strong></p><p>&nbsp;</p><h2>Store Support Services<a name='StoreSupport'></a></h2><p>Store  Support Services encompass different areas of the business that provide  support to our Store Teams and structure around how we run our  business. These services are vital in achieving our vision and ensuring  we have the infrastructure to continue expanding our presence.<br><br>Store  Support Service include the following Departments: IT, Finance,  Buying/Merchandising, Human Resources, Logistics and our Distribution  Centres</p><p>&nbsp;</p><h3>IT</h3><p>Investment in our IT  resources is of the highest importance. Career opportunities available  include software development, technical support and networking as we  continue to grow and seek innovative systems to meet our future needs.</p><p>&nbsp;</p><h3>Finance</h3><p>Our  Finance Department provides important information regarding sales data  and budgets. Finance also determines, maintains and monitors our  administrative systems, including the important area of minimising our  losses through waste, error and theft. <br><br>Career opportunities available include accounting, administration and loss prevention.</p><p>&nbsp;</p><h3>Buying and Merchandise Planning</h3><p>Our Buying Department select and purchase the range of products that we sell.<br><br>The  price, quantity and distribution of items receive a high focus to  ensure that our products are appealing to our customers and meet their  demands. <br><br>Career opportunities available include buying and planning positions.</p><p>&nbsp;</p><h3>Human Resources</h3><p>Our  Human Resources function is responsible for providing advice and  support to Line Managers in recruitment and selection, performance  development, succession and career planning, remuneration, learning and  development and employee relations. Career opportunities available  include Generalist HR roles, Learning and Development and Health and  Safety opportunities.</p><p>&nbsp;</p><h3>Logistics</h3> <p>Our Logistics Department is responsible for  organising the receipt and delivery of purchased stock throughout the  supply chain.&nbsp;&nbsp;</p> <p>&nbsp;</p><h3>Distribution Centres<a name='DC'></a></h3><p>Almost all of The Reject Shop’s stock is channelled through our Distribution Centres in Victoria and Ipswich.<br><br>Career opportunities available include management, operational and administrative roles.<br><br><a href='/careers/currentvacancies'><strong>Click here</strong></a><strong> to view all vacancies</strong></p><p>&nbsp;</p>"
+;;Productrecalls;Product Recalls;"<h2><strong>The Reject Shop is issuing a recall on Mosquito and Insect Repellent. Barcode: 9336672275950<br></strong></h2>"
+;;Parallelimport;Parallel Imports;"<p>These are genuine branded products, but they may differ in design, materials and formulation from similar products currently offered locally. They do not have the support of the official Australian distributor but The Reject Shop supports these products with its normal trading warranty.</p>"
+;;faq;FAQs;"<p>Coming Soon!</p>"
+;;bulkorderstitle;Bulk Orders;""
+;;bulkorders;;"<p>&nbsp;</p><p>Currently we have over 1&#44;000 products available to order in  large quantities. Contact us to find out if we can supply what you  need, and we will arrange to have the order delivered to your local store  for pickup. <br><br> If you would like to enquire about placing an order for a product you have seen in our stores, contact us on <strong>1800 668 292</strong> (free call)or email us at <a href='mailto:trsorders@rejectshop.com.au?subject=Special 20Orders '>trsorders@rejectshop.com.au</a> Where possible, please provide a product code, the quantity required, and the location of <a href='/store-finder/'>your nearest store</a>.<br><p><span style='font-size:xx-small;'>* Miniumum order quantity may vary depending on the product.</span></p>"
+;;returnspolicy;RETURNS POLICY;"
+<p>Our refund policy is in addition to your rights under the Australian Consumer Law.<br /><br />If you purchased a product from The Reject Shop, that you believe is not of acceptable quality, fit for purpose, does not match the description, then you may have rights to a remedy under the Australian Consumer Law and we will be happy to offer you a refund or exchange.&nbsp; You will need to provide your receipt or other adequate proof of purchase.<br /><br />If you cannot provide proof of purchase, The Reject Shop may provide a refund or exchange at our discretion provided that the product was sold exclusively by The Reject Shop.</p><p>&nbsp;</p>"
+;;returncontent;;"
+<h1>CHANGE OF MIND</h1>
+<p>We also offer a refund or exchange if you change your mind within 28 days of purchase provided that:<br />&nbsp;</p><ul><li>You provide the original receipt or adequate proof of purchase. A refund will be given using your original payment method.</li><li>Items are unused/unworn and in their original packaging including all manuals and accessories.</li><li>In the case of CD&rsquo;s/DVD&rsquo;s, the shrink wrap is intact.</li></ul><p><br />If you cannot provide proof of purchase, we will offer you an exchange to the value of the current price of that product.<br /><br />Please choose carefully as goods on which a change of mind return is not available are:<br />&nbsp;</p><ul><li>Bedding accessories eg:&nbsp; quilts, underlays and pillows</li><li>Cosmetics including fragrances</li><li>Gift Cards</li><li>Hosiery</li><li>Personal care ie: electronic toothbrushes, foot spas, hair straighteners, hair removal devices etc</li><li>Swimwear</li><li>Underwear</li><li>Pet Clothing / Beds</li></ul><p>"
+;;termscontent;;"<h2>THE REJECT SHOP GIVEAWAY PROMOTION TERMS AND CONDITIONS FOR ENTRANTS</h2><p>1.&nbsp;&nbsp; &nbsp;Information on how to enter and prizes forms part of these conditions of entry. Entry into the competition constitutes acceptance of these terms and conditions. <br><br>2.&nbsp;&nbsp; &nbsp;The Promoter is The Reject Shop Pty Ltd&nbsp; (ABN 33 006 122 676) (the 'Promoter'), of 245 Racecourse Road, Kensington, Victoria 3031, Australia <br><br>3.&nbsp;&nbsp; &nbsp;Entry is only open to persons who are residents of Australia and are 18 years of age or over ('Eligible Entrants').The directors, management and employees (and their immediate families) of the Promoter, its related entities, printers, suppliers, providers and agencies whom are directly associated with the conduct of this promotion are ineligible to enter the promotion.<br><br>4.&nbsp;&nbsp; &nbsp;The promotion commences 12:01am AEST on 04/05/2016 and closes 11:59pm AEST on 30/09/2016 ('Promotional Period'). <br><br>5.&nbsp;&nbsp; &nbsp;To enter the promotion, Eligible Entrants must, within the Promotional Period, log onto<br>www.therejectshopgiveaway.com.au and complete the entry form. Limit of one entry per person in the draw unless bonus entries are achieved. By liking the competition on Facebook, the entrant receives ten (10) additional entries.&nbsp; No responsibility will be taken for entries lost, delayed or not completed properly. The competition is unable to be entered on Facebook’s mobile applications.<br><br>6.&nbsp;&nbsp; &nbsp;Eligible Entrants must ensure that their entries are received by the Promoter during the Promotion Period.<br><br>7.&nbsp;&nbsp; &nbsp;Entry is free. However, any costs associated with accessing Social Platforms are the responsibility of the person seeking access and are dependent on the internet service provider used.<br><br>8.&nbsp;&nbsp; &nbsp;There will be one (1) Prize draw. The draw will take place at 2.00pm AEDT on 05/10/2016 at MDSA, 5/15 Grosvenor Street, Neutral Bay, NSW 2089. All eligible entries received during the Promotional Period will be entered into the draw. The winners will be notified in writing by email and by phone within 2 working days of the draw and their name and locality will be published on www.therejectshopgiveaway.com.au from 07/10/016 for a period of 28 days. <br><br>9.&nbsp;&nbsp; &nbsp;The first four (4) eligible entries drawn will each receive a AU$250 (two hundred and fifty dollars) gift card for The Reject Shop (gift card conditions apply).&nbsp; The maximum total prize pool value is AU$1,000.<br><br>10.&nbsp;&nbsp; &nbsp;The Promoter's decision is final and no correspondence will be entered into. The prizes are not exchangeable or transferable.<br><br>11.&nbsp;&nbsp; &nbsp;If a Prize (or any part of the prize) is unavailable, the Promoter, at its discretion, reserves the right to substitute the prize (or that part of the prize) with a prize to the equal value and/or specification, subject to any law or written directions from a regulatory authority. <br><br>12.&nbsp;&nbsp; &nbsp;The Promoter reserves the right to redraw in the event of an entrant being unable to satisfy these competition conditions, forfeiting or not claiming a prize. If a prize remains unclaimed or forfeited through ineligibility or otherwise, the Promoter will conduct a further draw 3.5 months after the date of the original draw with the unclaimed prize draw taking place on 20/01/2017 at the same time and place as the original draw subject to state regulations and the winners, if any, will be notified in writing by email within 2 working days of the draw and their names and locality will be published on www.therejectshopgiveaway.com.au&nbsp; from 24/01/2017 for a period of 28 days.<br><br>13.&nbsp;&nbsp; &nbsp;All entries become the property of The Promoter. Eligible entrants consent to the use and disclosure of their information for the purposes of this competition by the Promoter and its agents associated with this competition. Eligible Entrants agree that by submitting an entry, they agree that the Promoter may use their email address to send information and promotions concerning third party products and services and also supply their contact information and questionnaire responses to companies so that they may use them to contact them by mail, phone, SMS, MMS or email to send offers and promote services based on their preferences. If entrants do not consent to their details being used for future marketing purposes, the entrant should contact The Promoter on their details set out below. Any request to update, modify or delete the entrant’s details should be directed to The Promoter. <br><br>14.&nbsp;&nbsp; &nbsp;The Promoter accepts no responsibility for any problems or technical malfunction of any communication network or for any late, lost, incomplete, incorrectly submitted, delayed, illegible, corrupted or misdirected entries, claims or correspondence arising from any error, omission, alteration, deletion, theft, destruction, transmission interruption and communications failure or otherwise. The Promoter has no control over communication networks or lines and accepts no responsibility for any problems associated with them, whether due to network traffic congestion, technical malfunction or otherwise. The Promoter is not liable for any costs incurred, responses received or any other consequences of user error. Any costs associated with accessing the promotion website are the Eligible Entrant's responsibility and is dependent on the Internet service provider used. <br><br>15.&nbsp;&nbsp; &nbsp;The Promoter reserves the right, in its sole discretion, to disqualify all entries from any person, and prohibit that person's further participation in this competition, who tampers with, or benefits from any tampering with, the entry process or the operation of the competition or acts in violation of these conditions, acts in a disruptive manner or acts with the intent to annoy, abuse, threaten or harass any person. <br><br>16.&nbsp;&nbsp; &nbsp;The Promoter reserves the right, at any time, to verify the validity of entries and Eligible Entrants (including an entrant's identity, age and place of residence.<br><br>17.&nbsp;&nbsp; &nbsp;The Promoter shall not be liable for any loss or damage whatsoever which is suffered (including but not limited to indirect or consequential loss) or for any personal injury suffered or sustained during the course of the competition or in any element of the Prize except for any liability which cannot be excluded by law.<br><br>18.&nbsp;&nbsp; &nbsp;This promotion adheres to the terms and conditions set out in the Facebook promotion guidelines which can be found at: https://www.facebook.com/page_guidelines.php <br><br>19.&nbsp;&nbsp; &nbsp;The entrant acknowledges that by entering this competition they are providing information to the Promoter and not to Facebook. <br><br>20.&nbsp;&nbsp; &nbsp;The Promoter may communicate or advertise this competition using Facebook.&nbsp; The competition however, is in no way sponsored, endorsed or administered by, or associated with, Facebook.&nbsp; Each entrant completely releases Facebook from any and all liability.<br><br>21.&nbsp;&nbsp; &nbsp;Authorised under NSW Permit No. LTPS/16/01801<br>&nbsp;</p><p>&nbsp;</p> "
+;;terms;Terms and Conditions;"<h2>THE REJECT SHOP BIGGEST CAKE BOSS COMPETITION TERMS AND CONDITIONS FOR ENTRANTS</h2> <h3>PARTICIPATION</h3> <p>This    competition (""Competition"") is conducted by The Reject Shop (ABN 33   006  122 676) 245 Racecourse Rd, Kensington VIC 3031 (""Promoter""). This    Competition is in no way sponsored, endorsed or administered by, or    associated with Facebook or any other social network.<br> <br> Entry to    the Competition constitutes acceptance of these terms and conditions.    All entry instructions and prize information published by the Promoter    form part of these terms and conditions.<br> <br> The Competition is only open to individuals who: (i) are residents of Australia.</p><p>Entrants may only enter the competition once per day.<br> <br> Competition entry commences at 16:00pm AEST on 30/06/2016 and closes at 11:59pm AEST on 10/07/2016 (""Entry Period""). <br><br> Except as otherwise indicated, all amounts stated in these conditions are stated in Australian dollars.</p> <h3><br> <br> ENTRY</h3> <p>To enter the Competition an Eligible Entrant must during the Entry Period:</p> <ol><li>Enter the competition via the link provided</li><li>Complete and submit the competition entry form with all required details</li><li>Answer the question in the competition entry form</li></ol> <p><br>    Cost of entry is free, but internet connection and usage rates may    apply &shy; Eligible Entrant's should obtain details of such costs from    their service providers.  <br> <br> Entries must be received during the    Entry Period. The Promoter takes no responsibility for late, lost,    incomplete, incorrectly submitted, illegible or misdirected entries or    for any delays or failures in any telecommunications service or    equipment.  <br> <br> Entrants must submit their entries manually. The    Promoter may reject entries if it reasonably forms the opinion that  they   have been entered using automated entry means or by use of a    competition entry service. <br> <br> The Promoter may, at its absolute    discretion, declare any or all entries made by an entrant invalid if  the   entrant tampers with the entry process, benefits from such  tampering  or  submits an entry that is illegible, incomplete or not in  accordance   with these terms and conditions. Errors and omissions may  be accepted  at  the Promoter's discretion.&nbsp;</p><p><br><strong><br> PRIZE AND WINNER OF THE PRIZE</strong></p>  <p>The Competition is a game of skill in which chance plays no part.  <br> <br>  The entries will be judged on creativity and originality in response to the question asked.<br><br>The  Prize Winner will win 1 of 2 x $100 The Reject Shop gift cards  (“Prize”) and 1 of 2 x Cake Boss product prize packs. The total prize  pool is valued at $400. <br><br> The Reject Shop gift cards are  redeemable at The  Reject  Shop stores only and expire 12 months after  issue. The Reject  Shop gift  card terms and conditions apply. See <a href=""http://www.rejectshop.com.au/giftcards"" target=""_blank"">http://www.rejectshop.com.au/giftcards</a> for full terms and conditions.<br> <br> The Prize winners will be notified via email and will be required to reply with their postal address.<br> <br> No later than 12/07/2016 the Promoter will announce the winner of the Prize.<br> <br>    The Prize notification will state the Prize that has been won and  will   include instructions as to how the Prize winner is to claim the  Prize   and establish his/her entitlement to it.  <br> <br> The names of  the   Prize winners will be published on The Reject Shop's website and  social   media accounts page within 14 days of the Prize being won, for a  period   of at least 1 week.  <br> <br> The winner will forfeit the  Prize if  s/he  does not claim the Prize by contacting the Promoter  within two (2)   months of it being made available for his/her  collection. <br> <br> Anyone found to use multiple accounts to enter will be considered ineligible.</p> <h3><br> <br> GENERAL</h3> <p>When    an entrant submits a photo (""Content""), the entrant, unless the    Promoter advises otherwise, licenses and grants the Promoter, its    affiliates and sub-licensees a non-exclusive, royalty-free, perpetual,    worldwide, irrevocable, and sub-licensable right to use, reproduce,    modify, adapt, publish and display such Content for any purpose in any    media, without compensation, restriction on use, attribution or    liability. Entrants agree not to assert any moral rights in relation to    such use and warrant that they have the full authority to grant these    rights.  <br> <br> Entrants agree that they are fully responsible for    the Content they submit. The Promoter shall not be liable in any way  for   such Content to the full extent permitted by law. The Promoter may    remove any Content without notice for any reason whatsoever. Entrants    warrant and agree that: (a) they will not submit any Content that is    unlawful or fraudulent, or that the Promoter may deem in breach of any    intellectual property, privacy, publicity or other rights,  defamatory,   obscene, derogatory, pornographic, sexually inappropriate,  violent,   abusive, harassing, threatening, objectionable with respect  to race,   religion, origin or gender, not suitable for children aged  under 15, or   otherwise unsuitable for publication; (b) they will  obtain prior  consent  from any person or property that appears in their  Content; (c)  they  will obtain full prior consent from any person who  has jointly  created  or has any rights in the Content, to the uses and  terms herein;  (d)  their Content shall not contain viruses or cause  injury or harm to  any  person or entity; and (e) they will comply with  all applicable  laws and  regulations, including without limitation,  those governing  copyright,  content, defamation, privacy, publicity and  the access or  use of others'  computer or communication systems.  Without limiting any  other terms  herein, the entrant indemnifies the  Promoter for any breach  of the above  terms. <br> <br> If for any  reason the conduct or  operation of the  Competition is interfered with  or disrupted in any way  (including by  vandalism, power failures,  natural disasters, acts of  God, civil unrest,  strikes, computer bugs  or viruses, tampering or  technical failures),  the Promoter reserves  the right to cancel,  terminate, modify or suspend  or recommence the  Competition, subject to  the approval of the  authorities that have  issued permits for its  conduct.  <br> <br> The  Promoter assumes no  responsibility for: (i) any  error, omission,  interruption, or delay in  the operation or  transmission of any  communication sent to (or by)  the Promoter or any  entrant whether caused  by problems with  communication networks or  lines, computer systems,  software or  internet service providers,  congestion on any carrier  network or  otherwise, (ii) any theft,  destruction or unauthorized access  to, or  alteration of such  communications; (iii) any problem with, or   technical malfunction of,  any computer system or other equipment used   for the conduct of the  Competition; (iv) any incorrect or incomplete   information which may be  communicated in the course of the  administering  this Competition  (whether as a result of one of the  foregoing causes or  otherwise); (v)  any delay in delivery, or failure  of safe delivery of  the Prize.  <br> <br> All of the Promoter's decisions are final and no correspondence will be entered into.  <br> <br>    The prize winner accepts the Prize at his or her own risk. To the  full   extent permitted by law, the Promoter, its associated companies  and   agencies and any of their personnel (the ""Relevant Parties"")  exclude all   liability for any loss (including any damage, claim,  injury, cost or   expense) which is suffered or incurred by any entrant  in connection with   the Competition or Prize, including without  limitation: (i) any   indirect, economic or consequential loss; (ii) any  loss arising from the   negligence of a Relevant Party; (iii) any  liability for personal  injury  or death. The Promoter may request that  the Prize winner sign  and  return a deed of release to this effect as a  condition of the Prize   being awarded. If the Prize winner fails to  sign and return such   release, the Prize winner may forfeit the Prize.   <br> <br> The winner   consents by entering the Competition to the  Promoter using their name,   likeness, image and/or voice (including any  photograph, film and/or   recording of them) in any media at any time  or times without   compensation, financial or otherwise, for the purpose  of promoting this   Competition, the Promoter and/or any of the  Promoter's products.</p> <h3><br> <br> PRIVACY AND MARKETING CONSENT AND DISCLOSURE</h3> <p>Entrants'    personal information will be collected by or on behalf of the  Promoter   to enable it to administer the Competition and publicise the  Prize   winners may be used to market its products to the entrants. The  personal   information of each Prize winner may be provided to others  assisting  in  the conduct of the Competition, including the Competition    administrator, Prize suppliers and deliverers, and to regulatory    authorities. The Promoter will disclose the Prize winner's first    initial, surname, and State of residence to the media, who will publish    these details. Persons may contact the Promoter by post at the address    stated in condition 1 to request access to, or corrections of, any of    their collected personal information that is held by the Promoter. If  an   entrant does not provide accurate personal information the  Promoter  may  determine that they are not eligible to win the Prize.  The  collection,  use and disclosure of all personal information is  handled  in accordance  with the Promoter's Privacy Policy available  online at   www.rejectshop.com.au  <br> <br> The Promoter reserves the right to modify any of these Terms and Conditions if required.</p> "
+;;termsandconditionsComponent;;"<h2>THE REJECT SHOP MONTHLY SAVVY SURVEY COMPETITION TERMS AND CONDITIONS FOR ENTRANTS</h2><p>1.&nbsp;&nbsp;&nbsp;  Information on how to enter forms part of the terms of entry. Entry  into the competition is deemed acceptance of these terms and conditions.<br><br>2.&nbsp;&nbsp;&nbsp;  Entry is open to all residents of Australia. However, employees and  their immediate families of The Reject Shop Ltd, Salmat Digital Pty  Limited and their associated agencies and companies are not eligible to  enter.<br><br>3.&nbsp;&nbsp;&nbsp; The competition commences on Monday 24th August 2015  at 18:00 (AEST) and concludes on Wednesday 24th August 2016 at 23:59  (AEDT) (Promotional Period). <br><br>4.&nbsp;&nbsp;&nbsp; The competition will be advertised via email, The Reject Shop digital channels or mobile applications.<br><br>5.&nbsp;&nbsp;&nbsp; To enter, participants must:<br><br>i.&nbsp;&nbsp;&nbsp; Enter the competition via the link provided on your eDM and/or social media channels.<br>ii.&nbsp;&nbsp;&nbsp; Complete and submit the survey with all required details<br>iii.&nbsp;&nbsp;&nbsp; Answer all questions within the survey<br>iv.&nbsp;&nbsp;&nbsp; Upon confirmation the entrant will be automatically entered into the draw to win the Prize.</p><p><br>6.&nbsp;&nbsp;&nbsp; Entrants under the age of 18 must obtain the prior permission of a parent or guardian over the age of 18 to enter.<br><br>7.&nbsp;&nbsp;&nbsp; Incomprehensible and incomplete entries will be deemed invalid.<br><br>8.&nbsp;&nbsp;&nbsp;  Entrants in the competition may only enter once for each individual  survey. However, only one prize per household is permitted (SA residents  are entitled to win more than one prize).&nbsp; <br><br>9.&nbsp;&nbsp;&nbsp; Anyone found to use multiple accounts to enter will be considered ineligible. <br><br>10.&nbsp;&nbsp;&nbsp;  The Promoter reserves the right to request winners to provide proof of  identity, proof of residency at the nominated prize delivery address  and/or proof of entry validity in order to claim a prize. Proof of  identification, residency and entry considered suitable for verification  is at the discretion of the Promoter. In the event that a winner cannot  provide suitable proof, the winner will forfeit the prize in whole and  no substitute will be offered.<br><br>11.&nbsp;&nbsp;&nbsp; The Promoter reserves the  right to verify the validity of entries and to disqualify any entry  which, in the opinion of the Promoter, includes objectionable content,  profanity, potentially insulting, inflammatory or defamatory statements,  disqualify any entrant who tampers with the entry process, who submits  an entry that is not in accordance with these Terms &amp; Conditions of  Entry or who has, in the opinion of the Promoter, engaged in conduct in  entering the Promotion which is fraudulent, misleading, deceptive or  generally damaging to the goodwill or reputation of the Promotion and/or  the Promoter. The Promoter reserves the right to disqualify a winner if  the Promoter becomes aware that the winner and/or the winnerís entry is  of a type described in this clause.<br><br>12.&nbsp;&nbsp;&nbsp; Entries must be  received by 23:59 (AEDT) on Wednesday 24th August 2016.&nbsp; The time of  entry will in each case be the time the online entry is received by the  Promoterís database. The Promoter accepts no responsibility for any  late, lost or misdirected entries due to technical disruptions, network  congestion or for any other reason. <br><br>13.&nbsp;&nbsp;&nbsp; Any entry that is made on behalf of an Entrant by a third party will be invalid.<br><br>14.&nbsp;&nbsp;&nbsp; The cost of accessing the promotional website will be dependant on the entrantís individual Internet Service Provider.<br><br>15.&nbsp;&nbsp;&nbsp; Twelve (12) winners will each receive 1 x $100 The Reject Shop gift card.<br><br>16.&nbsp;&nbsp;&nbsp;  The Reject Shop gift cards are redeemable at The Reject Shop stores  only and expire 12 months after issue. The Reject Shop gift card terms  and conditions apply. See http://www.rejectshop.com.au/giftcards for  full terms and conditions.<br>&nbsp;&nbsp;&nbsp; <br>17.&nbsp;&nbsp;&nbsp; Total prize value is up to $1,200. <br><br>18.&nbsp;&nbsp;&nbsp; Prizes cannot be transferred and cannot be redeemed for cash.<br>&nbsp;<br>19.&nbsp;&nbsp;&nbsp;  If the prize is unavailable, for whatever reason, the Promoter reserves  the right to substitute the prize for a prize of equal or greater  value, subject to State Regulation.<br><br>20.&nbsp;&nbsp;&nbsp; The Promoter reserves  the right to refuse to allow a winner to take part in any or all aspects  of the prize, if the Promoter determines, in their absolute discretion,  that a winner is not in the mental or physical condition necessary to  be able to safely participate in the prize.&nbsp; It is a condition of  accepting the prize that the winner may be required to sign a legal  release in a form determined by the promoter in its absolute discretion.<br><br>21.&nbsp;&nbsp;&nbsp;  Once prizes have left the Promoterís premises, the Promoter takes no  responsibility for prizes damaged, delayed or lost in transit.<br><br>22.&nbsp;&nbsp;&nbsp;  By accepting the prize, the winner agrees to participate in and  co-operate as required with all reasonable media editorial requests  relating to the prize, including but not limited to, being interviewed  and photographed, filmed and/or chaperoned throughout the duration of  the prize. <br><br>23.&nbsp;&nbsp;&nbsp; In consideration for the Promoter awarding the  prize to the winner, the winner hereby permits the winnerís image  and/or voice, as recorded, photographed or filmed during the winnerís  participation in the prize to appear in connection with The Reject Shop  Ltd or the advertising or marketing thereof, in any media whatsoever  throughout the world and the winner will not be entitled to any fee for  such use.<br><br>24.&nbsp;&nbsp;&nbsp; In the event that for any reason whatsoever a  winner does not take an element of the prize at the time stipulated by  the Promoter then that element of the prize will be forfeited by the  winner and cash will not be awarded in lieu of that element of the  prize.<br><br>25.&nbsp;&nbsp;&nbsp; Independent financial advice should be sought as tax implications may arise as a result of accepting the prize.<br><br>26.&nbsp;&nbsp;&nbsp;  Each valid entrant who completes one of The Reject Shop surveys, during  the promotional period will be entered into the monthly draw. One (1)  winner will receive a $100 The Reject Shop gift card on the following  dates:<br>&nbsp;</p><table width=""600"" cellspacing=""1"" cellpadding=""1"" border=""1""><tbody><tr><td><p><strong>DRAW #</strong></p></td><td><p><strong>ENTRIES OPEN<br>(18:00 AEST/AEDT)</strong></p></td><td><p><strong>ENTRIES CLOSE<br>(23:59 AEST/AEDT)</strong></p></td><td><p><strong>DRAW<br>(11:00 AEST/AEDT)</strong></p></td></tr><tr><td><p>1</p></td><td><p>24/08/2015</p></td><td><p>24/09/2015</p></td><td><p>28/09/2015</p></td></tr><tr><td><p>2</p></td><td><p>25/09/2015</p></td><td><p>24/10/2015</p></td><td><p>26/10/2015</p></td></tr><tr><td><p>3</p></td><td><p>25/10/2015</p></td><td><p>24/11/2015</p></td><td><p>26/11/2015</p></td></tr><tr><td><p>4</p></td><td><p>25/11/2015</p></td><td><p>24/12/2015</p></td><td><p>30/12/2015</p></td></tr><tr><td><p>5</p></td><td><p>25/12/2015</p></td><td><p>24/01/2016</p></td><td><p>27/01/2016</p></td></tr><tr><td><p>6</p></td><td><p>25/01/2016</p></td><td><p>24/02/2016</p></td><td><p>26/02/2016</p></td></tr><tr><td><p>7</p></td><td><p>25/02/2016</p></td><td><p>24/03/2016</p></td><td><p>30/03/2016</p></td></tr><tr><td><p>8</p></td><td><p>25/03/2016</p></td><td><p>24/04/2016</p></td><td><p>27/04/2016</p></td></tr><tr><td><p>9</p></td><td><p>25/04/2016</p></td><td><p>24/05/2016</p></td><td><p>26/05/2016</p></td></tr><tr><td><p>10</p></td><td><p>25/05/2016</p></td><td><p>24/06/2016</p></td><td><p>28/06/2016</p></td></tr><tr><td><p>11</p></td><td><p>25/06/2016</p></td><td><p>24/07/2016</p></td><td><p>26/07/2016</p></td></tr><tr><td><p>12</p></td><td><p>25/07/2016</p></td><td><p>24/08/2016</p></td><td><p>26/08/2016</p></td></tr></tbody></table><p><br>27.&nbsp;&nbsp;&nbsp;  The draws will take place at Salmat Digital Pty Limited, Level 2, 116  Miller Street, North Sydney, NSW 2060, on the dates and time specified  in clause 26. The winners will be notified by writing and by phone and  within 2 business days of each draw. The winnerís will also have their  details published on www.therejectshop.com.au within 2 business days of  each draw.<br><br>28.&nbsp;&nbsp;&nbsp; If any particular draw is scheduled on a public holiday, the draw will be conducted on the following business day. <br><br>29.&nbsp;&nbsp;&nbsp;  Prizes will be awarded to person named in the entry. However, in a  dispute, will be awarded to the account holder of the entry mechanism  used to submit their entry (i.e. mobile phone account holder or land  line account holder).&nbsp; <br><br>30.&nbsp;&nbsp;&nbsp; Should an entrantís contact  details change during the Promotional Period, it is the entrant's  responsibility to notify the Promoter. A request to access or modify any  information provided in an entry should be directed to the Promoter. <br><br>31.&nbsp;&nbsp;&nbsp;  Subject to any direction given under relevant State legislation, an  unclaimed prize draw will take place at Salmat Digital Pty Limited,  Level 2, 116 Miller Street, North Sydney NSW 2060 on Monday 28th of  November 2016 at 3pm (AEDT). The winners will be notified within 2  business days of the draw. The winners will be notified of their prize  by writing and by phone and will have their details published on  www.therejectshop.com.au within 2&nbsp; business days of the draw.<br><br>32.&nbsp;&nbsp;&nbsp; The Promoterís decision is final and the Promoter will not enter into correspondence regarding the competition result.<br><br>33.&nbsp;&nbsp;&nbsp;  It is a condition of accepting the prize that the winner must comply  with all the conditions of use of the prize and the prize supplierís  requirements.<br><br>34.&nbsp;&nbsp;&nbsp; It is a condition of accepting the prize  that the winner may be required to sign a legal release in a form  determined by the promoter in its absolute discretion.<br><br>35.&nbsp;&nbsp;&nbsp; In  the case of the intervention of any outside act, agent or event which  prevents or significantly hinders the Promoterís ability to proceed with  the competition on the dates and in the manner described in these terms  and conditions, including but not limited to vandalism, power failures,  tempests, natural disasters, acts of God, civil unrest, strike, war,  act of terrorism, the Promoter may in its absolute discretion cancel the  competition and recommence it from the start on the same conditions,  subject to any directions given under State Regulation.<br><br>36.&nbsp;&nbsp;&nbsp;  The Promoter shall not be liable for any loss or damage whatsoever which  is suffered (including but not limited to indirect or consequential  loss) or for any personal injury suffered or sustained in connection  with any prize/s except for any liability which cannot be excluded by  law. The Promoter is not responsible for any incorrect or inaccurate  information, either caused by the phone user or for any of the equipment  or programming associated with or utilised in this competition, or for  any technical error, or any combination thereof that may occur in the  course of the administration of this competition including any omission,  interruption, deletion, defect, delay in operation or transmission,  communications line or telephone, mobile or satellite network failure,  theft or destruction or unauthorised access to or alteration of entries.<br><br>37.&nbsp;&nbsp;&nbsp;  The Promoter reserves the right in its sole discretion to disqualify  any individual who the Promoter has reason to believe has breached any  of these conditions, or engaged in any unlawful or other improper  misconduct calculated to jeopardise the fair and proper conduct of the  promotion. The Promoterís legal rights to recover damages or other  compensation from such an offender are reserved.<br><br>38.&nbsp;&nbsp;&nbsp; The  Reject Shop Ltd, Salmat Digital Pty Limited and their associated  agencies and companies assume no responsibility for any error, omission,  interruption, deletion, defect, delay in operation or transmission,  communications line failure, theft or destruction or unauthorised access  to, or alteration of entries, and reserves the right to take any action  that may be available.<br><br>39.&nbsp;&nbsp;&nbsp; If for any reason this competition  is not capable of running as planned, including due to infection by  computer virus, bugs, tampering, unauthorised intervention, fraud,  technical failures or any causes beyond the control of the Promoter,  which corrupt or affect the administration, security, fairness or  integrity or proper conduct of this promotion, the Promoter reserves the  right in its sole discretion to disqualify any individual who tampers  with the entry process, take any action that may be available, and to  cancel, terminate, modify or suspend the competition, subject to any  direction given under State Regulation.<br><br>40.&nbsp;&nbsp;&nbsp; All data collected  will become property of the Promoter. The Promoter collects personal  information about you to enable you to participate in this promotion but  no further use of this information will be made without prior consent.&nbsp;  <br><br>41.&nbsp;&nbsp;&nbsp; All entries become the property of the Promoter. All  opt-in entries will be entered into a database and The Promoter may use  the entrantís names, addresses and telephone numbers for future  promotional, marketing and publicity purposes in any media worldwide  without notice and without any fee being paid unless otherwise advised  by the entrant. By opting-in, entrants confirm that they allow their  details to be used for this purpose. If entrants no longer consent to  their details being used for future marketing purposes, the entrant  should contact the Promoter on their details set out below. Any request  to update, modify or delete the entrantís details should be directed to  the Promoter.<br><br>42.&nbsp;&nbsp;&nbsp; Salmat Digital Pty Limited, on behalf of The  Reject Shop Ltd, is collecting the entrant's personal information for  the purpose of conducting and promoting this competition (including but  not limited to determining and notifying winner). The entrant's personal  information may be disclosed to Salmat Digital Pty Limited for this  purpose. If you are not willing for this to occur you cannot participate  in the promotion.<br><br>43.&nbsp;&nbsp;&nbsp; Entrants personal information may be  disclosed to State and Territory lottery departments and winnersí names  published as required under the relevant lottery legislation. For  purposes of public statements and advertisements the Promoter will only  publish the winnerís surname, initial and state. A request to access,  update or correct any information should be directed to the Promoter.<br><br>44.&nbsp;&nbsp;&nbsp; The Promoter is The Reject Shop Ltd, (ABN: 33 006 122 676) of 245 Racecourse Rd, Kensington VIC 3031. <br><br><br>Authorised under NSW permit no: LTPS/15/06322, ACT permit no: TP 15/06959<br><br></p>"
+;;shareregistry;SHARE REGISTRY;""
+;;policycharter;POLICIES AND CHARTERS;""
+;;privacy;Privacy Policy;"<h2>PRIVACY INFORMATION             <b style='mso-bidi-font-weight:
+normal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext;mso-ansi-language:EN-US'><br></span></b></h2>    <h3><b style='mso-bidi-font-weight:
+normal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext;mso-ansi-language:EN-US'>Respecting your privacy</span></b></h3><p class='MsoNormal'><span>The Reject Shop Limited (</span><span>ABN</span><span>33 006 122 676)</span><span> is a discount variety retailer trading in stores throughout Australia. Information about us can be obtained by contacting our Privacy Officer on (03) 9371 5555 or by facsimile on (03) 9372 1211. </span></p>  <p class='MsoNormal'><span lang='EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>The Reject Shop acknowledges and is committed to protecting your privacy. We will collect, use and disclose and hold personal information in accordance with the Privacy Act 1988 (“the Act”). We will let you know:</span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p><ul><li>when we collect information about you;</li><li>what information we collect and hold about you and why we collect such information;</li><li>how that information is used by us;</li><li>if the law requires the collection of such information;</li><li>the consequences, if any, of you not disclosing such information;</li><li>that you can access such information and how you can access such information; and</li><li>how you can correct such information if it is not correct.</li></ul>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p> <h3><b><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext;mso-ansi-language:EN-US'>How is your personal information collected?</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>The Reject Shop does not collect personal information unless it is necessary for us to carry out our functions and activities as part of our business. We only collect such information by lawful and fair means and in an unobtrusive way. You may provide us with personal information about yourself or others each time you contact us by phone, fax, letter or email. This information will be used and managed as set out in the privacy policy. </span><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext'>We may collect information about you when you provide the information directly to us. For example:</span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>                <ul><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you sign-up to our mailing list;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you register for or participate in competitions, promotions or surveys that we run;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you register or fill in forms on our websites or mobile applications;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you visit and use our websites and mobile applications;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+;mso-bidi-font-family:arial;
+color:black;background:white'>when you shop in our stores and provide your information;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you order goods or services from us, including gift cards;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you send emails, letters or other correspondence to us; or</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>when you report an incident, make a complaint or provide other feedback to us;</span></li></ul>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-fareast-font-family:
+SimSun;mso-bidi-font-family:arial;color:windowtext'></span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext'>Where we collect information from you, we will generally do so ourselves. However, in some cases we may collect information through a third party, such as through contractors who provide security or other services to us.</span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext'><br> If you choose not to provide certain information to us, then we may not be able to provide you with certain services and you may not be able to use certain parts of our websites or mobile applications or participate in competitions or promotions that we run.</span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-fareast-font-family:
+SimSun;mso-bidi-font-family:arial;color:windowtext'></span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-fareast-font-family:
+SimSun;mso-bidi-font-family:arial;color:windowtext'></span></p>  <h3><b style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext'>What personal information do we collect?</span></b></h3>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext'>The information that we collect about you may include:</span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext'></span></p>                <ul><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>your name, date of birth, email address, postal address and other contact details;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>payment information, which may include bank account or credit card details, and other information that we need in order to provide relevant goods and services to you;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>details of your shopping preferences;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>user names, passwords and other registration details that you provide when registering to use any of our websites, mobile applications or other services;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>details of your visits to and use of our websites and mobile applications, including the different parts of the websites and applications that you access during your visits;</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>where you use one of our mobile applications, information about your visits to our retail stores collected through the mobile application; </span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>demographic information, which is not unique to you, such as your postcode, age, gender and shopping preferences, interests and favourites; and</span></li><li><span style='mso-bidi-font-size:10.0pt;
+mso-bidi-font-family:arial;color:windowtext'>other information that you provide to us.</span></li></ul>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;tab-stops:11.0pt 36.0pt;mso-layout-grid-align:none;
+text-autospace:none' class='MsoNormal'><b style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext'></span></b></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <h3><b><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext;mso-ansi-language:EN-US'>How is personal information used?</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>We will use and disclose your personal information for the primary purposes of our business as a retailer or a purpose related to our primary purpose such as marketing, where you consent to such disclosure or such disclosure is permitted by the Act. </span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>In addition we may use such information to market to you products and services offered by The Reject Shop unless you have indicated that you do not wish to obtain such offers or material. Such a request can be made to the Privacy Officer. We will in such circumstances use the personal information provided for the sole purpose of providing the service you have requested. </span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <h3><b><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext;mso-ansi-language:EN-US'>How is personal information disclosed?</span></b></h3><p><span style='font-size: small;'><span lang='EN-US' style='color: windowtext;'>We do not disclose personal information to third parties unless we are permitted to do so by law or you have given us your consent to do so. </span></span><span style='font-size: small;'><span lang='EN-US' style='color: windowtext;'><br style='mso-special-character:line-break'> </span></span></p><p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='font-size: small;'><span lang='EN-US' style='color: windowtext;'>The personal information you have provided to us will be kept confidential and secure and will not be accessible for unauthorised use, amendment or disclosure.</span></span></p><p style='margin:0cm;margin-bottom:.0001pt;line-height:normal;
+mso-pagination:none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='font-size: small;'><span lang='EN-US' style='color: windowtext;'><br> The Reject Shop may utilise the services of contractors from time to time for the purposes of undertaking services as promoted by the Company. Your personal information will only be provided to these businesses for the purpose of enabling a service to be provided to you. We will not otherwise provide your personal information to a third party without your approval.</span></span></p><p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='font-size: small;'><span lang='EN-US' style='color: windowtext;'></span></span></p><p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='font-size: small;'><span style='color: windowtext;'>We may disclose personal information to overseas recipients, who are located in the United States of America, the Asia Pacific Region and other countries or jurisdictions depending on the nature of the services those recipients provide to The Reject Shop (for example storing data via a cloud service, or where The Reject Shop’s customer relationship management system is hosted on servers located overseas, or where delivery address information for online orders is managed via a third party located overseas).</span></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext'></span></b></p>  <h3><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext'>Data security</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'>We take active steps to protect the personal information we hold against loss, unauthorised access or use, modification or disclosure, and against other misuse. This includes any information that we disclose overseas.<br style='mso-special-character:line-break'> <br style='mso-special-character:line-break'> </span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'>Where data is held overseas, we require third parties to store such data in restricted access premises and provide appropriate protection against unauthorised disclosure. As a minimum security requirement, password authentication is required to access those databases in all cases.</span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'>When the personal information that we collect is no longer required, we destroy, delete or de-identify it in a secure manner.</span><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'><br></span></p>      <h3><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></h3>  <h3><b><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext;mso-ansi-language:EN-US'>How can I access and update my personal information?</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>You are able to access or correct the personal information we hold about you at any time by accessing your online profile, or </span><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext'>contacting our customer service line on 1800 668 292 or email at <a href='mailto:feedback@rejectshop.com.au'>feedback@rejectshop.com.au</a>, or by writing to the Privacy Officer, The Reject Shop, 245 Racecourse Road, Kensington VIC 3031. Before we provide you with access to your personal information we may require some proof of identity. </span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>We will reasonably attempt to ensure that the personal information we hold about you is accurate, up to date and complete. To assist us to do this please provide us with the correct information and inform us if your details have changed. If we deny you access to information or deny a request for correction we will provide you with the reasons why we have denied you access or corrected such information in the circumstances.</span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><b style='mso-bidi-font-weight:
+normal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext;mso-ansi-language:EN-US'></span></b></p>  <h3><b style='mso-bidi-font-weight:
+normal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext;mso-ansi-language:EN-US'>Direct marketing and opting out</span></b></h3>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:windowtext'>By providing your address, email address and telephone numbers to The Reject Shop, you consent to The Reject Shop contacting you for the purposes set out above. We may send this information in a variety of ways, including by mail, email, social media, SMS, MMS, telephone and if you download them any The Reject Shop Apps. You can opt out of being contacted by:</span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:windowtext'></span></p>    <ul><li><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext'>contacting our customer service line on 1800 668 292 or email at <a href='mailto:feedback@rejectshop.com.au'>feedback@rejectshop.com.au</a>, or by writing to the Privacy Officer, The Reject Shop, 245 Racecourse Road, Kensington VIC 3031; or</span></li><li><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext'>using the unsubscribe facility that we include in our electronic messages (e.g. email, SMS or MMS) to opt out of receiving those messages.</span></li></ul>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext'></span></b></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext'></span></b></p>  <h3><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext'>How can I find out what personal information The Reject Shop holds about me?</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'>If you would like to access or update your personal information, you can contact our customer service line on 1800 668 292, or write to them at 245 Racecourse Road, Kensington VIC 3031. </span><span 
+mso-bidi-font-family:arial;color:black;background:white'>We prefer to receive written requests as this may assists us in verifying your identity.</span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:windowtext'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'></span></p>  <h3><b><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext;mso-ansi-language:EN-US'>Changes to The Reject Shop’s Privacy Policy and Practices</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>Due to the importance of your privacy and in line with customer expectations and legislative changes, our privacy policy will be reviewed and if appropriate, updated. A copy of the Policy can be made available by contacting the Privacy Officer.</span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'><br></span></p><p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'></p>    <h3><b><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext;mso-ansi-language:EN-US'>Contacting The Reject Shop about this Privacy Policy</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'>If you are concerned with the way The Reject Shop has handled your personal information, please contact our Privacy Officer with your complaint. We will make available to you a Privacy Complaint Form, which you will be required to complete and return to us. This will ensure the prompt investigation of your complaint. If we have not handled your personal information in an appropriate way we will take steps to remedy your concerns promptly.</span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'>If we have not responded to you within a reasonable time, you are entitled under the Privacy Act 1988 (Cth) to make a complaint to the Office of the Australian Information Commissioner.</span><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'><br></span></p>    <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;color:windowtext;
+mso-ansi-language:EN-US'></span></p>  <h3><b style='mso-bidi-font-weight:
+normal'><span lang='EN-US' style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:
+arial;color:windowtext;mso-ansi-language:EN-US'>More Information</span></b></h3>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span style='font-size: small;'><span style='color: black; background: none repeat scroll 0% 0% white;'>More information about Privacy law and the National Privacy Principles is available from the Federal Privacy Commissioner at</span><span style='font-family: Times; color: windowtext;'><u><span style='font-family: arial; color: rgb(0, 166, 227); background: none repeat scroll 0% 0% white;'>www.privacy.gov.au</span></u></span><span style='color: black; background: none repeat scroll 0% 0% white;'>.</span></span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span style='font-size:10.5pt;;mso-bidi-font-family:
+arial;color:black;background:white'></span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span style='font-size:10.5pt;;mso-bidi-font-family:
+arial;color:black;background:white'><br></span></p><hr>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'></p><h2><b style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;;mso-bidi-font-family:arial;color:black;background:white'>COOKIES POLICY</span></b></h2>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><b style='mso-bidi-font-weight:normal'><span style='font-size:10.5pt;;mso-bidi-font-family:arial;color:black;background:white'></span></b></p>  <h3><b style='mso-bidi-font-weight:
+normal'><span style='mso-bidi-font-size:10.0pt;mso-bidi-font-family:arial;
+color:windowtext'>What is a cookie?</span></b></h3>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'>A cookie is a small data file that's stored by your web browser on your computer. The Reject Shop may use cookies to help monitor your online activity and to learn which advertisements bring users to our website. The information that we collect and share from the Cookies is anonymous and not personally identifiable. It does not contain your name, address, telephone number, email address or the details of your internet service provider. </span></p>  <p style='margin-top:0cm;margin-right:10.0pt;margin-bottom:
+0cm;margin-left:0cm;margin-bottom:.0001pt;line-height:normal;mso-pagination:
+none;mso-layout-grid-align:none;text-autospace:none' class='MsoNormal'><span style='mso-bidi-font-size:
+10.0pt;mso-bidi-font-family:arial;color:windowtext'></span></p>  <h3><b style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;
+;mso-bidi-font-family:arial;
+color:black;background:white'>How do we use cookies?</span></b></h3>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:black;background:white'>When you visit </span><a href='http://www.rejectshop.com.au'><span style='mso-bidi-font-size:10.0pt;
+;mso-bidi-font-family:arial;
+background:white'>www.rejectshop.com.au</span></a><span style='mso-bidi-font-size:
+10.0pt;;mso-bidi-font-family:arial;
+color:black;background:white'>, we automatically collect non-identifying aggregate information such as your domain name, browser type, referral and demographic information. This is solely for the purpose of monitoring our website traffic. This information gives us an insight on which pages are visited most frequently. This is used to improve the site so we can provide a better experience for you as a customer. We do not monitor your activity outside of our site, but we do gather information on what sites refer traffic to us.</span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:black;background:white'></span></p>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><b style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;
+;mso-bidi-font-family:arial;
+color:black;background:white'></span></b></p>  <h3><b style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;
+;mso-bidi-font-family:arial;
+color:black;background:white'>Third Party Cookies and how to reject cookies</span></b></h3>  <p style='margin:0cm;margin-bottom:.0001pt;line-height:normal' class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:black;background:white'>The Reject Shop may use Google advertising programs that use cookies to improve your online experience, including the display of more relevant ads on external websites. <br> <br> You can choose to decline cookies, but if you do so, you may not be able to fully experience our online interactive features. Anyone may opt out of these programs at any time by visiting Google Analytics'<span class='MsoHyperlink'>currently available opt-outs</span></span>for the web.</span></p><p class='MsoNormal'><span 
+mso-bidi-font-family:arial;color:black;background:white'></span></p>  <p class='MsoNormal'><span>The Reject Shop is not responsible for the privacy practices of sites linked to The Reject Shop via hyperlinks, banner advertising or other means. Please take care at all times when visiting another site.</span></p><p>&nbsp;</p><p>&nbsp;</p>"
+;;thanksforfeedback;Thank you for your feedback;"<p>Your feedback is greatly appreciated and will help us improve the quality of service we provide to all our customers.</p>"
+
+# CMS Title Paragraph  Components
+UPDATE CMSTitleParagraphComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];content[lang=$lang]
+;;introductiontitle;INTRODUCTION;""
+;;whoWeLookFor;;"<h2>Who we look for</h2> <p>The Reject Shop is always looking for new team members who are energetic, happy and committed to joining our rapidly expanding company. We look for team members who can embrace and demonstrate the business’s Values and Behaviours:&nbsp;</p> <ul>     <li>Excited to be working as part of a team</li>     <li>Inspired to work with the highest of integrity</li>     <li>With a passion for excellence</li></ul> <p>Most of our stores trade seven days a week which enables flexibility in working hours and a range of opportunities to suit applicants from all sectors of the community.</p><p>&nbsp;</p><p>All applicants will be treated with respect, and can be assured that we recruit on basis of merit and uphold the principles of equal opportunity and antidiscrimination in our recruitment process.</p> <p>&nbsp;</p><h2>Why work for The Reject Shop&nbsp;</h2> <p>The Reject Shop is an exciting,    fun, friendly, vibrant and fast paced place to work. Our team members    are like our customers – they come from all walks of life and are a    diverse group of enthusiastic people who pride themselves on providing    such a great place to work and shop.</p><p>&nbsp;</p> <h2>Diversity</h2> <p>At the Reject Shop we believe one of our  great  strengths is our Diversity and we are committed to providing a  positive  working environment.&nbsp; Our teams are encouraged to value the  differences  that make us unique as individuals and are structured to  reflect the  community that we live in and do business with every day.</p> <p>&nbsp;</p><h2>Development</h2> <p>If   you have the drive, the motivation and the enthusiasm to achieve and   succeed in your job then there are great opportunities for your future.&nbsp;   The Reject Shop proudly invest in our future leaders with a range of   programs across all levels of the business. For more information see – <a href='/careers/learninganddevelopment'>Learning and Development Programs</a></p> <p>&nbsp;</p> <h2>Other Benefits</h2> <p>The Reject Shop makes a very strong commitment to our 5,000+ team members. We offer:</p><p>&nbsp;</p> <ul>     <li>Equal and continuing career opportunities</li>     <li>Financial incentives, based on profitability</li>     <li>A generous and safe environment</li>     <li>Team member discount scheme</li> </ul> <p>&nbsp;</p>"
+
+;;contactUs;CONTACT INFORMATION;"<h3>Store Support Centre (Head Office)</h3> <p>245 Racecourse Rd<br> Kensington VIC, 3031<br> Phone: 1800 633 886 (Reception, Free call)</p> <p>&nbsp;</p> <h3>Bulk &amp; Special Orders</h3> <p>1800 668 292 (Free call)</p> <p>&nbsp;</p> <h3>Melbourne Airport Distribution Centre</h3> <p>120 Link Rd<br> Melbourne Airport VIC, 3045<br> Phone: (03) 9933 5852<br> Fax: (03) 9933 5850</p> <p>&nbsp;</p><h3>Ipswich Distribution Centre</h3> <p>1 Ashburn Rd<br> Bundamba QLD, 4304<br> Phone: (07) 3280 4952<br> Fax: (07) 3280 4987</p><p>&nbsp;</p><h3>Perth Distribution Centre</h3><p>The Reject Shop<br>23 Ulm Place<br>Perth Airport WA 6105<br>Phone&nbsp; (08) 9378 5156<br>Fax (08) 9378 5158</p><p>&nbsp;</p><p>&nbsp;</p>"
+
+;;competitionNConsumerCompliance;QUALITY GUARANTEE;"<h2>Competition and Consumer Act 2010 Compliance Policy</h2><p>The Reject Shop is committed to compliance with all relevant laws, regulations, standards and codes.<br>
+Compliance with the Competition and Consumer Act 2010 is especially important, and includes:</p>
+<ul>
+<li>&nbsp Product quality control</li> 
+<li>&nbsp Honesty in pricing and promotions</li> 
+<li>&nbsp Fair treatment of customer complaints</li> 
+</ul>
+<p><b>Products:</b> We are committed to ensuring our products will be fit for purpose, compliant to Australian regulations and standards and safe to use.<br><br>
+<b>Honesty:</b> Any claims we make must be truthful and capable of substantiation.<br><br>  
+<b>Complaints:</b> We have a hassle-free refund and exchange policy on proof of purchase.<br><br>
+Team members must not breach or be involved in, authorise or condone any breaches of the Competition and Consumer Act 2010.<br><br>
+If a team member suspects a Competition and Consumer Act 2010 breach, they must report the matter to their Manager or Compliance Manager and they will be protected against any repercussions.<br><br>	  
+Disciplinary action may be taken if an employee fails to follow instructions with regard to compliance.</p>"
+
+;;notFoundParagraph;Oops, page not found;"<p>The Reject Shop website is continually being improved and links you may have bookmarked are possibly no longer available. </p>
+<br><p>However, if you are looking for specific information that is not available on the website, please use the feedback form to let us know.</p>"
+
+UPDATE CustomerFeedbackCMSComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;customerFeedbackCMSComponent;Customer Feedback
+
+#Localize Report HalfYearEnd/Annual Year Title
+UPDATE ReportMedia;$contentCV[unique=true];code[unique=true];name[lang=$lang]
+;;annual_report_2001.pdf;Financial Report Year Ended 01 July 2001
+;;annual_report_2002.pdf;Financial Report Year Ended 30 June 2002
+;;annual_report_2003.pdf;Financial Report Year Ended 30 June 2003
+;;annual_report_2004.pdf;2004 Annual Report
+;;annual_report_2005.pdf;Annual Report and Appendix 4E - 26 June 2005
+;;annual_report_2006.pdf;Annual Report and Appendix 4E - 25 June 2006
+;;annual_report_2007.pdf;Annual Report and Appendix 4E - 24 June 2007 	
+;;annual_report_2008.pdf;Annual Report and Appendix 4E - 29 June 2008
+;;annual_report_2009.pdf;Annual Report and Appendix 4E - 28 June 2009
+;;annual_report_2010.pdf;Annual Report and Appendix 4E - 27 June 2010
+;;annual_report_2011.pdf;Appendix 4E / Full Year Statutory Accounts
+;;annual_report_2012.pdf;Appendix 4E / Full Year Statutory Accounts
+
+;;half_yearly_report_2003.pdf;Financial Report Half Year ended 28 Dec 2003
+;;half_yearly_report_2004.pdf;Financial Report Half Year ended 26 Dec 2004
+;;half_yearly_report_2005.pdf;Financial Report Half Year ended 25 Dec 2005
+;;half_yearly_report_2006.pdf;Financial Report Half Year Ended 24 Dec 2006
+;;half_yearly_report_2007.pdf;Financial Report Half Year Ended 30 Dec 2007
+;;half_yearly_report_2008.pdf;Financial Report Half Year Ended 28 Dec 2008
+;;half_yearly_report_2009.pdf;Financial Report Half Year Ended 27 Dec 2009
+;;half_yearly_report_2010.pdf;Financial Report Half Year Ended 26 Dec 2010
+;;half_yearly_report_2011.pdf;Financial Report Half Year Ended 25 Dec 2011
+;;half_yearly_report_2012.pdf;Appendix 4D and Half Yearly Accounts
+;;Final-2016-Appendix-4E-and-Annual-Report.pdf;Appendix 4E and Annual Report
+;;Appendix-4D-December-15-v2.pdf;Appendix 4D and Half Yearly Accounts
+;;FINAL-ANNUAL-REPORT-2015.pdf;Appendix 4E and Annual Report
+;;Appendix-4D-December-14.pdf;Appendix 4D and Half Yearly Accounts
+;;Appendix-4E-and-Annual-Report.pdf;Appendix 4E and Annual Report
+;;Appendix-4D-HYE-December-2013.pdf;Appendix 4D and Half Yearly Accounts
+;;Final-Annual-Report-FY2013.pdf;Annual Report to Shareholders
+;;TRS-Appendix-4E-AUG-2013.pdf;Appendix 4E and Annual Report 
+;;Half-year-report-30-December-2012.pdf;Appendix 4D and Half Yearly Accounts
+##############PressRelese#########
+;;TRS_FY16_Media Release Final.pdf;Year End Results Media Release
+;;TRS-1HFY16-Results-ASX.pdf;Media Release - Half Year Results
+;;TRS-FYR15-Media-Release-v10.pdf;Year End Results Media Release
+;;HYE-December-18-Feb-Final.pdf;Media Release - Half Year Results
+;;TRS-ASX-Trading-Update-23-Jan-2015.pdf;First Half 2015 Trading Update
+;;YE-June-2014-Media-Release.pdf;Year End Results Media Release
+;;Teleconference-20-August-2014.pdf;Year End Results Teleconference
+;;Trading-Update-June-10th-2014.pdf;June 2014 Trading Update Teleconference
+;;Market-Trading-June-2014-Final.pdf;June 2014 Trading Update
+;;Media-Release-HYE-Dec-2014.pdf;Media Release - Half Year Results
+;;TRS-Trading-Update-1H-FY2014.pdf;Half Year December Trading Update
+;;Trading-Update-Teleconference.pdf;Half Year December Trading Update - Teleconference
+;;YE-June-2013-Media-Release.pdf;FY2013 Results Media Release
+;;Cap-Raising-Complete-Lift.pdf;$30 Million Share Placement Successful 2013
+;;Trading-Halt-Request-23Apr2013.pdf;Trading Halt
+;;Final-Cap-Raising.pdf;Accelerated Store Roll-Out and Equity Raising
+;;Media-release-Feb-2013-Final.pdf;Media Release - Half Year Results
+;;Ispwich-flood-29-Jan-2013.pdf;Update on QLD Floods - No Impact on Ipswich DC
+;;Media-Release-Final-22-Aug-2012.pdf;Media Release June 2012 Results
+;;Media-release-15-feb-2012-Final.pdf;Media Release - Half Year Results
+;;Appointment-Director-19-Aug-2011.pdf;Appointment of a New Director
+;;Media-Release-17-Aug-2011.pdf;Media Release June 2011 Results
+;;Media-release-August-2011.pdf;Update on Financing
+;;Ipswich-DC-May-25-2011.pdf;Ipswich DC Update and Updated Profit Guidance FY2011
+;;Media-release-16-February-2011.pdf;Media Release - Half Year Results Dec 2010
+;;Teleconference-9-December-2010.pdf;Profit Guidance Update - Teleconference
+;;Media-release-9-December-2010.pdf;Profit Guidance Update
+;;Media-release-Full-year-results-18-Aug-2010.pdf;Media Release - Full Year Results 2010
+;;Retirement-of-Chairman-25-Jun-2010.pdf;Chairman to Retire - Full Year Guidance Confirmed
+;;ASX-QLD-DC-22-Jun-2010.pdf;Media Release - New Distribution Centre
+;;Media-release-half-year-results-17-Feb-2010.pdf;Media Release - Half Year Results Dec 2009
+;;Five-New-Store-Sep-2009.pdf;Media Release - Five New Store Openings
+;;Media-Release-Full-Year-2009.pdf;Media Release - Full Year Results 2009
+;;ASX-media-release-2009.pdf;Media Release - Half Year Results Dec 2008
+;;QLD-DC-Facility.pdf;Media Release - Qld Distribution Centre
+;;Media-release-20-August-2008-Final.pdf;Media Release - Full Year Results 2008
+;;ASX-Lodgement-Change-of-Director.pdf;Media Release - Retirement & Appointment of Director
+;;ASX-Media-Release-Board-Feb-2008.pdf;Media Release - Retirement & Appointment of Director
+;;Media-Release-20-February-2008.pdf;Media Release - Half Year Results Dec 2007
+;;Full-Year-Results-June-2007-Media-Release-2007.08.15.pdf;Media Release - Full Year Results 2007
+;;Half-Year-Results--Media-Release-14-02-2007.pdf;Media Release - Half Year Results Dec 2006
+;;Managing-Director-22-12-2006.pdf;Appoints Incoming Managing Director
+;;Full-Year-Results-Media-Release-16-08-2006.pdf;Media Release - Full Year Results 2006
+;;Media-Release-11-04-2006.pdf;WA Expansion
+#############corporate#####################
+;;TRS-WGEA-2015-2016-Signed-14.06.2016.pdf;Workplace Gender Equality Report
+;;TRS-DCIP-Enterprise-Agreement-2016-2018.pdf;TRS Summary Document of Changes DCIP Enterprise Agreement 2016-2018
+;;DCIP-Agreement-2016-2018-Final.pdf;DCIP Agreement 2016-2018
+;;TRS-Code-of-Conduct-2015.pdf;TRS Code of Conduct
+;;Corporate-Governance-Policy-15-July-15.pdf;Corporate Governance Policy
+;;Workplace-Gender-Equality-Report-2015.pdf;Workplace Gender Equality report
+;;2013-14-Workplace-Gender-Equality.pdf;Workplace Gender Equality report
+;;ARC-Charter-Mar-14.pdf;Audit & Risk Committee Charter
+;;TRS-Ethical-Sourcing-Policy-2013.pdf;Ethical Sourcing Policy
+;;TRS-Workplace-Gender-Equality-report-2013.pdf;Workplace Gender Equality report
+;;TRS-Gender-Diversity-Statement-2012.pdf;Gender Diversity Statement
+;;Shareholder-Communication-Policy-2012.pdf;Shareholder Communication Policy
+;;Share-Trading-Policy-22-December-2010.pdf;Share Trading Policy
+;;Continuous-Disclosure-Policy-2007.pdf;Continuous Disclosure Policy
+;;Board-Charter-2007.pdf;Board Charter
+;;Remuneration-Committee-Charter-2007.pdf;Remuneration Committee Charter
+;;Share-Registry-Contact-Details-2013.pdf;Share Registry Contact Details
+######################presentation##############
+;;FY16-Full-Year-Results-Presentation-Final.pdf;Year End Results Presentation
+;;FY16-1H-Results-Presentation-v7.pdf;Half Year Results 2016 Presentation
+;;Full-Year-Results-2016-Audio.mp3;Full Year Results 2016 - Audio
+;;Half-Year-Results-2016-Audio.mp3;Half Year Results 2016 - Audio
+;;FY15-Full-Year-Presentation-final.pdf;Year End Results Presentation
+;;TRS-Half-Year-Results-Presentation-FY15-final.pdf;Half Year Results 2015 Presentation
+;;Full-Year-Results-2015-Audio.mp3;Full Year Results 2015 - Audio
+;;FY2014-Results-Presentation-Final.pdf;Year End Results Presentation
+;;Half-Year-Results-2014-Presentation-Final.pdf;Half Year Results 2014 Presentation
+;;The-Reject-Shop-2014-Half-Year-Trading-Results.mp3;Half Year Results 2014 - Audio
+;;Full-Year-Results-2013-Presentation.pdf;FY2013 Results Presentation
+;;Final-Cap-Raising-Presentation.pdf;Investor Presentation - Store Roll-Out and Equity Raising
+;;Half-Year-Results-2013-Presentation-Final.pdf;Half Year Results 2013 Presentation
+;;Full-Year-Results-Presentation-2012-Final.pdf;June 2012 Results Presentation
+;;Presentation-Half-Year-February-2012-Final.pdf;Half Year Results Presentation
+;;AGM-Presentation-Oct-2011-v3.pdf;AGM Presentation
+;;Presentation-Year-End.pdf;June 2011 Results Presentation
+;;Presentation-HY2011-cb.pdf;Half Year Results Presentation 26 Dec 2010
+;;AGM-20-Oct-10.pdf;AGM-20-Oct-10.pdf;AGM Presentation
+;;Full-Year-Profit-Results-18-Aug-2010.pdf;Full Year Results Presentation 2010
+;;Analyst-Presentation-Final-HY2009.pdf;Half Year Results Presentation 27 Dec 2009
+;;AGM-14-Oct-09.pdf;AGM Presentation
+;;Full-Year-Results-Presentation-FY2009.pdf;Full Year Results Presentation 2009
+;;Presentation-HY2009.pdf;Half Year Results Presentation 28 Dec 2008
+;;AGM-15-Oct-08.pdf;AGM Presentation
+;;FY08-Full-Year-Results-Presentation.pdf;Full Year Results Presentation 2008
+;;Presentation-HY2008.pdf;Half Year Results Presentation 30 Dec 2007
+;;Annual-General-Meeting-2007-oct-2010.pdf;AGM Presentation 2007
+;;Chairmans-AddressShareholders-2007-oct-2010.pdf;AGM Chairmans Address 2007
+;;Full-Year-Results-24-June-2007-2007-15Aug.pdf;Full Year Results Presentation 2007
+;;Half-Year-Results-24Dec-2006-14-02-2007.pdf;Half Year Results Presentation 24 Dec 2006
+;;AGM-Chairmans-Address-11-10-2006.pdf;AGM Chairmans Address 2006
+;;AGM-Presentation-11Oct-2006.pdf;AGM Presentation 2006
+;;Managing-Directors-Address-11-10-2006.pdf;AGM Managing Directors Address 2006
+;;Full-Year-Results-25June-2006-16-08-2006.pdf;Full Year Results Presentation 2006
+;;Half-Year-Results-25Dec-2005-15-02-2006.pdf;Half Year Results Presentation 2005
+;;Managing-Directors-Address-Shareholders-19-10-2005.pdf;Chairmans MD Address Shareholders 2005
+;;AGM-Presentation-19Oct-2005.pdf;AGM Presentation 2005
+;;Full-Year-Results-26June-2005-17-08-2005.pdf;Full Year Results Presentation 2005
+;;Half-Year-Results-26Dec-2004-16-02-2005.pdf;Half Year Results Presentation Dec 2004
+;;AGM-Presentation-27Oct-2004.pdf;AGM Presentation 2004
+;;Announcement-FY2004-18-8-04.pdf;Full Year Results Presentation 2004
+
+##########################otherannouncements###########
+;;TRS-Notice-of-Meeting-2-and-Proxy-form-CK.pdf;Notice of Meeting & Proxy Form
+;;Appendix_4G.pdf;Appendix 4G
+;;App3B PRP 26th July 2016.pdf;Appendix 3B
+;;App 3B PRP 18 Feb 2016 Final.pdf;Appendix 3B
+;;ASX-Release-DCTR-Labour-Outsourcing-17-March-2016.pdf;ASX Release DCTR Labour Outsourcing 2016
+;;Director-Interest-Notice-M-Conrad-indirect-22nd-February-2016.pdf;Change of Director's Interest Notice
+;;Director-Interest-Notice-K-Elkington-Indirect-15th-October-2015.pdf;Change of Director's Interest Notice K Elkington
+;;App-3B-PRP-15-October-2015-post-AGM-10.pdf;Appendix 3B
+;;Director-Interest-Notice-Ross-Sudano-15-October-2015-9.pdf;Change of Director's Interest Notice
+;;App3Y-Change-of-Director-Interest-Notice-B-Stevens-8.pdf;Change of Director's Interest Notice
+;;AGM-Results-14-Oct-2015-7.pdf;Results of Meeting
+;;Chairmans-and-MDs-AGM-Speeches-asx-version-6.pdf;Chairman's and Managing Director's AGM Address
+;;TRS-Final-Notice-of-Meeting-proxy-form-5.pdf;Notice of Meeting & Proxy Form
+;;Appendix-4G-4.pdf;Appendix 4G
+;;App3B-PRP-21st-July-2015-3.pdf;Appendix 3B
+;;Director-Interest-Notice-D-Wetshorpe-Indirect-11-Feb-2015-2.pdf;Change of Director's Interest Notice
+;;TRS-ASX-Release-Trading-Update-23-Jan-2015-1.pdf;First Half 2015 Trading Update
+;;Price-Query-28-Nov-2014-TRS.pdf;Response to ASX Price Query
+;;Director-s-Interest-Notice-Ross-Sudano-20-Nov-2014.pdf;Initial Director's Interest Notice
+;;Director-Interest-Notice-K-Elkington-Indirect-7th-November-2014.pdf;Change of Director's Interest Notice
+;;AGM-Results-15-Oct-2014.pdf;Results of Meeting
+;;Chairmans-and-CEOs-AGM-Speeches-asx-version.pdf;Chairman's & Chief Executive Officer's AGM Address
+;;pre-AGM-trading-update.pdf;Pre AGM Trading Update
+;;App-3B-PRP-13-October-2014-wjs.pdf;Appendix 3B
+;;CEO-Performance-Rights-13-October-2014-wjs.pdf;Grant of Performance Rights to Chief Executive Officer
+;;TRS-Notice-of-Meeting-Proxy-Form.pdf;Notice of Annual General Meeting / Proxy Form
+;;PRP-Rights-Lapse-5-August-2014.pdf;Lapse of Performance Rights
+;;New-CEO-Announcement-8-July-2014.pdf;New Chief Executive Officer Appointment
+;;App3B-PRP-1st-July-2014.pdf;Appendix 3B
+;;MD-Transition-Progress-30-May-2014-Final.pdf;Transition of Responsibilities of Managing Director
+;;Interest-Notice-C-Bryce-28-May-2014.pdf;Final Director's Interest Notice
+;;Resignation-as-a-Director-C-Bryce.pdf;Resignation of a Director
+;;Director-Interest-Notice-K-Elkington-Indirect-28-March-2014.pdf;Change of Director's Interest Notice
+;;Director-Interest-Notice-W-Stevens-Indirect-20-March-2014.pdf;Change of Director's Interest Notice
+;;CEO-Resignation.pdf;Resignation of Managing Director
+;;App3Y-Change-of-Directors-25-Nov-2013.pdf;Change of Director's Interest Notice
+;;App3Y-Change-of-Directors-18-Oct-2013.pdf;Change of Director's Interest Notice
+;;App-3B-PRP-17-October-2013.pdf;Appendix 3B
+;;AGM-Results-16-Oct-2013.pdf;Results of Annual General Meeting
+;;Chairmans-and-MDs-AGM-Speeches-16-Oct-2013.pdf;Chairman's and Managing Director's Address to Shareholders
+;;PRP-Rights-Lapse-15-October-2013.pdf;Lapse of Performance Rights
+;;TRS-Notice-of-AGM-and-Proxy-13-September-2013.pdf;Notice of Annual General Meeting / Proxy Form
+;;Appendix-3B-April-24-2013.pdf;Appendix 3B
+;;Teleconference-Announcement-20-February-2013.pdf;Teleconference Presentation
+;;App-3B-PRP-10-January-2013.pdf;Appendix 3B
+;;PRP-Rights-Lapse-10-January-2013.pdf;Lapse of Performance Rights
+;;New-Stores-Announcement-22-Nov-2012-fowlstone.pdf;Update on New Store Openings for FY2013
+;;New-Stores-Announcement-22-Nov-2012-fowlstone.pdf1;Change of Director's Interest Notice
+;;Notice-C-Bryce-22-October-2012.pdf;Change of Director's Interest Notice
+;;Substantial-Shareholder-Eley-Griffiths-Group-2012.pdf;Becoming a substantial holder
+;;AGM-Results-17-Oct-2012.pdf;Results of Annual General Meeting
+;;App-3B-PRP-18-October-2012.pdf;Appendix 3B
+;;Chairmans-and-MDs-AGM-Speeches-2012.pdf;Chairman's and Managing Director's Address to Shareholders
+;;Notice-C-Bryce-18-September-2012.pdf;Change of Director's Interest Notice
+;;PRP-Rights-Lapse-20-September-2012.pdf;Lapse of Performance Rights
+;;Insurance-Claim-Announcement-10-September-2012.pdf;Finalisation of Insurance Claim
+;;TRS-Notice-of-AGM-x-Proxy-2012.pdf;Notice of Annual General Meeting / Proxy Form
+;;TRS-Notice-of-AGM-and-Proxy.pdf;Notice of Annual General Meeting/Proxy Form
+;;Notice-of-Ceasing-to-be-a-Substantial-Holder-UBS-2011.08.24.pdf;Ceasing to be a substantial holder
+;;App3X-Initial-Directors-Interest-Notice-Mel-Conrad-23-August-2011.pdf;Initial Director`s Interest Notice
+;;App3Y-Change-of-Director-Interest-Notice-C-Bryce-22-August-2011.pdf;Change of Director`s Interest Notice
+;;Becoming-a-Substantial-Holder-UBS-2011.08.22.pdf;Becoming a substantial holder
+;;Notice-of-Change-of-Shareholder-Interests-PPT-2011.08.19.pdf;Change in substantial holding from PPT
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.08.15.pdf;Ceasing to be a substantial holder
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.08.15.pdf;Becoming a substantial holder
+;;Teleconference-17-August-2011-FY11.pdf;Teleconference June 2011 Annual Results
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.08.11.pdf;Ceasing to be a substantial holder
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.08.04.pdf;Becoming a substantial holder
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.08.02.pdf;Ceasing to be a substantial holder
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.07.28.pdf;Becoming a substantial holder
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.07.27.pdf;Ceasing to be a substantial holder
+;;Notice-of-change-to-substantial-shareholder-UBS-2011.07.26.pdf;Change in substantial holding
+;;App3B-PRP-15-July-2011.pdf;Appendix 3B
+;;Notice-of-change-to-substantial-shareholder-UBS-2011.07.11.pdf;Change in substantial holding
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.07.07.pdf;Becoming a substantial holder
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.07.06.pdf;Ceasing to be a substantial holder	
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.07.05.pdf;Finalisation of Insurance Claim
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.07.04.pdf;Becoming a substantial holder
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.06.16.pdf;Becoming a substantial holder
+;;PRP-Rights-lapse-16-June-2011.pdf;Lapse of Performance Rights
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.06.15.pdf;Ceasing to be a substantial holder
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.06.09.pdf;Becoming a substantial holder
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.06.08.pdf;Ceasing to be a substantial holder
+;;Director-Interest-Notice-W-Stevens-Indirect-6th-June-2011.pdf;Change of Director`s Interest Notice
+;;App3Y-CDIN-W-Stevens-Indirect-6th-June-2011.pdf;Becoming a substantial holder
+;;App-3Y-30-May-2011-C-Bryce.pdf;Change of Director`s Interest Notice
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.05.26.pdf;Ceasing to be a substantial holder
+;;Notice-of-ceasing-to-be-substantial-shareholder-PPT-2011.05.25.pdf;Change in substantial holding from PPT
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.05.24.pdf;Becoming a substantial holder
+;;Notice-of-ceasing-to-be-substantial-shareholder-UBS-2011.05.23.pdf;Ceasing to be a substantial holder
+;;Becoming-a-Substantial-Shareholder-UBS-AG-2011.06.03.pdf;Becoming a substantial holder
+;;Becoming-a-Substantial-Shareholder-PPT-2011.04.07.pdf;Becoming a substantial holder from PPT
+;;Notice-of-ceasing-to-be-substantial-shareholder-PPT-2011.03.31.pdf;Ceasing to be a substantial holder from PPT
+;;Becoming-a-Substantial-Shareholder-PPT-2011.03.15.pdf;Becoming a substantial holder
+;;Becoming-a-Substantial-Shareholder-Grahger-2011.03.17.pdf;Change in substantial holding
+;;substantial-shareholder-Hyperion-Asset-Managment-2011.03.16.pdf;Becoming a substantial holder from PPT
+;;Half-Year-Results-Dec-2010-Teleconference.pdf;Half Year Dec 2010 Results Teleconference
+;;Notice-of-ceasing-to-be-substantial-Grahger-Capital-2011.01.27.pdf;Ceasing to be a substantial holder
+;;TRS-Qld-floods-Update-cb-v2.pdf;OPERATIONAL IMPACT OF QUEENSLAND FLOODS
+;;Trading-Halt-12-Janauary-2011.pdf;Trading Halt
+;;Share-Trading-Policy-ASX-Announcement-2010.pdf;Trading Policy
+;;Notice-of-change-to-substantial-shareholder-Acorn-Capital-2010.12.17.pdf;Change in substantial holding
+;;Notice-substantial-shareholder-Hyperion-Asset-Managment-2010.12.15.pdf;Change in substantial holding
+;;App3Y-Director-Interest-Notice-W-Stevens-Indirect-25-October-2010.pdf;Change of Director`s Interest Notice
+;;AGM-Results-20-Oct-2010.pdf;Results of Meeting
+;;App-3B-PRP-21-October-2010.pdf;Appendix 3B
+;;App3Y-Change-of-Director-Interest-Notice-C-Bryce-21-October-2010.pdf;Change of Director's Interest Notice
+;;Chairmans-and-MDs-AGM-speech-final-2010.pdf;CChairman's and Managing Director's Address to Shareholders
+;;ASX-NOM-2010.pdf;Notice of Annual General Meeting/Proxy Form
+;;App-3B-PRP-15-September-2010.pdf;Appendix 3B
+;;Initial-Directors-Interest-Notice-D-Westhorpe-2010.pdf;Initial Director`s Interest Notice
+;;Notice-of-Change-in-substantial-holding-from-WBC-2010.08.20.pdf;Change in substantial holding from WBC
+;;Notice-of-Change-in-substantial-holding-from-BTT-2010.08.20.pdf;Change in substantial holding from BTT
+;;ASX-Lodgement-Change-of-Director-D-Westhorpe-2010.pdf;Appointment of New Director
+;;YE-Teleconference-18-August-2010.pdf;Year-End June 2010 - Results Teleconference
+;;Notice-of-Initial-substantial-holder-from-Evans-Buchanan-2010.07.23.pdf;Becoming a substantial holder
+;;App3Y-Change-of-Director-Interest-Notice-C-Bryce-15-July-2010.pdf;Change of Director`s Interest Notice
+;;App3Z-2010.pdf;Final Director's Interest Notice
+;;App3B-6-July-2010.pdf;Appendix 3B
+;;PRP-Rights-lapse-1st-July-2010.pdf;Lapse of Performance Rights
+;;Notice-of-Initial-substantial-holder-from-BTT-2010.05.19.pdf;Change in substantial holding from BTT
+;;Notice-of-Initial-substantial-holder-from-WBC-2010.05.18.pdf;Change in substantial holding from WBC
+;;Notice-of-Initial-substantial-holder-from-Hyperion-2010.04.15.pdf;Change in substantial holding Hyperion
+;;App3Y-Change-of-Director-Interest-Notice-B-Beattie-22-Mar-2010.pdf;Change of Director`s Interest Notice
+;;HYE-Teleconference-12-February-2010.pdf;Half Year Results - Teleconference
+;;Notice-of-Initial-substantial-holder-from-WBC-2010.pdf;Notice of Initial substantial holder from WBC
+;;SandP-to-remove-Felix-Resources-from-SP-ASX-Indices-2009.pdf;SandP to remove Felix Resources from SP/ASX Indices
+;;SandP-Announces-December-SP-ASX-Index-Rebalance-2009.pdf;SandP Announces December SP/ASX Index Rebalance
+;;AGM-Results-14-Oct-2009.pdf;Results of Meeting
+;;App3X-2009.pdf;Initial Director's Interest Notice
+;;Director-Appt-Chris-Bryce-15-October-2009.pdf;Appointment of Director
+;;Chairmans-and-MDs-AGM-Address-ASX-Announcement-2009.pdf;Chairman's and Managing Director's Address to Shareholders
+;;App-3B-PRP-13-October-2009.pdf;Appendix 3B
+;;Chief-Financial-Officer-Appointment-12-October-2009.pdf;Appointment of Chief Financial Officer
+;;Grahger-Ceasing-to-be-Substantial-Shareholder24-September-2009.pdf;Ceasing to be a Substantial Shareholder
+;;App3Y-Interest-Notice-W-Stevens-Indirect-17-September-2009.pdf;Change in Director's Interest Notice
+;;App3B-15-Sept-2009.pdf;Appendix 3B
+;;Notice-of-Annual-General-Meeting-Resolution-No-4-2009.pdf;Notice of Annual General Meeting - Update
+;;App-3Z-Gerry-Masters-Final-Directors-Interest-Notice-2009.pdf;Final Director's Notice
+;;Change-of-Managing-Director-11-Sep-2009.pdf;Resignation / Appointment of Managing Director
+;;TRS-NOM-and-Proxy-Form-14-Oct-2009.pdf;Notice of Annual General Meeting / Proxy Form
+;;Acorn-8-Sept-2009.pdf;Change in Substantial Shareholding
+;;Grahger-4-Sept-2009.pdf;Change in Substantial Shareholding
+;;App-3B-PRP-20-August-2009.pdf;Appendix 3B
+;;App3B-18-Aug-2009.pdf;Appendix 3B
+;;Company-Announcement-to-ASX-Teleconference-presentation-19-Aug-2009.pdf;Full Year Results Investor Teleconference
+;;PRP-Rights-lapse-17th-July-2009.pdf;Lapse of Performance Rights
+;;CBA-Ceasing-to-be-Substantial-Shareholder-11-May-2009.pdf;Ceasing to be Substantial Shareholder
+;;CBA-8th-May-2009.pdf;Change in Substantial Shareholding
+;;Hyperion-16-April-2009.pdf;Change in Substantial Shareholding
+;;Grahger-27-March-2009.pdf;Change in Substantial Shareholding
+;;Company-Announcement-to-ASX-Teleconference-presentation-18-Feb-09.pdf;Teleconference Presentation : Half Year End December 2008 Results
+;;Response-to-ASX-query-19-Dec-2008.pdf;Response to ASX Query - Director's Interest Notice
+;;Kinetic-8-December-2008.pdf;Ceasing to be a substantial holder
+;;App3Z-Final-Directors-Interest-Notice-A-C-McMorron-3rd-December-2008.pdf;Final Directors Interest Notice
+;;Hyperion-31-Oct-2008.pdf;Change in Substantial Holding
+;;AGM-Results-15-Oct-2008.pdf;AGM Results
+;;TRS-AGM-Chairman-and-MD-Address-2008.pdf;Chairman's & Managing Director's AGM Address
+;;App3Y-Change-of-Director-Interest-Notice-G-Masters-Direct-26-August-2008.pdf;Change of Director's Interest Notice
+;;App3X-Initial-Director-Interest-Notice-W-Stevens-25-Aug-2008.pdf;Initial Directors Notification
+;;Cassar-PRP-Rights-lapse-19th-August-2008.pdf;Lapse of Performance Rights
+;;App3B-PRP-19-August-2008.pdf;Appendix 3B
+;;Resignation-of-Company-Secretary-2008.pdf;Resignation of Company Secretary
+;;Company-Announcement-to-ASX-Teleconference-presentation-20-08-2008.pdf;Full Year Announcement Teleconference
+;;CBA-9-July-2008.pdf;Change in Substantial Holding
+;;App3B-EPRP-1-July-2008.pdf;Appendix 3B
+;;Kinetic-25-June-2008.pdf;Change in Substantial Holding
+;;CBA-12-June-2008.pdf;Change in Substantial Holding
+;;Company-Secretary-Appointment-26-May-2008.pdf;Company Secretary Appointment
+;;CBA-21-May-2008.pdf;Change in Substantial Shareholding
+;;App3Y-Change-of-Director-Interest-Notice-C.-McMorron-8-April-2008.pdf;Change of Director's Interest Notice
+;;Becoming-a-substantial-holder-Kinetic-2008.02.19.pdf;Becoming a substantial holder
+;;Change-in-substantial-holding-Hyperion-2008.01.31.pdf;Change in substantial holding
+;;Change-in-substantial-holding-2007.11.09.pdf;Change in substantial holding
+;;Change-in-substantial-holding-from-CBA-2007.11.05.pdf;Change in substantial holding from CBA
+;;Becoming-a-substantial-holder-2007.11.01.pdf;Becoming a substantial holder
+;;Results-of-Annual-General-Meeting-2007.10.11.pdf;Final Results of Annual General Meeting
+;;App3Y-Change-of-Director-Interest-Notice-GM-2007.09.25.pdf;Change of Director's Interest Notice
+;;App3Y-Change-of-Director-Interest-Notice-GM-2007.09.12.pdf;Change of Director's Interest Notice
+;;App3Y-Change-of-Director-Interest-Notice-GM-2007.09.07.pdf;Change of Director's Interest Notice
+;;App3Y-Change-of-Director-Interest-Notice-GM-2007.08.28.pdf;Change of Director's Interest Notice
+;;App3B-GPRP-2007.08.20.pdf;Appendix 3B
+;;Change-in-substantial-holding-2007.08.17.pdf;Change in substantial holding
+;;Notice-of-Annual-General-Meeting-2007.08.15.pdf;Notice of Annual General Meeting
+;;Teleconference-2007.10.08.pdf;2007 Results Teleconference
+;;Response-to-ASX-Query-2007.07.25.pdf;Response to ASX Query
+;;App3B-EPRP-9July2007.pdf;Appendix 3B
+;;App3z-Final-Directors-Interest-Notice-BSaunders-04July2007.pdf;Final Directors Interest Notice
+;;Retirement-Director-4July2007.pdf;Retirement of Director
+;;App3X-Initial-Directors-Interest-Notice-G-Masters-14March2007.pdf;Change of Directors Interest Notice
+;;App3Y-Change-Director-Interest-Notice-John-S-IndirectB-June2007.pdf;Change of Directors Interest Notice
+;;App3Y-Change-Director-Interest-Notice-John.S-Indirect-June2007.pdf;Change of Director's Interest Notice
+;;Change-in-substantial-holding-from-CBA-01062007.pdf;Change in substantial holding from CBA
+;;Change-in-substantial-holding-01052007.pdf;Change in substantial holding
+;;Appointment-of-Director-2007.pdf;Appointment of Director
+;;Standard-and-Poors-Announces-March-Quarterly-Rebalance-2007.03.02.pdf;Standard and Poors Announces March Quarterly Rebalance
+;;App3B-R-Jones-21Feb2007.pdf;Appendix 3B Exercise of Options
+;;Teleconference-Updated-2007.02.09.pdf;Teleconference Presentation
+;;Change-of-Share-Registry-Address-15122006.pdf;Change of Share Registry Address
+;;Change-in-substantial-holding-from-CBA-05122006.pdf;Change in substantial holding from CBA
+;;Change-in-substantial-holding-30112006.pdf;Change in substantial holding
+;;Results-of-Annual-General-Meeting-2006.10.11.pdf;Results of AGM
+;;App3B-GPRP-18August2006.pdf;Appendix 3B Grant Performance Rights
+;;App3Y-Change-Director-Interest-Notice-Craig-Direct-September2006.pdf;Change of Directors Interest Notice
+;;Change-in-substantial-holding-01092006.pdf;Change in substantial holding
+;;Change-in-substantial-holding-18082006.pdf;Change in substantial holding
+;;App3B-EPRP-18August2006.pdf;Appendix 3B Exercise of Rights
+;;Ceasing-to-be-a-substantial-holder-18082006.pdf;Ceasing to be a substantial holder
+;;Notice-of-Annual-General-Meeting-2006.08.16.pdf;Notice of Annual General Meeting
+;;AGM-Proxy-Form-2006.08.16.pdf;AGM Proxy Form
+;;Teleconference-2006.08.04.pdf;Teleconference Presentation
+;;App3B-EPRP-21July2006.pdf;Appendix 3B Exercise of Rights
+;;Change-in-substantial-holding-from-CBA-19072006.pdf;Change in substantial holding from CBA
+;;Change-in-substantial-holding-from-CBA-13072006.pdf;Change in substantial holding from CBA
+;;App3B-GPRP-12July2006.pdf;Appendix 3B
+;;Change-in-Directors-Interest-Notice-BS-2006.07.03.pdf;Change of Directors Interest Notice
+;;Sloshberg-PRP-Rights-lapse-3July2006.pdf;Rights Lapse
+;;Saunders-PRP-Rights-exercise-transfer-3July2006.pdf;Rights Exercised
+;;App3Y-Change-Director-Interest-Notice-Barry-July2006-2.pdf;Change of Directors Interest Notice
+;;App3Y-Change-Director-Interest-Notice-Barry-DirectB-July2006.pdf;Change of Directors Interest Notice
+;;App3B-B-Saunders-3July2006.pdf;Appendix 3B Exercise of Rights
+;;App3B-R.Jones-22June2006.pdf;Appendix 3B Exercise of Options
+;;Change-in-substantial-holding-2006.05.31.pdf;Change in substantial holding
+;;Company-Secretary-Appointment-2006.pdf;Company Secretary Appointment
+;;Beattie-Saunders-share-transaction-March2006.pdf;Purchase of Shares
+;;App3Y-Change-Director-Interest-Notice-Barry-March2006.pdf;Change of Directors Interest Notice
+;;App3Y-Change-Director-Interest-Notice-Brian-March2006.pdf;Change of Directors Interest Notice
+;;Change-in-substantial-holding-29032006.pdf;Change in substantial holding
+;;App3B-R.Jones-24Feb2006.pdf;Appendix 3B Exercise of Options
+;;Change-in-substantial-holding-22022006.pdf;Change in substantial holding
+;;Teleconference-15February2006.pdf;Teleconference
+;;Change-in-substantial-holding-from-CGF-13022006.pdf;Change in substantial holding from CGF
+;;Release-Escrow-Securities-8February2006.pdf;Release Escrow Securities
+;;Ceasing-to-be-a-substantial-holder-from-AMP-27012006.pdf;Ceasing to be a substantial holder from AMP
+;;Becoming-a-substantial-holder-from-CBA-23012006.pdf;Becoming a substantial holder from CBA
+;;Change-of-Share-Registry-Address-15122006.pdf;Change in substantial holding from AMP
+;;Change-in-substantial-holding-02122005.pdf;Change in substantial holding
+;;Constitution-Amendment-Advice-2005.pdf;Constitution Amendment Advice
+;;Results-of-AGM-2005.10.19.pdf;Results of AGM
+;;Change-in-Substanial-Holding-2005.09.02.pdf;Change in substantial holding
+;;App3B-GPRP-22August2005.pdf;Appendix 3B
+;;Notice-of-Annual-General-Meeting-2005.08.22.pdf;Notice of Annual General Meeting
+;;Proxy-Form-2005.08.22.pdf;Proxy Form
+;;Teleconference-17August2005.pdf;Teleconference
+;;Ceasing-to-be-a-substantial-holder-from-PPT-15082005.pdf;Ceasing to be a substantial holder from PPT_
+;;Change-in-substantial-holding-from-AMP-09082005.pdf;Change in substantial holding from AMP
+;;App3B-Release-escrow-1August2005.pdf;Appendix 3B Expiry of Escrow Period
+;;App3B-EPRP-19July2005.pdf;Appendix 3B Exercise of Rights
+;;Change-in-substantial-holding-from-AMP-30062005.pdf;Change in substantial holding from AMP
+;;Change-in-substantial-holding-02062005.pdf;Change in substantial holding
+;;Change-in-substantial-holding-30052005.pdf;Change in substantial holding
+;;Becoming-a-substantial-holder-22042005.pdf;Becoming a substantial holder
+;;Change-in-substantial-holding-from-AMP-29032005.pdf;Change in substantial holding from AMP
+;;Change-in-substantial-holding-from-PPT-21032005.pdf;Change in substantial holding from PPT
+;;Change-in-substantial-holding-from-PPT-02032005.pdf;Change in substantial holding from PPT
+;;App3B-BS-RJ-AMc-25Feb2005.pdf;Appendix 3B Exercise of Options
+;;App3Y-Change-Director-Interest-Notice-BS-2005.pdf;Change of Directors Interest Notice
+;;App3B-A-Sloshberg-21Feb2005.pdf;Appendix 3B Re Executive Option Plan
+;;Change-in-substantial-holding-from-PPT-15022005.pdf;Change in substantial holding from PPT
+;;Change-of-Share-Registry-Address-15122006.pdf;Change of Share Registry Address
+;;Becoming-a-substantial-holder-06122004.pdf;Becoming a substantial holder
+;;Appendix-3Y-Change-Director-Interest-Notice-CM-22Nov-2004.pdf;Change of Directors Interest Notice
+;;Company-Sec-Announcement-29Oct2004.pdf;Company Sec Announcement
+;;AGM-2004-Proxy-Results-27Oct04.pdf;AGM 2004 Proxy Results
+;;Change-in-substantial-holding-from-AMP-06102004.pdf;Change in substantial holding from AMP
+;;Change-in-substantial-holding-from-PPT-24092004.pdf;Change in substantial holding from PPT
+;;Notice-of-Annual-General-Meeting-2004.09.23.pdf;Notice of Annual General Meeting
+;;Ceasing-to-be-a-substantial-holder-from-MBL-20092004.pdf;Ceasing to be a substantial holder from MBL
+;;Becoming-a-substantial-holder-from-PPT-16092004.pdf;Becoming a substantial holder from PPT
+;;Change-in-substantial-holding-02092004.pdf;Change in substantial holding
+;;Change-in-substantial-holding-24082004.pdf;Change in substantial holding
+;;Becoming-a-substantial-holder-13082004.pdf;Becoming a substantial holder
+;;Ceasing-to-be-a-substantial-holder-from-PPT-10082004.pdf;Ceasing to be a substantial holder from PPT
+;;Change-in-substantial-holding-from-AMP-06082004.pdf;Change in substantial holding from AMP
+;;Change-in-substantial-holding-from-PPT-05082004.pdf;Change in substantial holding from PPT
+;;Change-in-substantial-holding-from-MBL-15072004.pdf;Change in substantial holding from MBL
+;;Change-in-substantial-holding-from-MBL-21062004.pdf;Change in substantial holding from MBL
+;;Becoming-a-substantial-holder-from-PPT-03062004.pdf;Becoming a substantial holder from PPT
+;;Initial-Directors-Notification-2004.pdf;Initial Directors Notification
+;;Becoming-a-substantial-holder-from-AMP-02062004.pdf;Becoming a substantial holder from AMP
+;;Becoming-a-substantial-holder-from-MBL-02062004.pdf;Becoming a substantial holder from MBL
+;;Becoming-a-substantial-holder-01062004.pdf;Becoming a Substantial Holder
+;;IPO-Closes-Over-Suscribed-2004.05.31.pdf;IPO Closes Over-Subscribed
+;;Constitution-2004.05.28.pdf;Constitution
+;;Distribution-Schedule-2004.05.28.pdf;Distribution Schedule
+;;Admission-to-Official-List-28052004.pdf;Admission to Official List
+;;Terms-and-Conditions-of-Executive-Option-Plan-2004.pdf;Terms & Conditions of Executive Option Plan
+;;Statement-of-Escrow-Securities-2004.05.28.pdf;Statement on Escrow Securities
+;;Performance-Rights-Plan-2004.05.28.pdf;Performance Rights Plan
+;;Dividend-Reinvestment-Plan-Rules-2004.05.28.pdf;Dividend Reinvestment Plan Rules
+;;Market-Release-Pre-Quotation-Disclosure-2004.05.28.pdf;Market Release: Pre-quotation Disclosure
+;;Top-20-Holders-2004.05.28.pdf;Top 20 holders
+;;Disclosure-Document-06052004.pdf;Disclosure Document
+UPDATE CMSReportListComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang];archivesTitle[lang=$lang]
+;;financialReportsComponent;Financial Report;Financial Report (Archives)
+;;presentationComponent;;
+;;PressReleaseComponent; ;
+;;corporatepolicyComponent;;
+;;corporateshareComponent;;
+;;otherannouncementsComponent;;
+#Localize Accordion Component title 
+UPDATE CMSAccordionListComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;faqaccordions;FAQ's
+
+#Localize Accordion Items Header and content
+UPDATE AccordionItemCMSComponent;$contentCV[unique=true];uid[unique=true];accordionheader[lang=$lang];content[lang=$lang]
+;;faqaccordion1;The Reject Shop is a funny name. Is the stock faulty?;"No. Our first store opened in South Yarra, Victoria in 1981. This 
+shop sold 'seconds' and discontinued lines, hence The Reject Shop name. Today however, we no longer just sell seconds and discontinued lines, 
+and have adopted our current formula for low prices and bargains on the everyday things people use most in their life."
+;;faqaccordion2;I've seen a 'Parallel Import' symbol on some items in your catalogues, what does this mean?;"This is the genuine, branded article 
+but it may differ in design, materials and formulation from similar products offered locally. It does not have the support of the official Australian 
+distributor, but The Reject Shop supports these products with its normal trading warranty."
+;;faqaccordion3;If my purchase is damaged or faulty, what is The Reject Shop's returns policy?;"We offer a full money back guarantee 
+on all purchases if the product is faulty, simply return it with the receipt to the store you bought it from for a refund."
+;;faqaccordion4;Do you give cash out at your stores?;"You can get cash out at any register when paying for your purchase with EFTPOS."
+;;faqaccordion5;What is the acceptable method of payments in stores?;"The accepted methods of payment at The Reject Shop is cash, 
+visa, mastercard and bank transaction card. Please note that we do not accept cheque payments."
+;;faqaccordion6;Are any of the stores franchised?;No, all stores are 100% company owned.
+;;faqaccordion7;How many people does The Reject Shop employ?;"The Reject Shop employs about 550 full time staff and about 1800 casual staff. 
+During the busy Christmas trading season, several hundred more casual staff are employed."
+;;faqaccordion8;I'm looking for work with a vibrant retailer. How can I apply for a job at The Reject Shop?;"For Shop Assistant roles, 
+the best way to apply is to visit a store and ask the Store Manager. Stores are responsible for hiring their own team members. 
+If you are looking for a management role please email a copy of your resume to <a href=""mailto:recruitmentmanager@rejectshop.com.au""><u>
+recruitmentmanager@rejectshop.com.au</u></a>"
+;;faqaccordion9;How do I become a supplier to The Reject Shop?;"Phone our buying office on (03) 9371 5555 and ask to speak to the relevant buyer. You can also read the <a href=""/aboutus/informationforsuppliers"">Information for Suppliers</a> page on this website."
+;;faqaccordion10;I am already a supplier. How do I organise a delivery to the Distribution Centre?;"Our DC is located at 120 Link Road,
+Melbourne Airport, VIC 3045. You will need to book your delivery 48 hours in advance by phoning our receiving department on (03) 9933 5852. 
+Please have the order number and estimated number of pallets in the delivery available when you phone us. Finally, when making the delivery, 
+please ensure that all paperwork accompanies the goods."
+;;faqaccordion11;I am already a supplier. How do I organize a direct delivery to the Stores?;"Some store direct orders are required to be 
+delivered to our DC however most deliveries can be made directly to the store without any prior contact. Store contacts are available on 
+this Internet site if required. Please note that some stores have delivery curfew times. Please contact the appropriate buyer if you are 
+unsure of your required delivery point or time."
+;;faqaccordion12;Why does The Reject Shop not display all products on the website?;"The Reject Shop is a variety store with a constantly changing product offer, therefore quite often our stocks are limited and available for a short period of time. As such, The Reject Shop do not display all products on the website."
+;;faqaccordion13;Will The Reject Shop sell online?;"The Reject Shop understands the growth of online shopping, however the business' current focus is opening up new stores throughout Australia."

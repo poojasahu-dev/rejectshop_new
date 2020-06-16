@@ -1,0 +1,20 @@
+$productCatalog=rejectshopProductCatalog
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:'Staged']
+$defaultConversionStrategy=imageMagickMediaConversionStrategy
+$defaultMime=image/jpeg
+$lang=en
+
+
+INSERT_UPDATE ConversionMediaFormat    ;qualifier[unique=true];name[lang=en];conversionStrategy[default=$defaultConversionStrategy];conversion            ;inputFormat(qualifier);mediaAddOns(code,catalogVersion(catalog(id),version));
+                                                ;media_1200Wx1200H            ;1200Wx1200H ;                                                                          ;-resize 1020x1020  
+                                                ;media_515Wx515H            ;515Wx515H ;                                                                          ;-resize 515x515     
+                                                ;media_300Wx300H               ;300Wx300H     ;                                                                          ;-resize 300x300     
+                                                ;media_96Wx96H            ;96Wx96H         ;                                                                          ;-resize 96x96      
+                                                ;media_65Wx65H          ;65Wx65H         ;                                                                          ;-resize 65x65      
+                                               ;media_30Wx30H          ;30Wx30H         ;                                                                          ;-resize 30x30      
+
+INSERT_UPDATE ConversionGroup;code[unique=true];name[lang=en];supportedFormats(qualifier);
+;MediaConversionGroup;rejectshop Product Media Conversion Group;media_1200Wx1200H,media_515Wx515H,media_300Wx300H,media_96Wx96H,media_65Wx65H,media_30Wx30H
+
+INSERT_UPDATE CronJob; code[unique=true];job(code);singleExecutable;sessionLanguage(isoCode[default=$lang])
+;rejectshopImageConversionJob;imageConversionJob;false;

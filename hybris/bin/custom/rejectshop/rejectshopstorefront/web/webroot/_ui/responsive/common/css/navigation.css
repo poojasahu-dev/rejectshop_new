@@ -1,0 +1,101 @@
+/*
+## Navigation
+********************************************************************/
+
+.navigationbarcollectioncomponent{
+	position:relative;
+	z-index:100;
+	clear: both;
+	/* height: 54px; */
+    padding:0px;
+    border-bottom:1px solid #e2001a;
+}
+header.main-header .main-navigation > .nav > li.md-show-sub > a, header.main-header .main-navigation > .nav > li > a:hover, header.main-header .main-navigation > .nav > li > a:focus{
+    background:#e2001a;
+    color: #fff !important;
+    border-radius:0;
+}
+.main-header .main-navigation > .nav > li + li {
+    margin: 0;
+}
+.main-header .main-navigation > .nav > li:nth-child(2) {
+    margin: 0;
+}
+.main-navigation .sub-navigation-section .sub-navigation-list li
+{
+	display:block;
+	margin-right:0;
+	width:auto;
+	border:0px !important;
+	white-space:nowrap;
+}
+header.main-header .main-navigation > .nav > li .sub-navigation .sub-navigation-section .sub-navigation-list li a
+{
+	color:#404040 !important;
+	font-size:11px;
+	font-weight:normal;
+	    font-family: 'AvantGardeGothicITCW01B 731069';
+}
+.storeFinder li a span{
+    font-family: 'AvantGardeGothicITCW01B 731069' !important;
+}
+.main-header .main-navigation > .nav > li .sub-navigation .sub-navigation-section .sub-navigation-list li a:hover, .main-header .main-navigation > .nav > li .sub-navigation .sub-navigation-section .sub-navigation-list li a:focus {
+    background-color:#E2001A !important;
+    text-decoration: none;
+    color:#fff !important;
+}
+.main-navigation .sub-navigation
+{
+	background-color: #FFFFFF !important;
+	
+}
+.sub-navigation
+{
+	width:35%;
+	left:auto !important;
+	right:auto !important;
+	margin-top:0px !important;
+}
+.main-header .main-navigation > .nav > li .sub-navigation .row {
+    position: relative;
+    background: #F6F5F5 !important;
+    /* margin-left:0px !important; */
+}
+header.main-header .main-navigation > .nav > li .sub-navigation
+{
+	padding:10px 0;width:auto;
+}
+@media(max-width:767px){
+	.main-navigation .sub-navigation-section .sub-navigation-list li a
+{
+	color : white !important;
+	font-size:12px !important;
+}
+.main-navigation .sub-navigation
+{
+	background-color:grey !important;
+	
+}	
+	.main-header .main-navigation > .nav > li .sub-navigation .row {
+    position: relative;
+    background: grey !important;
+    /* margin-left:0px !important; */
+}
+	 .navigationbarcollectioncomponent {
+    position: relative;
+    z-index: 100;
+    clear: both;
+ height:5px;
+ width:100%;
+    padding:0;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+}
+@media (max-width: 1159px)
+{
+	.navigation_links .navigationbarcollectioncomponent #menudropdown li a {
+    width: 100%;
+	}	
+}

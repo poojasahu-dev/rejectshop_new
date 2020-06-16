@@ -1,0 +1,44 @@
+/*
+## Breadcrumb
+********************************************************************/
+
+.breadcrumb{
+	background:#f6f6f6;
+	margin:0 0 20px 0;
+}
+
+.breadcrumb ul{
+	padding:12px;
+	line-height:0.833em;
+}
+
+.breadcrumb ul li{
+	float:left;
+}
+
+.breadcrumb ul li.separator{
+	padding:0 6px;
+	font-size: 1em;
+	line-height: 0.9em;
+}
+
+.breadcrumb ul li,
+.breadcrumb ul li a{
+	color:#919191;
+	font-size:0.9em;
+	text-transform:uppercase;
+}
+
+.breadcrumb ul li a.last{
+	color:#ed5f69;
+}
+
+/* Breadcrumb changes */
+header + .breadcrumb-section{float:left;width:100%;margin:0;}
+.breadcrumb-section .breadcrumb{margin:0px;font-weight:300;background-color:#fff;padding:0 0 0 10px;}
+.breadcrumb-section .breadcrumb > li + li:before{content:"\003e";color:#808080;padding:0;}
+.breadcrumb-section .breadcrumb > li:last-child:before{padding-right:5px;}
+.breadcrumb-section .breadcrumb li a{font-family:"Myriad W01 Regular";color:#808080;font-weight:normal;text-decoration:none;text-transform:capitalize;font-size: 12px;}
+.breadcrumb-section .breadcrumb li{text-transform:capitalize;}
+.breadcrumb-section .breadcrumb li.active{font-family:"Myriad W01 Regular";font-size:12px;text-transform:capitalize;}
+@media (max-width:767px){.breadcrumb-section .breadcrumb{padding-left:0;}}

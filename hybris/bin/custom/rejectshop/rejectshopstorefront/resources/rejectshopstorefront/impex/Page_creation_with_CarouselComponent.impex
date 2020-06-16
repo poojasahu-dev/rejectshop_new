@@ -1,0 +1,180 @@
+
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$productCV=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+INSERT_UPDATE TRSTableTreeCategoryCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);categories(code,$productCV);includeCategories;scroll(code);popup;visible;&componentRef
+;;trsCategorySliderCarouselComponent;TRS Dynamic Category Product Carousel;;;Tradional,Frost,Luxe;allVisible;false;true;trsCategorySliderCarouselComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;savvyCategorySliderCarouselSlot;Carousel on Category Page Slot;true;trsCategorySliderCarouselComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='SavvyCategorySliderPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;savvyCategorySliderCarouselSlot-trsCategorySliderCarouselComponent;SectionCarousel;;savvyCategorySliderCarouselSlot;true
+
+##################################Carousel Component and Content Slot ends###########
+
+
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+;;SavvyCategorySliderPageTemplate;Savvy Category Slider Page Template;savvyCategorySlider/savvyCategorySliderPage;ContentPage
+
+UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+;;SavvyCategorySliderPageTemplate     ;$jarResourceCms/structure-view/structure_savvyCategorySliderPageTemplate.vm
+
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='SavvyCategorySliderPageTemplate'];validComponentTypes(code);compTypeGroup(code)
+;SiteLogo;;;logo
+;HeaderLinks;;;headerlinks
+;SearchBox;;;searchbox
+;MiniCart;;;minicart
+;NavigationBar;;;navigation
+;Section1;;;wide
+;ProductLeftRefinements;;;narrow
+;savvyCategorySliderCarouselSlot;;;
+;ProductListSlot;;;wide
+;Footer;;;footer
+;TopHeaderSlot;;;wide
+;BottomHeaderSlot;;;wide
+;PlaceholderContentSlot;;;
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='SavvyCategorySliderPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+
+;;SiteLogo-SavvyCategorySliderPage;SiteLogo;SavvyCategorySliderPageTemplate;SiteLogoSlot;true
+;;HomepageLink-SavvyCategorySliderPage;HomepageNavLink;SavvyCategorySliderPageTemplate;HomepageNavLinkSlot;true
+;;MiniCart-SavvyCategorySliderPage;MiniCart;SavvyCategorySliderPageTemplate;MiniCartSlot;true
+;;NavigationBar-SavvyCategorySliderPage;NavigationBar;SavvyCategorySliderPageTemplate;NavigationBarSlot;true
+;;Footer-SavvyCategorySliderPage;Footer;SavvyCategorySliderPageTemplate;FooterSlot;true
+;;HeaderLinks-SavvyCategorySliderPage;HeaderLinks;;HeaderLinksSlot;true
+;;SearchBox-SavvyCategorySliderPage;SearchBox;;SearchBoxSlot;true
+;;TopHeaderSlot-SavvyCategorySliderPage;TopHeaderSlot;;TopHeaderSlot;true
+;;BottomHeaderSlot-SavvyCategorySliderPage;BottomHeaderSlot;;BottomHeaderSlot;true
+;;ProductLeftRefinemnts-SavvyCategorySliderPage;ProductLeftRefinements;;ProductLeftRefinements;true
+;;savvyCategorySliderCarouselSlot-SavvyCategorySliderPage;savvyCategorySliderCarouselSlot;;savvyCategorySliderCarouselSlot;true
+;;ProductListSlot-SavvyCategorySliderPage;ProductListSlot;;ProductListSlot;true
+;;PlaceholderContentSlot-SavvyCategorySliderPage;PlaceholderContentSlot;;PlaceholderContentSlot;true
+
+
+
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true]
+;;ContentPageModel__function_preview;text/gif;ContentPageModel__function_preview.gif;$jarResourceCms/preview-images/ContentPageModel__function_preview.gif
+
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];previewImage(code, $contentCV)[default='ContentPageModel__function_preview']
+;;savvyCategorySliderPage;Savvy Category Slider Page;SavvyCategorySliderPageTemplate;savvyCategorySliderPage
+
+
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+# Language
+$lang=en
+
+# Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;savvyCategorySliderPage;"Savvy Category Slider"
+
+
+
+
+
+
+$productCatalog=rejectshopProductCatalog
+$productCatalogName=rejectshop Product Catalog
+$productCV=catalogversion(catalog(id[default=$productCatalog]),version[default='Online'])[unique=true,default=$productCatalog:Online]
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+
+INSERT_UPDATE TRSTableTreeCategoryCarouselComponent;$contentCV[unique=true];uid[unique=true];name;products(code,$productCV);categories(code,$productCV);includeCategories;scroll(code);popup;visible;&componentRef
+;;trsCategorySliderCarouselComponent;TRS Dynamic Category Product Carousel;;;Tradional,Frost,Luxe;allVisible;false;true;trsCategorySliderCarouselComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;savvyCategorySliderCarouselSlot;Carousel on Category Page Slot;true;trsCategorySliderCarouselComponent
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='SavvyCategorySliderPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+;;savvyCategorySliderCarouselSlot-trsCategorySliderCarouselComponent;SectionCarousel;;savvyCategorySliderCarouselSlot;true
+
+##################################Carousel Component and Content Slot ends###########
+
+
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+# Import modulegen config properties into impex macros
+UPDATE GenericItem[processor=de.hybris.platform.commerceservices.impex.impl.ConfigPropertyImportProcessor];pk[unique=true]
+$jarResourceCms=$config-jarResourceCmsValue
+
+INSERT_UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];name;frontendTemplateName;restrictedPageTypes(code);active[default=true]
+;;SavvyCategorySliderPageTemplate;Savvy Category Slider Page Template;savvyCategorySlider/savvyCategorySliderPage;ContentPage
+
+UPDATE PageTemplate;$contentCV[unique=true];uid[unique=true];velocityTemplate[translator=de.hybris.platform.commerceservices.impex.impl.FileLoaderValueTranslator]
+;;SavvyCategorySliderPageTemplate     ;$jarResourceCms/structure-view/structure_savvyCategorySliderPageTemplate.vm
+
+
+INSERT_UPDATE ContentSlotName;name[unique=true];template(uid,$contentCV)[unique=true][default='SavvyCategorySliderPageTemplate'];validComponentTypes(code);compTypeGroup(code)
+;SiteLogo;;;logo
+;HeaderLinks;;;headerlinks
+;SearchBox;;;searchbox
+;MiniCart;;;minicart
+;NavigationBar;;;navigation
+;Section1;;;wide
+;ProductLeftRefinements;;;narrow
+;savvyCategorySliderCarouselSlot;;;
+;ProductListSlot;;;wide
+;Footer;;;footer
+;TopHeaderSlot;;;wide
+;BottomHeaderSlot;;;wide
+;PlaceholderContentSlot;;;
+
+INSERT_UPDATE ContentSlotForTemplate;$contentCV[unique=true];uid[unique=true];position[unique=true];pageTemplate(uid,$contentCV)[unique=true][default='SavvyCategorySliderPageTemplate'];contentSlot(uid,$contentCV)[unique=true];allowOverwrite
+
+;;SiteLogo-SavvyCategorySliderPage;SiteLogo;SavvyCategorySliderPageTemplate;SiteLogoSlot;true
+;;HomepageLink-SavvyCategorySliderPage;HomepageNavLink;SavvyCategorySliderPageTemplate;HomepageNavLinkSlot;true
+;;MiniCart-SavvyCategorySliderPage;MiniCart;SavvyCategorySliderPageTemplate;MiniCartSlot;true
+;;NavigationBar-SavvyCategorySliderPage;NavigationBar;SavvyCategorySliderPageTemplate;NavigationBarSlot;true
+;;Footer-SavvyCategorySliderPage;Footer;SavvyCategorySliderPageTemplate;FooterSlot;true
+;;HeaderLinks-SavvyCategorySliderPage;HeaderLinks;;HeaderLinksSlot;true
+;;SearchBox-SavvyCategorySliderPage;SearchBox;;SearchBoxSlot;true
+;;TopHeaderSlot-SavvyCategorySliderPage;TopHeaderSlot;;TopHeaderSlot;true
+;;BottomHeaderSlot-SavvyCategorySliderPage;BottomHeaderSlot;;BottomHeaderSlot;true
+;;ProductLeftRefinemnts-SavvyCategorySliderPage;ProductLeftRefinements;;ProductLeftRefinements;true
+;;savvyCategorySliderCarouselSlot-SavvyCategorySliderPage;savvyCategorySliderCarouselSlot;;savvyCategorySliderCarouselSlot;true
+;;ProductListSlot-SavvyCategorySliderPage;ProductListSlot;;ProductListSlot;true
+;;PlaceholderContentSlot-SavvyCategorySliderPage;PlaceholderContentSlot;;PlaceholderContentSlot;true
+
+
+
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true]
+;;ContentPageModel__function_preview;text/gif;ContentPageModel__function_preview.gif;$jarResourceCms/preview-images/ContentPageModel__function_preview.gif
+
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;defaultPage[default='true'];approvalStatus(code)[default='approved'];homepage[default='false'];previewImage(code, $contentCV)[default='ContentPageModel__function_preview']
+;;savvyCategorySliderPage;Savvy Category Slider Page;SavvyCategorySliderPageTemplate;savvyCategorySliderPage
+
+
+$contentCatalog=rejectshopContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Online])[default=$contentCatalog:Online]
+
+# Language
+$lang=en
+
+# Content Pages
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
+;;savvyCategorySliderPage;"Savvy Category Slider"
+
+
+
